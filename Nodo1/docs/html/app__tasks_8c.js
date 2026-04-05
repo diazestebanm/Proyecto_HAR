@@ -1,0 +1,27 @@
+var app__tasks_8c =
+[
+    [ "NTF_IMU_DONE", "app__tasks_8c.html#aba124d3c79f02b11a2ee1a3b39fb7420", null ],
+    [ "NTF_IMU_START", "app__tasks_8c.html#ac53683e84fe905bbe1059fa502290070", null ],
+    [ "app_tasks_start", "app__tasks_8c.html#adaf2d0d735993165acedd8f410d879d0", null ],
+    [ "build_flags", "app__tasks_8c.html#a7fabf41a20f5fe2a5aba501b2292148a", null ],
+    [ "enqueue_payload", "app__tasks_8c.html#af53c78de8de82e59a50e54f6638eb00c", null ],
+    [ "rel_ms", "app__tasks_8c.html#a9f3dad8c7a15f6c2d75160d93408c162", null ],
+    [ "task_control_fsm", "app__tasks_8c.html#af410f49b6eeead6b493a534398b70699", null ],
+    [ "task_imu", "app__tasks_8c.html#ac2321b3fc83e079e31f177db5916dd58", null ],
+    [ "task_ppg", "app__tasks_8c.html#ac4573c65a1b0f2d569dc1e0326b5e673", null ],
+    [ "task_radio", "app__tasks_8c.html#ac599a14a8501361de6850856483d5227", null ],
+    [ "s_boot_id", "app__tasks_8c.html#a0997e34a0408aa54e9a4cb1576cf58cb", null ],
+    [ "s_data_mutex", "app__tasks_8c.html#af9b4130b7f0569c833668a1e73662bed", null ],
+    [ "s_hal_ready", "app__tasks_8c.html#a8bebdb8169eb2b287ccb60e081f81893", null ],
+    [ "s_last_bat", "app__tasks_8c.html#a66fc3b43693a3621d5f58ca158cbb20f", null ],
+    [ "s_last_imu", "app__tasks_8c.html#a7445a51123b14c14cf6b8a8be880db94", null ],
+    [ "s_last_ppg", "app__tasks_8c.html#aaddd753194d6423788249e58dcf6fb4b", null ],
+    [ "s_radio_queue", "app__tasks_8c.html#a8beb76352deec1437961088b1dcb0736", null ],
+    [ "s_seq", "app__tasks_8c.html#a4973ff9c4c09baeffd2f083df0197cf4", null ],
+    [ "s_t0_us", "app__tasks_8c.html#aac730d8c1a191fef3b3ad1daf9d2ad35", null ],
+    [ "s_task_ctrl", "app__tasks_8c.html#acf1beff12ae317b896cf4e423904bdbc", null ],
+    [ "s_task_imu", "app__tasks_8c.html#a85cf7fbc8412f08b094c75e179c207d4", null ],
+    [ "s_task_ppg", "app__tasks_8c.html#ac8204f9da371fe01110d586d33b92eae", null ],
+    [ "s_task_radio", "app__tasks_8c.html#a3faccda6b7a4a41ead942f0fbba74d90", null ],
+    [ "TAG", "app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c", null ]
+];

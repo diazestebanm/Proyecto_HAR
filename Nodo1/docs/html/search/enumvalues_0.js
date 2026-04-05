@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['app_5fflag_5fbat_5fcritical_0',['APP_FLAG_BAT_CRITICAL',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769a937637c1f7c6c9d94fcae5cf951179d8',1,'config.h']]],
+  ['app_5fflag_5fbat_5flow_1',['APP_FLAG_BAT_LOW',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769a500ac7861f79046bf19b64395df372d4',1,'config.h']]],
+  ['app_5fflag_5fbat_5fvalid_2',['APP_FLAG_BAT_VALID',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769a960fc1aa0d6ebd06afc0a37157b0ecff',1,'config.h']]],
+  ['app_5fflag_5fboot_5fevent_3',['APP_FLAG_BOOT_EVENT',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769ac3dc33e8ae3127fde1af0badb8caeac1',1,'config.h']]],
+  ['app_5fflag_5fbpm_5fvalid_4',['APP_FLAG_BPM_VALID',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769a7d7507440c050dbb9ba0f4f98942a094',1,'config.h']]],
+  ['app_5fflag_5fgyro_5fbias_5fok_5',['APP_FLAG_GYRO_BIAS_OK',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769ab60c610499077ef9869d89883f5a6cbd',1,'config.h']]],
+  ['app_5fflag_5fimu_5fsample_5floss_6',['APP_FLAG_IMU_SAMPLE_LOSS',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769a04b98617e94ceb2120858aa4e0ef03e9',1,'config.h']]],
+  ['app_5fflag_5fimu_5fvalid_5fwindow_7',['APP_FLAG_IMU_VALID_WINDOW',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769a2c54a586b73ea82407bea0cf3fd7cd9e',1,'config.h']]],
+  ['app_5fflag_5fimu_5fwindow_5fcomplete_8',['APP_FLAG_IMU_WINDOW_COMPLETE',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769ad5f2bb0dab167ce3fa633bef343dd063',1,'config.h']]],
+  ['app_5fflag_5flink_5fdegraded_9',['APP_FLAG_LINK_DEGRADED',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769a8be9a6a02fd22c132cbb2789e06bae52',1,'config.h']]],
+  ['app_5fflag_5fppg_5ffinger_5fpresent_10',['APP_FLAG_PPG_FINGER_PRESENT',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769aebc675b56f383b3d1320558cfbc7e6a3',1,'config.h']]],
+  ['app_5fflag_5fspo2_5fvalid_11',['APP_FLAG_SPO2_VALID',['../config_8h.html#a3d1e06794cf0793da36253a9d4920769aa0a4c57edbe04732f3c18267835b0911',1,'config.h']]],
+  ['app_5fmsg_5falarm_12',['APP_MSG_ALARM',['../config_8h.html#a55723d5ff6b7b0d7023fb83507a8df76a55e3c21aa607c38be1aa297b6906f45a',1,'config.h']]],
+  ['app_5fmsg_5fnormal_13',['APP_MSG_NORMAL',['../config_8h.html#a55723d5ff6b7b0d7023fb83507a8df76a672f74654fdf8dd415e5b01bdbae4ed3',1,'config.h']]],
+  ['app_5fstate_5facquire_5fimu_14',['APP_STATE_ACQUIRE_IMU',['../config_8h.html#a5bb27460721cc90620d197fabf50d4bba5ec2b4f0fb908f4bfb84293b7a65641b',1,'config.h']]],
+  ['app_5fstate_5facquire_5fppg_15',['APP_STATE_ACQUIRE_PPG',['../config_8h.html#a5bb27460721cc90620d197fabf50d4bbadf8f718b7acd2880f91144e622ce046d',1,'config.h']]],
+  ['app_5fstate_5fboot_16',['APP_STATE_BOOT',['../config_8h.html#a5bb27460721cc90620d197fabf50d4bba9a3966ce5e8549e2e09c39daa493506d',1,'config.h']]],
+  ['app_5fstate_5fbuild_5fpayload_17',['APP_STATE_BUILD_PAYLOAD',['../config_8h.html#a5bb27460721cc90620d197fabf50d4bba86bc42022328d925d8951f2b01dd6771',1,'config.h']]],
+  ['app_5fstate_5fidle_5flow_5fpower_18',['APP_STATE_IDLE_LOW_POWER',['../config_8h.html#a5bb27460721cc90620d197fabf50d4bbaad0d86f27461acbcb746cad042c7a45a',1,'config.h']]],
+  ['app_5fstate_5frecovery_19',['APP_STATE_RECOVERY',['../config_8h.html#a5bb27460721cc90620d197fabf50d4bba7f2e3cb39735151981da7506458fa3e1',1,'config.h']]],
+  ['app_5fstate_5ftx_5falarm_20',['APP_STATE_TX_ALARM',['../config_8h.html#a5bb27460721cc90620d197fabf50d4bbae084808bae052af61a0ee10c1956cacf',1,'config.h']]],
+  ['app_5fstate_5ftx_5fnormal_21',['APP_STATE_TX_NORMAL',['../config_8h.html#a5bb27460721cc90620d197fabf50d4bba9ade99627728c92d8af05ab6ba100f0a',1,'config.h']]]
+];

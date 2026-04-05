@@ -1,0 +1,15 @@
+digraph "hal_battery_sample"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="hal_battery_sample",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Toma una lectura robusta de bateria y genera su resumen."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="cmp_int",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__battery_8c.html#a82a2e753c2e346d29922e3cdd0c4ca5c",tooltip="Comparador usado para ordenar muestras ADC."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="raw_to_mv",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__battery_8c.html#ac90ddc3eac37f875128224b40d1954fb",tooltip="Convierte una lectura ADC cruda a milivoltios."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="vbat_to_percent",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__battery_8c.html#a5b116562cf27fd4a0358353e4fff2dae",tooltip="Convierte el voltaje de la bateria a un porcentaje aproximado."];
+}

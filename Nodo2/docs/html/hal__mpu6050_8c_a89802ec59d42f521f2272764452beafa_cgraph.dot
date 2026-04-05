@@ -1,0 +1,11 @@
+digraph "mpu_read"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mpu_read",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Lee uno o varios registros contiguos del MPU6050."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="hal_i2c_read_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__i2c_8c.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4",tooltip="Lee uno o varios bytes consecutivos desde un esclavo I2C."];
+}

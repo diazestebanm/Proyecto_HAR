@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo2: Archivo de código fuente main/hal_radio.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo2
+   </div>
+   <div id="projectbrief">Nodo 2: pierna/tobillo, MPU6050, SD y receptor ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('hal__radio_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">hal_radio.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="hal__radio_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="hal__radio_8h.html">hal_radio.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="app__config_8h.html">app_config.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="app__types_8h.html">app_types.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;esp_check.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;esp_event.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;esp_log.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;esp_now.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;esp_timer.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;esp_wifi.h&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;nvs_flash.h&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="hal__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">   22</a></span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = <span class="stringliteral">&quot;HAL_RADIO&quot;</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="hal__radio_8c.html#a70a63c58c2b6271ace1a2bb2c9a7ab1c">   23</a></span><span class="keyword">static</span> QueueHandle_t <a class="code hl_variable" href="hal__radio_8c.html#a70a63c58c2b6271ace1a2bb2c9a7ab1c">s_rx_queue</a> = NULL;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span></div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="hal__radio_8c.html#ada3856d14fb661e700a8e0a05437a545">   26</a></span><span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="hal__radio_8c.html#ada3856d14fb661e700a8e0a05437a545">node1_mac_allowed</a>(<span class="keyword">const</span> uint8_t *mac)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#if APP_FILTER_NODE1_MAC</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">static</span> <span class="keyword">const</span> uint8_t allowed[6] = {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_define" href="app__config_8h.html#a70d82b256ab40f5eb6ca0b1b334354e5">APP_NODE1_MAC0</a>, <a class="code hl_define" href="app__config_8h.html#a10cbff82cd998658041fe139809a1cd1">APP_NODE1_MAC1</a>, <a class="code hl_define" href="app__config_8h.html#a0485953ab9f58f1d3ee21fef0b2568d5">APP_NODE1_MAC2</a>,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_define" href="app__config_8h.html#a257ea17a57e35ccec3492bf37bbc2e4c">APP_NODE1_MAC3</a>, <a class="code hl_define" href="app__config_8h.html#acf132812f9f0c46d9b4fcd7393421b3c">APP_NODE1_MAC4</a>, <a class="code hl_define" href="app__config_8h.html#a714a88144356ad6d8c8a2e22e339ee9e">APP_NODE1_MAC5</a>,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    };</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">return</span> (memcmp(mac, allowed, 6) == 0);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    (void)mac;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="hal__radio_8c.html#ab21b94674d74790f989d8b8d175a972c">   45</a></span><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="hal__radio_8c.html#ab21b94674d74790f989d8b8d175a972c">radio_rx_cb</a>(<span class="keyword">const</span> esp_now_recv_info_t *info, <span class="keyword">const</span> uint8_t *data, <span class="keywordtype">int</span> len)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (!info || !data || len != (<span class="keywordtype">int</span>)<span class="keyword">sizeof</span>(<a class="code hl_variable" href="app__types_8h.html#a2a67623d8323692f197d20ffba472760">node1_packet_t</a>)) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="hal__radio_8c.html#ada3856d14fb661e700a8e0a05437a545">node1_mac_allowed</a>(info-&gt;src_addr)) {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_struct" href="structradio__rx__event__t.html">radio_rx_event_t</a> ev = {0};</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    memcpy(ev.<a class="code hl_variable" href="structradio__rx__event__t.html#a22fc5773448eba47db327858faf55831">src_mac</a>, info-&gt;src_addr, 6);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    memcpy(&amp;ev.<a class="code hl_variable" href="structradio__rx__event__t.html#adaff816f57f264412d8c8689eefea365">packet</a>, data, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="app__types_8h.html#a2a67623d8323692f197d20ffba472760">node1_packet_t</a>));</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    ev.<a class="code hl_variable" href="structradio__rx__event__t.html#a27c3ee71529ebe466ffc7ab8e33cfbe0">rx_local_ms</a> = (uint32_t)(esp_timer_get_time() / 1000ULL);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="hal__radio_8c.html#a70a63c58c2b6271ace1a2bb2c9a7ab1c">s_rx_queue</a>) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        xQueueSend(<a class="code hl_variable" href="hal__radio_8c.html#a70a63c58c2b6271ace1a2bb2c9a7ab1c">s_rx_queue</a>, &amp;ev, 0);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
+</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span></div>
+<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="hal__radio_8c.html#a2b4dfe64b1c5d3330dbce9f77630b3e5">   68</a></span>esp_err_t <a class="code hl_function" href="hal__radio_8c.html#a2b4dfe64b1c5d3330dbce9f77630b3e5">hal_radio_init</a>(QueueHandle_t rx_queue)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>{</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_variable" href="hal__radio_8c.html#a70a63c58c2b6271ace1a2bb2c9a7ab1c">s_rx_queue</a> = rx_queue;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    esp_err_t err = nvs_flash_init();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        ESP_ERROR_CHECK(nvs_flash_erase());</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        err = nvs_flash_init();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    ESP_RETURN_ON_ERROR(err, <a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;nvs init fallo&quot;</span>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    ESP_RETURN_ON_ERROR(esp_netif_init(), <a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;esp_netif_init fallo&quot;</span>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    ESP_RETURN_ON_ERROR(esp_event_loop_create_default(), <a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;event loop fallo&quot;</span>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    esp_netif_create_default_wifi_sta();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    wifi_init_config_t wifi_cfg = WIFI_INIT_CONFIG_DEFAULT();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    ESP_RETURN_ON_ERROR(esp_wifi_init(&amp;wifi_cfg), <a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;wifi init fallo&quot;</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    ESP_RETURN_ON_ERROR(esp_wifi_set_mode(WIFI_MODE_STA), <a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;wifi mode fallo&quot;</span>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    ESP_RETURN_ON_ERROR(esp_wifi_set_storage(WIFI_STORAGE_RAM), <a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;wifi storage fallo&quot;</span>);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    ESP_RETURN_ON_ERROR(esp_wifi_start(), <a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;wifi start fallo&quot;</span>);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    ESP_RETURN_ON_ERROR(esp_wifi_set_channel(<a class="code hl_define" href="app__config_8h.html#ab586382c47ff4a902e71743d49fcb290">APP_WIFI_CHANNEL</a>, WIFI_SECOND_CHAN_NONE), <a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;wifi channel fallo&quot;</span>);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">     * Nodo 2 actua como receptor, asi que no registra peers de salida.</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">     * Solo necesita que el stack Wi-Fi este levantado y ESP-NOW inicializado.</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    ESP_RETURN_ON_ERROR(esp_now_init(), <a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;esp_now_init fallo&quot;</span>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    ESP_RETURN_ON_ERROR(esp_now_register_recv_cb(<a class="code hl_function" href="hal__radio_8c.html#ab21b94674d74790f989d8b8d175a972c">radio_rx_cb</a>), <a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;register recv cb fallo&quot;</span>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#if APP_USE_ESPNOW_RX_PS</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    esp_now_set_wake_window(<a class="code hl_define" href="app__config_8h.html#a99b571a6de9e292af8ded97cea665784">APP_ESPNOW_WAKE_WINDOW_MS</a>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    esp_wifi_connectionless_module_set_wake_interval(<a class="code hl_define" href="app__config_8h.html#a8e2a905998b79282f6b46ed1c697f5f9">APP_ESPNOW_WAKE_INTERVAL_MS</a>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    uint8_t mac[6] = {0};</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    esp_wifi_get_mac(WIFI_IF_STA, mac);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    ESP_LOGI(<a class="code hl_variable" href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;ESP-NOW RX listo. CH=%d MAC=%02X:%02X:%02X:%02X:%02X:%02X&quot;</span>,</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>             <a class="code hl_define" href="app__config_8h.html#ab586382c47ff4a902e71743d49fcb290">APP_WIFI_CHANNEL</a>,</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>             mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
+</div>
+<div class="ttc" id="aapp__config_8h_html"><div class="ttname"><a href="app__config_8h.html">app_config.h</a></div><div class="ttdoc">Configuracion central del proyecto Nodo 2.</div></div>
+<div class="ttc" id="aapp__config_8h_html_a0485953ab9f58f1d3ee21fef0b2568d5"><div class="ttname"><a href="app__config_8h.html#a0485953ab9f58f1d3ee21fef0b2568d5">APP_NODE1_MAC2</a></div><div class="ttdeci">#define APP_NODE1_MAC2</div><div class="ttdef"><b>Definition</b> <a href="app__config_8h_source.html#l00076">app_config.h:76</a></div></div>
+<div class="ttc" id="aapp__config_8h_html_a10cbff82cd998658041fe139809a1cd1"><div class="ttname"><a href="app__config_8h.html#a10cbff82cd998658041fe139809a1cd1">APP_NODE1_MAC1</a></div><div class="ttdeci">#define APP_NODE1_MAC1</div><div class="ttdef"><b>Definition</b> <a href="app__config_8h_source.html#l00075">app_config.h:75</a></div></div>
+<div class="ttc" id="aapp__config_8h_html_a257ea17a57e35ccec3492bf37bbc2e4c"><div class="ttname"><a href="app__config_8h.html#a257ea17a57e35ccec3492bf37bbc2e4c">APP_NODE1_MAC3</a></div><div class="ttdeci">#define APP_NODE1_MAC3</div><div class="ttdef"><b>Definition</b> <a href="app__config_8h_source.html#l00077">app_config.h:77</a></div></div>
+<div class="ttc" id="aapp__config_8h_html_a70d82b256ab40f5eb6ca0b1b334354e5"><div class="ttname"><a href="app__config_8h.html#a70d82b256ab40f5eb6ca0b1b334354e5">APP_NODE1_MAC0</a></div><div class="ttdeci">#define APP_NODE1_MAC0</div><div class="ttdef"><b>Definition</b> <a href="app__config_8h_source.html#l00074">app_config.h:74</a></div></div>
+<div class="ttc" id="aapp__config_8h_html_a714a88144356ad6d8c8a2e22e339ee9e"><div class="ttname"><a href="app__config_8h.html#a714a88144356ad6d8c8a2e22e339ee9e">APP_NODE1_MAC5</a></div><div class="ttdeci">#define APP_NODE1_MAC5</div><div class="ttdef"><b>Definition</b> <a href="app__config_8h_source.html#l00079">app_config.h:79</a></div></div>
+<div class="ttc" id="aapp__config_8h_html_a8e2a905998b79282f6b46ed1c697f5f9"><div class="ttname"><a href="app__config_8h.html#a8e2a905998b79282f6b46ed1c697f5f9">APP_ESPNOW_WAKE_INTERVAL_MS</a></div><div class="ttdeci">#define APP_ESPNOW_WAKE_INTERVAL_MS</div><div class="ttdef"><b>Definition</b> <a href="app__config_8h_source.html#l00066">app_config.h:66</a></div></div>
+<div class="ttc" id="aapp__config_8h_html_a99b571a6de9e292af8ded97cea665784"><div class="ttname"><a href="app__config_8h.html#a99b571a6de9e292af8ded97cea665784">APP_ESPNOW_WAKE_WINDOW_MS</a></div><div class="ttdeci">#define APP_ESPNOW_WAKE_WINDOW_MS</div><div class="ttdef"><b>Definition</b> <a href="app__config_8h_source.html#l00067">app_config.h:67</a></div></div>
+<div class="ttc" id="aapp__config_8h_html_ab586382c47ff4a902e71743d49fcb290"><div class="ttname"><a href="app__config_8h.html#ab586382c47ff4a902e71743d49fcb290">APP_WIFI_CHANNEL</a></div><div class="ttdeci">#define APP_WIFI_CHANNEL</div><div class="ttdef"><b>Definition</b> <a href="app__config_8h_source.html#l00064">app_config.h:64</a></div></div>
+<div class="ttc" id="aapp__config_8h_html_acf132812f9f0c46d9b4fcd7393421b3c"><div class="ttname"><a href="app__config_8h.html#acf132812f9f0c46d9b4fcd7393421b3c">APP_NODE1_MAC4</a></div><div class="ttdeci">#define APP_NODE1_MAC4</div><div class="ttdef"><b>Definition</b> <a href="app__config_8h_source.html#l00078">app_config.h:78</a></div></div>
+<div class="ttc" id="aapp__tasks_8c_html_a5a85b9c772bbeb480b209a3e6ea92b4c"><div class="ttname"><a href="app__tasks_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a></div><div class="ttdeci">static const char * TAG</div><div class="ttdef"><b>Definition</b> <a href="app__tasks_8c_source.html#l00029">app_tasks.c:29</a></div></div>
+<div class="ttc" id="aapp__types_8h_html"><div class="ttname"><a href="app__types_8h.html">app_types.h</a></div><div class="ttdoc">Estructuras comunes del Nodo 2.</div></div>
+<div class="ttc" id="aapp__types_8h_html_a2a67623d8323692f197d20ffba472760"><div class="ttname"><a href="app__types_8h.html#a2a67623d8323692f197d20ffba472760">node1_packet_t</a></div><div class="ttdeci">node1_packet_t</div><div class="ttdef"><b>Definition</b> <a href="app__types_8h_source.html#l00076">app_types.h:76</a></div></div>
+<div class="ttc" id="ahal__radio_8c_html_a2b4dfe64b1c5d3330dbce9f77630b3e5"><div class="ttname"><a href="hal__radio_8c.html#a2b4dfe64b1c5d3330dbce9f77630b3e5">hal_radio_init</a></div><div class="ttdeci">esp_err_t hal_radio_init(QueueHandle_t rx_queue)</div><div class="ttdoc">Inicializa Wi-Fi en modo estacion y prepara ESP-NOW en recepcion.</div><div class="ttdef"><b>Definition</b> <a href="#l00068">hal_radio.c:68</a></div></div>
+<div class="ttc" id="ahal__radio_8c_html_a70a63c58c2b6271ace1a2bb2c9a7ab1c"><div class="ttname"><a href="hal__radio_8c.html#a70a63c58c2b6271ace1a2bb2c9a7ab1c">s_rx_queue</a></div><div class="ttdeci">static QueueHandle_t s_rx_queue</div><div class="ttdef"><b>Definition</b> <a href="#l00023">hal_radio.c:23</a></div></div>
+<div class="ttc" id="ahal__radio_8c_html_ab21b94674d74790f989d8b8d175a972c"><div class="ttname"><a href="hal__radio_8c.html#ab21b94674d74790f989d8b8d175a972c">radio_rx_cb</a></div><div class="ttdeci">static void radio_rx_cb(const esp_now_recv_info_t *info, const uint8_t *data, int len)</div><div class="ttdoc">Callback de recepcion de ESP-NOW.</div><div class="ttdef"><b>Definition</b> <a href="#l00045">hal_radio.c:45</a></div></div>
+<div class="ttc" id="ahal__radio_8c_html_ada3856d14fb661e700a8e0a05437a545"><div class="ttname"><a href="hal__radio_8c.html#ada3856d14fb661e700a8e0a05437a545">node1_mac_allowed</a></div><div class="ttdeci">static bool node1_mac_allowed(const uint8_t *mac)</div><div class="ttdoc">Aplica el filtro opcional de MAC del Nodo 1.</div><div class="ttdef"><b>Definition</b> <a href="#l00026">hal_radio.c:26</a></div></div>
+<div class="ttc" id="ahal__radio_8h_html"><div class="ttname"><a href="hal__radio_8h.html">hal_radio.h</a></div><div class="ttdoc">Inicializacion de Wi-Fi + ESP-NOW en modo receptor.</div></div>
+<div class="ttc" id="astructradio__rx__event__t_html"><div class="ttname"><a href="structradio__rx__event__t.html">radio_rx_event_t</a></div><div class="ttdoc">Evento recibido desde ESP-NOW.</div><div class="ttdef"><b>Definition</b> <a href="app__types_8h_source.html#l00107">app_types.h:107</a></div></div>
+<div class="ttc" id="astructradio__rx__event__t_html_a22fc5773448eba47db327858faf55831"><div class="ttname"><a href="structradio__rx__event__t.html#a22fc5773448eba47db327858faf55831">radio_rx_event_t::src_mac</a></div><div class="ttdeci">uint8_t src_mac[6]</div><div class="ttdef"><b>Definition</b> <a href="app__types_8h_source.html#l00108">app_types.h:108</a></div></div>
+<div class="ttc" id="astructradio__rx__event__t_html_a27c3ee71529ebe466ffc7ab8e33cfbe0"><div class="ttname"><a href="structradio__rx__event__t.html#a27c3ee71529ebe466ffc7ab8e33cfbe0">radio_rx_event_t::rx_local_ms</a></div><div class="ttdeci">uint32_t rx_local_ms</div><div class="ttdef"><b>Definition</b> <a href="app__types_8h_source.html#l00109">app_types.h:109</a></div></div>
+<div class="ttc" id="astructradio__rx__event__t_html_adaff816f57f264412d8c8689eefea365"><div class="ttname"><a href="structradio__rx__event__t.html#adaff816f57f264412d8c8689eefea365">radio_rx_event_t::packet</a></div><div class="ttdeci">node1_packet_t packet</div><div class="ttdef"><b>Definition</b> <a href="app__types_8h_source.html#l00110">app_types.h:110</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="hal__radio_8c.html">hal_radio.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

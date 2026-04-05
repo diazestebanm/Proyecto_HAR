@@ -1,0 +1,747 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo1: Archivo de código fuente hal_sensors.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo1
+   </div>
+   <div id="projectbrief">Nodo 1: muñeca, QMI8658, PPG y ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('hal__sensors_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">hal_sensors.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="hal__sensors_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="hal__sensors_8h.html">hal_sensors.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;esp_log.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;esp_check.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;esp_adc/adc_oneshot.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;esp_adc/adc_cali.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;esp_adc/adc_cali_scheme.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;driver/gpio.h&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;driver/i2c.h&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">   22</a></span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = <span class="stringliteral">&quot;hal_sensors&quot;</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/* ---------- I2C helpers ---------- */</span></div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">   26</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">i2c_read_reg</a>(i2c_port_t port, uint8_t addr, uint8_t reg, uint8_t *data, <span class="keywordtype">size_t</span> len)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">return</span> i2c_master_write_read_device(port, addr, &amp;reg, 1, data, len, pdMS_TO_TICKS(100));</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span></div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">   32</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(i2c_port_t port, uint8_t addr, uint8_t reg, uint8_t val)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    uint8_t d[2] = {reg, val};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">return</span> i2c_master_write_to_device(port, addr, d, <span class="keyword">sizeof</span>(d), pdMS_TO_TICKS(100));</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">/* ---------- IMU state ---------- */</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">   39</a></span><span class="keyword">static</span> uint8_t <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a> = 0;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a4aa8f517ac13f8352e38c86cdda0c97b">   40</a></span><span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="hal__sensors_8c.html#a4aa8f517ac13f8352e38c86cdda0c97b">s_imu_bias_ok</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#acbe81a401820a78b8e76e12b8e071fd0">   41</a></span><span class="keyword">static</span> int32_t <a class="code hl_variable" href="hal__sensors_8c.html#acbe81a401820a78b8e76e12b8e071fd0">s_gx_bias</a> = 0, <a class="code hl_variable" href="hal__sensors_8c.html#ad9f223470f2327e36c5bdb197e8fd40f">s_gy_bias</a> = 0, <a class="code hl_variable" href="hal__sensors_8c.html#a328cbc3178bb8db4cce488ea05e16717">s_gz_bias</a> = 0;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">/* ---------- PPG state ---------- */</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#aa7b0b68ce6fd225e048501de9c1da3a2">   44</a></span><span class="keyword">static</span> TaskHandle_t <a class="code hl_variable" href="hal__sensors_8c.html#aa7b0b68ce6fd225e048501de9c1da3a2">s_ppg_task_handle</a> = NULL;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#adb77c5c4d7bbfff0988c41f328fde15a">   46</a></span><span class="keyword">static</span> uint16_t <a class="code hl_variable" href="hal__sensors_8c.html#adb77c5c4d7bbfff0988c41f328fde15a">s_red_buf</a>[<a class="code hl_define" href="config_8h.html#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a>];</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a28469673aeeef19202dd429fcc094e39">   47</a></span><span class="keyword">static</span> uint16_t <a class="code hl_variable" href="hal__sensors_8c.html#a28469673aeeef19202dd429fcc094e39">s_ir_buf</a>[<a class="code hl_define" href="config_8h.html#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a>];</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#ac596ed1f093312c2bb794ef544a1b8cb">   48</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="hal__sensors_8c.html#ac596ed1f093312c2bb794ef544a1b8cb">s_ppg_head</a> = 0;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a161891ea299c1e873497136fe41c7143">   49</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="hal__sensors_8c.html#a161891ea299c1e873497136fe41c7143">s_ppg_count</a> = 0;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">/* ---------- Battery state ---------- */</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a869b41cc32e7c0b6f4d05e92a589568c">   52</a></span><span class="keyword">static</span> adc_oneshot_unit_handle_t <a class="code hl_variable" href="hal__sensors_8c.html#a869b41cc32e7c0b6f4d05e92a589568c">s_adc_handle</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a86160ae09288af78b2152669b7aee0bd">   53</a></span><span class="keyword">static</span> adc_cali_handle_t <a class="code hl_variable" href="hal__sensors_8c.html#a86160ae09288af78b2152669b7aee0bd">s_cali</a> = NULL;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a8e9be89c66c0c2015b922c328e11e2b3">   54</a></span><span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="hal__sensors_8c.html#a8e9be89c66c0c2015b922c328e11e2b3">s_cali_ok</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a3094d759fbcc4b4be373a729664d5108">   55</a></span><span class="keyword">static</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="hal__sensors_8c.html#a3094d759fbcc4b4be373a729664d5108">s_ema_vbat</a> = -1.0f;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a14e2a4dca89873b146577fbd90013e61">   56</a></span><span class="keyword">static</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="hal__sensors_8c.html#a14e2a4dca89873b146577fbd90013e61">s_last_pct</a> = -1.0f;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">/* ---------- MAX30100 ISR ---------- */</span></div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a3571a3e287d56c291d8778c799ce54eb">   65</a></span><span class="keyword">static</span> <span class="keywordtype">void</span> IRAM_ATTR <a class="code hl_function" href="hal__sensors_8c.html#a3571a3e287d56c291d8778c799ce54eb">max30100_isr</a>(<span class="keywordtype">void</span> *arg)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    BaseType_t hp = pdFALSE;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="hal__sensors_8c.html#aa7b0b68ce6fd225e048501de9c1da3a2">s_ppg_task_handle</a>) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        vTaskNotifyGiveFromISR(<a class="code hl_variable" href="hal__sensors_8c.html#aa7b0b68ce6fd225e048501de9c1da3a2">s_ppg_task_handle</a>, &amp;hp);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">if</span> (hp) {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        portYIELD_FROM_ISR();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">/* ---------- Shared helpers ---------- */</span></div>
+<div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#ab2665cadbaff10637eebd1f52d82b827">   80</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#ab2665cadbaff10637eebd1f52d82b827">i2c_init_bus</a>(i2c_port_t port, gpio_num_t sda, gpio_num_t scl, uint32_t hz)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>{</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    i2c_config_t conf = {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        .mode = I2C_MODE_MASTER,</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        .sda_io_num = sda,</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        .scl_io_num = scl,</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        .sda_pullup_en = GPIO_PULLUP_ENABLE,</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        .scl_pullup_en = GPIO_PULLUP_ENABLE,</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        .master.clk_speed = hz,</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    };</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    ESP_RETURN_ON_ERROR(i2c_param_config(port, &amp;conf), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;i2c_param_config&quot;</span>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">return</span> i2c_driver_install(port, I2C_MODE_MASTER, 0, 0, 0);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
+</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">/* ---------- IMU ---------- */</span></div>
+<div class="foldopen" id="foldopen00096" data-start="{" data-end="}">
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a35debcae5dd2efa64432424465f0d732">   96</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a35debcae5dd2efa64432424465f0d732">qmi_detect</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>{</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    uint8_t who = 0;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">i2c_read_reg</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#a8fdf6e0b37497d8b0d882886ddafde8c">APP_QMI8658_ADDR1</a>, <a class="code hl_define" href="config_8h.html#a351702528fb8428d215404b5786fe8d5">APP_QMI_REG_WHOAMI</a>, &amp;who, 1) == ESP_OK) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a> = <a class="code hl_define" href="config_8h.html#a8fdf6e0b37497d8b0d882886ddafde8c">APP_QMI8658_ADDR1</a>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">i2c_read_reg</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#a790b6fca774cbe07eeedb66ac965b756">APP_QMI8658_ADDR2</a>, <a class="code hl_define" href="config_8h.html#a351702528fb8428d215404b5786fe8d5">APP_QMI_REG_WHOAMI</a>, &amp;who, 1) == ESP_OK) {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a> = <a class="code hl_define" href="config_8h.html#a790b6fca774cbe07eeedb66ac965b756">APP_QMI8658_ADDR2</a>;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">return</span> ESP_ERR_NOT_FOUND;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
+</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span></div>
+<div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a277e5ceee63f06f1d7256aedc7f4c4dc">  111</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a277e5ceee63f06f1d7256aedc7f4c4dc">qmi_init_regs</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>{</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a35debcae5dd2efa64432424465f0d732">qmi_detect</a>(), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;QMI not found&quot;</span>);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a>, <a class="code hl_define" href="config_8h.html#aca192280d934ab0d817e02a7e4b1332c">APP_QMI_REG_CTRL7</a>, 0x00), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;CTRL7 off&quot;</span>);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    vTaskDelay(pdMS_TO_TICKS(10));</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a>, <a class="code hl_define" href="config_8h.html#a864208d252e8810c90253a2c5a7e7091">APP_QMI_REG_CTRL1</a>, 0x40), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;CTRL1&quot;</span>);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a>, <a class="code hl_define" href="config_8h.html#acb95e0a9dfdd7a8776b20f977aa8d223">APP_QMI_REG_CTRL2</a>, 0x23), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;CTRL2&quot;</span>);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a>, <a class="code hl_define" href="config_8h.html#ae573c4e5d07e07ad9ba63892b40bae1a">APP_QMI_REG_CTRL3</a>, 0x43), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;CTRL3&quot;</span>);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a>, <a class="code hl_define" href="config_8h.html#aca192280d934ab0d817e02a7e4b1332c">APP_QMI_REG_CTRL7</a>, 0x03), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;CTRL7 on&quot;</span>);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    vTaskDelay(pdMS_TO_TICKS(20));</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
+</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span></div>
+<div class="foldopen" id="foldopen00127" data-start="{" data-end="}">
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a081c172fd46a0a3e45d9203d648239c0">  127</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a081c172fd46a0a3e45d9203d648239c0">qmi_read_raw</a>(int16_t *ax, int16_t *ay, int16_t *az, int16_t *gx, int16_t *gy, int16_t *gz)</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>{</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    uint8_t b[12];</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">i2c_read_reg</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a>, <a class="code hl_define" href="config_8h.html#aa4fc45ba534cf3730140fb5014f53d4d">APP_QMI_REG_AX_L</a>, b, <span class="keyword">sizeof</span>(b)), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;QMI raw&quot;</span>);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    *ax = (int16_t)((b[1] &lt;&lt; 8) | b[0]);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    *ay = (int16_t)((b[3] &lt;&lt; 8) | b[2]);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    *az = (int16_t)((b[5] &lt;&lt; 8) | b[4]);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    *gx = (int16_t)((b[7] &lt;&lt; 8) | b[6]);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    *gy = (int16_t)((b[9] &lt;&lt; 8) | b[8]);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    *gz = (int16_t)((b[11] &lt;&lt; 8) | b[10]);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>}</div>
+</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span></div>
+<div class="foldopen" id="foldopen00141" data-start="{" data-end="}">
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a42979f51d8b63eb3c0bc3e713e2eb201">  141</a></span><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="hal__sensors_8c.html#a42979f51d8b63eb3c0bc3e713e2eb201">qmi_calibrate_bias</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>{</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> N = 50;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    int64_t sx = 0, sy = 0, sz = 0;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; N; ++i) {</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        int16_t ax, ay, az, gx, gy, gz;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="hal__sensors_8c.html#a081c172fd46a0a3e45d9203d648239c0">qmi_read_raw</a>(&amp;ax, &amp;ay, &amp;az, &amp;gx, &amp;gy, &amp;gz) == ESP_OK) {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            sx += gx;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            sy += gy;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            sz += gz;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        }</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        vTaskDelay(pdMS_TO_TICKS(10));</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    }</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <a class="code hl_variable" href="hal__sensors_8c.html#acbe81a401820a78b8e76e12b8e071fd0">s_gx_bias</a> = (int32_t)(sx / N);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <a class="code hl_variable" href="hal__sensors_8c.html#ad9f223470f2327e36c5bdb197e8fd40f">s_gy_bias</a> = (int32_t)(sy / N);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <a class="code hl_variable" href="hal__sensors_8c.html#a328cbc3178bb8db4cce488ea05e16717">s_gz_bias</a> = (int32_t)(sz / N);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <a class="code hl_variable" href="hal__sensors_8c.html#a4aa8f517ac13f8352e38c86cdda0c97b">s_imu_bias_ok</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>}</div>
+</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">/* ---------- MAX30100 ---------- */</span></div>
+<div class="foldopen" id="foldopen00162" data-start="{" data-end="}">
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a288edb61345b065f5019df3b0fe6c4e0">  162</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a288edb61345b065f5019df3b0fe6c4e0">max_clear_fifo</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>{</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#a5ccf820bc5390e72a2c0e14b21eb832e">APP_MAX_REG_FIFO_WR</a>, 0x00), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;FIFO WR&quot;</span>);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#a4c098f964dccec472167708f6a96589b">APP_MAX_REG_FIFO_OVF</a>, 0x00), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;FIFO OVF&quot;</span>);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#ac8a51adcdad6c1c30ec5c55ba5504e1c">APP_MAX_REG_FIFO_RD</a>, 0x00), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;FIFO RD&quot;</span>);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>}</div>
+</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span></div>
+<div class="foldopen" id="foldopen00171" data-start="{" data-end="}">
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#acb1287a4061e9eb27a55ca8a1f1d9f78">  171</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#acb1287a4061e9eb27a55ca8a1f1d9f78">max_init_regs</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>{</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    uint8_t part = 0;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">i2c_read_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#aa14d56be7f79e4355394cbe6a3046968">APP_MAX_REG_PART_ID</a>, &amp;part, 1), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;PART_ID&quot;</span>);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#a6f0531e66e575f5e591567afa02015d0">APP_MAX_REG_MODE_CFG</a>, <a class="code hl_define" href="config_8h.html#a891c92e0e0e74e286baf2d8afca6f505">APP_MAX_MODE_RESET</a>), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;RESET&quot;</span>);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    vTaskDelay(pdMS_TO_TICKS(50));</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#a00aa12002d9b237257d011b4112b5ec8">APP_MAX_REG_INT_ENABLE</a>, 0x10), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;INT A_FULL&quot;</span>);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a288edb61345b065f5019df3b0fe6c4e0">max_clear_fifo</a>(), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;FIFO clear&quot;</span>);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#acd75cca2a09cd451359175915299edd0">APP_MAX_REG_SPO2_CFG</a>, <a class="code hl_define" href="config_8h.html#a182c2959153e47d137f84ddbaba2045c">APP_MAX_SPO2_CFG</a>), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;SPO2 CFG&quot;</span>);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#a723e5864526823cad82a99a3bf851461">APP_MAX_REG_LED_CFG</a>, <a class="code hl_define" href="config_8h.html#ae231166bc2624968352e3efd8877dee9">APP_MAX_LED_CFG</a>), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;LED CFG&quot;</span>);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#a6f0531e66e575f5e591567afa02015d0">APP_MAX_REG_MODE_CFG</a>, <a class="code hl_define" href="config_8h.html#a0e6fba6f1f027154221849187caf9245">APP_MAX_MODE_SPO2</a>), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;MODE SPO2&quot;</span>);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    vTaskDelay(pdMS_TO_TICKS(20));</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>}</div>
+</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span></div>
+<div class="foldopen" id="foldopen00187" data-start="{" data-end="}">
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#ac79d0a2116ff1f2909c67c4ba08d16db">  187</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#ac79d0a2116ff1f2909c67c4ba08d16db">max_get_fifo_count</a>(uint8_t *count)</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>{</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    uint8_t wr = 0, rd = 0;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">i2c_read_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#a5ccf820bc5390e72a2c0e14b21eb832e">APP_MAX_REG_FIFO_WR</a>, &amp;wr, 1), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;FIFO_WR&quot;</span>);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">i2c_read_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#ac8a51adcdad6c1c30ec5c55ba5504e1c">APP_MAX_REG_FIFO_RD</a>, &amp;rd, 1), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;FIFO_RD&quot;</span>);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    *count = (wr - rd) &amp; 0x0F;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>}</div>
+</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span></div>
+<div class="foldopen" id="foldopen00197" data-start="{" data-end="}">
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#aad518331bc00cedbc24dace97f7df888">  197</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#aad518331bc00cedbc24dace97f7df888">max_read_sample</a>(uint16_t *red, uint16_t *ir)</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>{</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    uint8_t d[4];</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">i2c_read_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#a8d945b4d157a2b5a9226ce19917058bb">APP_MAX_REG_FIFO_DATA</a>, d, <span class="keyword">sizeof</span>(d)), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;FIFO_DATA&quot;</span>);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    *ir  = ((uint16_t)d[0] &lt;&lt; 8) | d[1];</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    *red = ((uint16_t)d[2] &lt;&lt; 8) | d[3];</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>}</div>
+</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span></div>
+<div class="foldopen" id="foldopen00207" data-start="{" data-end="}">
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a31d7c95e2bdd299c75976795965f56f9">  207</a></span><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="hal__sensors_8c.html#a31d7c95e2bdd299c75976795965f56f9">ppg_push</a>(uint16_t red, uint16_t ir)</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>{</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <a class="code hl_variable" href="hal__sensors_8c.html#adb77c5c4d7bbfff0988c41f328fde15a">s_red_buf</a>[<a class="code hl_variable" href="hal__sensors_8c.html#ac596ed1f093312c2bb794ef544a1b8cb">s_ppg_head</a>] = red;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <a class="code hl_variable" href="hal__sensors_8c.html#a28469673aeeef19202dd429fcc094e39">s_ir_buf</a>[<a class="code hl_variable" href="hal__sensors_8c.html#ac596ed1f093312c2bb794ef544a1b8cb">s_ppg_head</a>] = ir;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <a class="code hl_variable" href="hal__sensors_8c.html#ac596ed1f093312c2bb794ef544a1b8cb">s_ppg_head</a> = (<a class="code hl_variable" href="hal__sensors_8c.html#ac596ed1f093312c2bb794ef544a1b8cb">s_ppg_head</a> + 1) % <a class="code hl_define" href="config_8h.html#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a>;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="hal__sensors_8c.html#a161891ea299c1e873497136fe41c7143">s_ppg_count</a> &lt; <a class="code hl_define" href="config_8h.html#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a>) <a class="code hl_variable" href="hal__sensors_8c.html#a161891ea299c1e873497136fe41c7143">s_ppg_count</a>++;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>}</div>
+</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span></div>
+<div class="foldopen" id="foldopen00216" data-start="{" data-end="}">
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a9d6415e6b04305eece3a664585cbb99a">  216</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="hal__sensors_8c.html#a9d6415e6b04305eece3a664585cbb99a">ppg_copy</a>(uint16_t *r, uint16_t *ir)</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>{</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordtype">int</span> n = <a class="code hl_variable" href="hal__sensors_8c.html#a161891ea299c1e873497136fe41c7143">s_ppg_count</a>;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="keywordtype">int</span> start = <a class="code hl_variable" href="hal__sensors_8c.html#ac596ed1f093312c2bb794ef544a1b8cb">s_ppg_head</a> - n;</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="keywordflow">if</span> (start &lt; 0) start += <a class="code hl_define" href="config_8h.html#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a>;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; ++i) {</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keywordtype">int</span> idx = (start + i) % <a class="code hl_define" href="config_8h.html#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a>;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        r[i] = <a class="code hl_variable" href="hal__sensors_8c.html#adb77c5c4d7bbfff0988c41f328fde15a">s_red_buf</a>[idx];</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        ir[i] = <a class="code hl_variable" href="hal__sensors_8c.html#a28469673aeeef19202dd429fcc094e39">s_ir_buf</a>[idx];</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    }</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordflow">return</span> n;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>}</div>
+</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span></div>
+<div class="foldopen" id="foldopen00230" data-start="{" data-end="}">
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a79e0129a0f08c54ba6e7ffa0eadc2a9e">  230</a></span><span class="keyword">static</span> uint8_t <a class="code hl_function" href="hal__sensors_8c.html#a79e0129a0f08c54ba6e7ffa0eadc2a9e">clamp_u8</a>(<span class="keywordtype">float</span> x, uint8_t lo, uint8_t hi)</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>{</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordflow">if</span> (x &lt; lo) <span class="keywordflow">return</span> lo;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordflow">if</span> (x &gt; hi) <span class="keywordflow">return</span> hi;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keywordflow">return</span> (uint8_t)x;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>}</div>
+</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span></div>
+<div class="foldopen" id="foldopen00240" data-start="{" data-end="}">
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a2692d5ff3008fe5ce00bafc8f982bf31">  240</a></span><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="hal__sensors_8c.html#a2692d5ff3008fe5ce00bafc8f982bf31">ppg_analyze</a>(<a class="code hl_struct" href="structppg__metrics__t.html">ppg_metrics_t</a> *out)</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>{</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <span class="keyword">static</span> uint16_t r[<a class="code hl_define" href="config_8h.html#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a>];</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keyword">static</span> uint16_t ir[<a class="code hl_define" href="config_8h.html#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a>];</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="keyword">static</span> <span class="keywordtype">float</span> ir_ac[<a class="code hl_define" href="config_8h.html#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a>];</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    memset(out, 0, <span class="keyword">sizeof</span>(*out));</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordtype">int</span> n = <a class="code hl_function" href="hal__sensors_8c.html#a9d6415e6b04305eece3a664585cbb99a">ppg_copy</a>(r, ir);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordflow">if</span> (n &lt; 200) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordtype">double</span> sum_r = 0.0, sum_ir = 0.0;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    uint16_t min_ir = 0xFFFF, max_ir = 0;</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; ++i) {</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        sum_r += r[i];</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        sum_ir += ir[i];</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="keywordflow">if</span> (ir[i] &lt; min_ir) min_ir = ir[i];</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="keywordflow">if</span> (ir[i] &gt; max_ir) max_ir = ir[i];</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    }</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    <span class="keywordtype">float</span> dc_r = (float)(sum_r / n);</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordtype">float</span> dc_ir = (float)(sum_ir / n);</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    out-&gt;<a class="code hl_variable" href="structppg__metrics__t.html#a03e5f4d5b235f50ff86b18c5bc5356d7">dc_ir</a> = (uint16_t)dc_ir;</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    out-&gt;<a class="code hl_variable" href="structppg__metrics__t.html#aa389ee7d44dff526af9fa8dbc75c24cd">finger_present</a> = (dc_ir &gt; 8000.0f) &amp;&amp; ((max_ir - min_ir) &gt; 50);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="keywordflow">if</span> (!out-&gt;<a class="code hl_variable" href="structppg__metrics__t.html#aa389ee7d44dff526af9fa8dbc75c24cd">finger_present</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="keywordtype">double</span> sq_r = 0.0, sq_ir = 0.0;</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; ++i) {</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <span class="keywordtype">float</span> rac = (float)r[i] - dc_r;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="keywordtype">float</span> iac = (float)ir[i] - dc_ir;</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        sq_r += rac * rac;</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        sq_ir += iac * iac;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        <span class="keywordflow">if</span> (i == 0 || i == n - 1) ir_ac[i] = iac;</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="keywordflow">else</span> ir_ac[i] = (((float)ir[i - 1] + ir[i] + ir[i + 1]) / 3.0f) - dc_ir;</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    }</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <span class="keywordtype">float</span> ac_r = sqrtf((<span class="keywordtype">float</span>)(sq_r / n));</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <span class="keywordtype">float</span> ac_ir = sqrtf((<span class="keywordtype">float</span>)(sq_ir / n));</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="keywordflow">if</span> (dc_r &gt; 1 &amp;&amp; dc_ir &gt; 1 &amp;&amp; ac_r &gt; 1 &amp;&amp; ac_ir &gt; 1) {</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        <span class="keywordtype">float</span> ratio = (ac_r / dc_r) / (ac_ir / dc_ir);</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="keywordtype">float</span> spo2 = 110.0f - 25.0f * ratio;</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        <span class="keywordflow">if</span> (spo2 &gt;= 70.0f &amp;&amp; spo2 &lt;= 100.0f) {</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>            out-&gt;<a class="code hl_variable" href="structppg__metrics__t.html#a54cfb9436bbbd90c0d5fce21edf3a098">spo2</a> = <a class="code hl_function" href="hal__sensors_8c.html#a79e0129a0f08c54ba6e7ffa0eadc2a9e">clamp_u8</a>(spo2, 0, 100);</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            out-&gt;<a class="code hl_variable" href="structppg__metrics__t.html#a495c3eaf834c04c9b2ab989ba661d33a">spo2_valid</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        }</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    }</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="keywordtype">float</span> thr = fmaxf(25.0f, ac_ir * 0.5f);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordtype">int</span> last_peak = -1000;</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keywordtype">int</span> intervals = 0;</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="keywordtype">int</span> interval_sum = 0;</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; n - 1; ++i) {</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keywordtype">bool</span> peak = (ir_ac[i] &gt; thr) &amp;&amp; (ir_ac[i] &gt; ir_ac[i - 1]) &amp;&amp; (ir_ac[i] &gt;= ir_ac[i + 1]);</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        <span class="keywordflow">if</span> (peak &amp;&amp; (i - last_peak) &gt;= 35) {</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>            <span class="keywordflow">if</span> (last_peak &gt;= 0) {</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>                interval_sum += (i - last_peak);</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>                intervals++;</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>            }</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            last_peak = i;</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        }</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    }</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="keywordflow">if</span> (intervals &gt; 0) {</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        <span class="keywordtype">float</span> avg = (float)interval_sum / intervals;</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        <span class="keywordtype">float</span> bpm = 60.0f * <a class="code hl_define" href="config_8h.html#acf1e60f4c06d17b12300b69da6dd64ac">APP_PPG_SAMPLE_RATE_HZ</a> / avg;</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>        <span class="keywordflow">if</span> (bpm &gt;= 40.0f &amp;&amp; bpm &lt;= 200.0f) {</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>            out-&gt;<a class="code hl_variable" href="structppg__metrics__t.html#acc857109c3928de98c5fbe3568f5f33f">bpm</a> = <a class="code hl_function" href="hal__sensors_8c.html#a79e0129a0f08c54ba6e7ffa0eadc2a9e">clamp_u8</a>(bpm, 0, 255);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>            out-&gt;<a class="code hl_variable" href="structppg__metrics__t.html#afcddf404aa6cf52be8ca3e09064bbf69">bpm_valid</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        }</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    }</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>}</div>
+</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="comment">/* ---------- Battery ---------- */</span></div>
+<div class="foldopen" id="foldopen00316" data-start="{" data-end="}">
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a82a2e753c2e346d29922e3cdd0c4ca5c">  316</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="hal__sensors_8c.html#a82a2e753c2e346d29922e3cdd0c4ca5c">cmp_int</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b)</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>{</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="keywordflow">return</span> (*(<span class="keywordtype">int</span> *)a - *(<span class="keywordtype">int</span> *)b);</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>}</div>
+</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span></div>
+<div class="foldopen" id="foldopen00322" data-start="{" data-end="}">
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#ac90ddc3eac37f875128224b40d1954fb">  322</a></span><span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="hal__sensors_8c.html#ac90ddc3eac37f875128224b40d1954fb">raw_to_mv</a>(<span class="keywordtype">int</span> raw)</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>{</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="hal__sensors_8c.html#a8e9be89c66c0c2015b922c328e11e2b3">s_cali_ok</a>) {</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        <span class="keywordtype">int</span> mv = 0;</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        <span class="keywordflow">if</span> (adc_cali_raw_to_voltage(<a class="code hl_variable" href="hal__sensors_8c.html#a86160ae09288af78b2152669b7aee0bd">s_cali</a>, raw, &amp;mv) == ESP_OK) <span class="keywordflow">return</span> mv;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    }</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)((raw * 3100.0f) / 4095.0f);</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>}</div>
+</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span></div>
+<div class="foldopen" id="foldopen00332" data-start="{" data-end="}">
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a5b116562cf27fd4a0358353e4fff2dae">  332</a></span><span class="keyword">static</span> <span class="keywordtype">float</span> <a class="code hl_function" href="hal__sensors_8c.html#a5b116562cf27fd4a0358353e4fff2dae">vbat_to_percent</a>(<span class="keywordtype">float</span> v)</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>{</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> map_v[]   = {4.20f,4.10f,4.00f,3.90f,3.80f,3.70f,3.60f,3.50f,3.40f,3.30f,3.20f,3.10f,3.00f};</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> map_pct[] = {100.f,95.f,88.f,78.f,65.f,50.f,36.f,24.f,14.f,8.f,4.f,1.f,0.f};</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> N = 13;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    <span class="keywordflow">if</span> (v &gt;= map_v[0]) <span class="keywordflow">return</span> 100.0f;</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    <span class="keywordflow">if</span> (v &lt;= map_v[N - 1]) <span class="keywordflow">return</span> 0.0f;</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; N - 1; ++i) {</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        <span class="keywordflow">if</span> (v &gt;= map_v[i + 1]) {</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>            <span class="keywordtype">float</span> t = (v - map_v[i + 1]) / (map_v[i] - map_v[i + 1]);</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>            <span class="keywordflow">return</span> map_pct[i + 1] + t * (map_pct[i] - map_pct[i + 1]);</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        }</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    }</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    <span class="keywordflow">return</span> 0.0f;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>}</div>
+</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span></div>
+<div class="foldopen" id="foldopen00351" data-start="{" data-end="}">
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a6e917af8c6b395a0fdb222f6aad38495">  351</a></span><span class="keyword">static</span> esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a6e917af8c6b395a0fdb222f6aad38495">battery_init</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>{</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    adc_oneshot_unit_init_cfg_t init_cfg = { .unit_id = <a class="code hl_define" href="config_8h.html#a29228865e83a0eb9a0940badef69b50c">APP_BAT_ADC_UNIT</a> };</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    ESP_RETURN_ON_ERROR(adc_oneshot_new_unit(&amp;init_cfg, &amp;<a class="code hl_variable" href="hal__sensors_8c.html#a869b41cc32e7c0b6f4d05e92a589568c">s_adc_handle</a>), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;adc new&quot;</span>);</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span> </div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    adc_oneshot_chan_cfg_t ch_cfg = {</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        .atten = ADC_ATTEN_DB_12,</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        .bitwidth = ADC_BITWIDTH_12</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    };</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    ESP_RETURN_ON_ERROR(adc_oneshot_config_channel(<a class="code hl_variable" href="hal__sensors_8c.html#a869b41cc32e7c0b6f4d05e92a589568c">s_adc_handle</a>, <a class="code hl_define" href="config_8h.html#ac49e12a46922894575f1a6a2c61c57cf">APP_BAT_ADC_CHANNEL</a>, &amp;ch_cfg), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;adc channel&quot;</span>);</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="preprocessor">#if ADC_CALI_SCHEME_CURVE_FITTING_SUPPORTED</span></div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    adc_cali_curve_fitting_config_t cfg = {</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        .unit_id = <a class="code hl_define" href="config_8h.html#a29228865e83a0eb9a0940badef69b50c">APP_BAT_ADC_UNIT</a>,</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        .chan = <a class="code hl_define" href="config_8h.html#ac49e12a46922894575f1a6a2c61c57cf">APP_BAT_ADC_CHANNEL</a>,</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>        .atten = ADC_ATTEN_DB_12,</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>        .bitwidth = ADC_BITWIDTH_12</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    };</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>    <a class="code hl_variable" href="hal__sensors_8c.html#a8e9be89c66c0c2015b922c328e11e2b3">s_cali_ok</a> = (adc_cali_create_scheme_curve_fitting(&amp;cfg, &amp;<a class="code hl_variable" href="hal__sensors_8c.html#a86160ae09288af78b2152669b7aee0bd">s_cali</a>) == ESP_OK);</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span><span class="preprocessor">#elif ADC_CALI_SCHEME_LINE_FITTING_SUPPORTED</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    adc_cali_line_fitting_config_t cfg = {</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        .unit_id = <a class="code hl_define" href="config_8h.html#a29228865e83a0eb9a0940badef69b50c">APP_BAT_ADC_UNIT</a>,</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        .atten = ADC_ATTEN_DB_12,</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>        .bitwidth = ADC_BITWIDTH_12</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    };</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <a class="code hl_variable" href="hal__sensors_8c.html#a8e9be89c66c0c2015b922c328e11e2b3">s_cali_ok</a> = (adc_cali_create_scheme_line_fitting(&amp;cfg, &amp;<a class="code hl_variable" href="hal__sensors_8c.html#a86160ae09288af78b2152669b7aee0bd">s_cali</a>) == ESP_OK);</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <a class="code hl_variable" href="hal__sensors_8c.html#a8e9be89c66c0c2015b922c328e11e2b3">s_cali_ok</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>}</div>
+</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span><span class="comment">/* ---------- Public API ---------- */</span></div>
+<div class="foldopen" id="foldopen00389" data-start="{" data-end="}">
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a2a178b205eb3c7d6f70d510e7e6e0575">  389</a></span>esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a2a178b205eb3c7d6f70d510e7e6e0575">hal_sensors_init</a>(TaskHandle_t ppg_task_handle)</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>{</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    <a class="code hl_variable" href="hal__sensors_8c.html#aa7b0b68ce6fd225e048501de9c1da3a2">s_ppg_task_handle</a> = ppg_task_handle;</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>    ESP_RETURN_ON_ERROR(</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>        <a class="code hl_function" href="hal__sensors_8c.html#ab2665cadbaff10637eebd1f52d82b827">i2c_init_bus</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#a1634600c6b82ccf52b70763ee78c9ffe">APP_IMU_SDA_GPIO</a>, <a class="code hl_define" href="config_8h.html#a9c6f0bce984b05b4aa675966a7b5256e">APP_IMU_SCL_GPIO</a>, <a class="code hl_define" href="config_8h.html#a8c1115bccc06f079bf5685dcba9b2fb0">APP_IMU_I2C_HZ</a>),</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>        <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;IMU I2C&quot;</span></div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    );</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span> </div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>    <span class="comment">/* Si IMU y PPG comparten el mismo bus I2C, no reinstalar el driver */</span></div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    <span class="keywordflow">if</span> (!(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a> == <a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a> &amp;&amp;</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>          <a class="code hl_define" href="config_8h.html#a4efd1f6349c5700ccdda523af3408dd0">APP_PPG_SDA_GPIO</a> == <a class="code hl_define" href="config_8h.html#a1634600c6b82ccf52b70763ee78c9ffe">APP_IMU_SDA_GPIO</a> &amp;&amp;</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>          <a class="code hl_define" href="config_8h.html#a744aac76fca5341658932b092dcb3ea2">APP_PPG_SCL_GPIO</a> == <a class="code hl_define" href="config_8h.html#a9c6f0bce984b05b4aa675966a7b5256e">APP_IMU_SCL_GPIO</a>)) {</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>        ESP_RETURN_ON_ERROR(</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>            <a class="code hl_function" href="hal__sensors_8c.html#ab2665cadbaff10637eebd1f52d82b827">i2c_init_bus</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#a4efd1f6349c5700ccdda523af3408dd0">APP_PPG_SDA_GPIO</a>, <a class="code hl_define" href="config_8h.html#a744aac76fca5341658932b092dcb3ea2">APP_PPG_SCL_GPIO</a>, <a class="code hl_define" href="config_8h.html#ab7c5a943ac49da4f6752b094441aad9a">APP_PPG_I2C_HZ</a>),</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>            <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;PPG I2C&quot;</span></div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>        );</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>    }</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span> </div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a277e5ceee63f06f1d7256aedc7f4c4dc">qmi_init_regs</a>(), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;QMI init&quot;</span>);</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>    <a class="code hl_function" href="hal__sensors_8c.html#a42979f51d8b63eb3c0bc3e713e2eb201">qmi_calibrate_bias</a>();</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#acb1287a4061e9eb27a55ca8a1f1d9f78">max_init_regs</a>(), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;MAX init&quot;</span>);</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a6e917af8c6b395a0fdb222f6aad38495">battery_init</a>(), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;BAT init&quot;</span>);</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span> </div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>    gpio_config_t io = {</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>        .pin_bit_mask = 1ULL &lt;&lt; <a class="code hl_define" href="config_8h.html#a25c354943106c9efbde58c8ede0e8196">APP_PPG_INT_GPIO</a>,</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>        .mode = GPIO_MODE_INPUT,</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>        .pull_up_en = GPIO_PULLUP_ENABLE,</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>        .pull_down_en = GPIO_PULLDOWN_DISABLE,</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>        .intr_type = GPIO_INTR_NEGEDGE</div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>    };</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>    ESP_RETURN_ON_ERROR(gpio_config(&amp;io), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;GPIO INT&quot;</span>);</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span> </div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>    esp_err_t isr_err = gpio_install_isr_service(0);</div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>    <span class="keywordflow">if</span> (isr_err != ESP_OK &amp;&amp; isr_err != ESP_ERR_INVALID_STATE) {</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>        <span class="keywordflow">return</span> isr_err;</div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>    }</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span> </div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>    ESP_RETURN_ON_ERROR(</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>        gpio_isr_handler_add(<a class="code hl_define" href="config_8h.html#a25c354943106c9efbde58c8ede0e8196">APP_PPG_INT_GPIO</a>, <a class="code hl_function" href="hal__sensors_8c.html#a3571a3e287d56c291d8778c799ce54eb">max30100_isr</a>, NULL),</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>        <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;ISR add&quot;</span></div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>    );</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span> </div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>}</div>
+</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span></div>
+<div class="foldopen" id="foldopen00436" data-start="{" data-end="}">
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a25c06a21738b783a7c4fc74b4abb3e60">  436</a></span>esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a25c06a21738b783a7c4fc74b4abb3e60">hal_imu_start</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>{</div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a>, <a class="code hl_define" href="config_8h.html#aca192280d934ab0d817e02a7e4b1332c">APP_QMI_REG_CTRL7</a>, 0x03);</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>}</div>
+</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span></div>
+<div class="foldopen" id="foldopen00442" data-start="{" data-end="}">
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a527ce39873f1043fefc01fd4dfaf7e39">  442</a></span>esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a527ce39873f1043fefc01fd4dfaf7e39">hal_imu_stop</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>{</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>, <a class="code hl_variable" href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a>, <a class="code hl_define" href="config_8h.html#aca192280d934ab0d817e02a7e4b1332c">APP_QMI_REG_CTRL7</a>, 0x00);</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>}</div>
+</div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span></div>
+<div class="foldopen" id="foldopen00451" data-start="{" data-end="}">
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#ac9798a00c40946476d528de125d5e6c3">  451</a></span>esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#ac9798a00c40946476d528de125d5e6c3">hal_imu_read_sample</a>(<a class="code hl_struct" href="structimu__sample__t.html">imu_sample_t</a> *out)</div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>{</div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>    int16_t ax, ay, az, gx, gy, gz;</div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#a081c172fd46a0a3e45d9203d648239c0">qmi_read_raw</a>(&amp;ax, &amp;ay, &amp;az, &amp;gx, &amp;gy, &amp;gz), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;QMI read&quot;</span>);</div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>    out-&gt;<a class="code hl_variable" href="structimu__sample__t.html#ad796615db1b040b15f7fbb363ce9274a">ax</a> = ax;</div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>    out-&gt;<a class="code hl_variable" href="structimu__sample__t.html#ad0310618ea4d3e51e636c3888134bb31">ay</a> = ay;</div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>    out-&gt;<a class="code hl_variable" href="structimu__sample__t.html#aa1bf2a058592ba681d0bff76985e31e0">az</a> = az;</div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>    out-&gt;<a class="code hl_variable" href="structimu__sample__t.html#a14c6ee4468b665f907da13abc5ac5258">gx</a> = gx - <a class="code hl_variable" href="hal__sensors_8c.html#acbe81a401820a78b8e76e12b8e071fd0">s_gx_bias</a>;</div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>    out-&gt;<a class="code hl_variable" href="structimu__sample__t.html#a61df2874e79c86f2d1315efe43c5afa2">gy</a> = gy - <a class="code hl_variable" href="hal__sensors_8c.html#ad9f223470f2327e36c5bdb197e8fd40f">s_gy_bias</a>;</div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>    out-&gt;<a class="code hl_variable" href="structimu__sample__t.html#a9a631f640a54c64a5c1afa975557ccd2">gz</a> = gz - <a class="code hl_variable" href="hal__sensors_8c.html#a328cbc3178bb8db4cce488ea05e16717">s_gz_bias</a>;</div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>    out-&gt;<a class="code hl_variable" href="structimu__sample__t.html#a573475b2d6f8458fd864858b04ce9cd8">t_ms</a> = 0;</div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>}</div>
+</div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span></div>
+<div class="foldopen" id="foldopen00466" data-start="{" data-end="}">
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a5acfeae081be36f48ad0fdeca73176a3">  466</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="hal__sensors_8c.html#a5acfeae081be36f48ad0fdeca73176a3">hal_imu_bias_ok</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>{</div>
+<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="hal__sensors_8c.html#a4aa8f517ac13f8352e38c86cdda0c97b">s_imu_bias_ok</a>;</div>
+<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>}</div>
+</div>
+<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span></div>
+<div class="foldopen" id="foldopen00472" data-start="{" data-end="}">
+<div class="line"><a id="l00472" name="l00472"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a15570c58ec1bb8ba9da3ff4cab7d63b5">  472</a></span>esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a15570c58ec1bb8ba9da3ff4cab7d63b5">hal_ppg_start</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>{</div>
+<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#a6f0531e66e575f5e591567afa02015d0">APP_MAX_REG_MODE_CFG</a>, <a class="code hl_define" href="config_8h.html#a0e6fba6f1f027154221849187caf9245">APP_MAX_MODE_SPO2</a>);</div>
+<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span>}</div>
+</div>
+<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span></div>
+<div class="foldopen" id="foldopen00478" data-start="{" data-end="}">
+<div class="line"><a id="l00478" name="l00478"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a7dcc878d1603425e50f364427dc60dd2">  478</a></span>esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a7dcc878d1603425e50f364427dc60dd2">hal_ppg_stop</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>{</div>
+<div class="line"><a id="l00480" name="l00480"></a><span class="lineno">  480</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#a6f0531e66e575f5e591567afa02015d0">APP_MAX_REG_MODE_CFG</a>, 0x00);</div>
+<div class="line"><a id="l00481" name="l00481"></a><span class="lineno">  481</span>}</div>
+</div>
+<div class="line"><a id="l00482" name="l00482"></a><span class="lineno">  482</span></div>
+<div class="foldopen" id="foldopen00487" data-start="{" data-end="}">
+<div class="line"><a id="l00487" name="l00487"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#aa69628644536ea9305a092d6cd831b8b">  487</a></span>esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#aa69628644536ea9305a092d6cd831b8b">hal_ppg_service</a>(<a class="code hl_struct" href="structppg__metrics__t.html">ppg_metrics_t</a> *out)</div>
+<div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span>{</div>
+<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span>    uint8_t count = 0;</div>
+<div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span>    uint8_t status = 0;</div>
+<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span> </div>
+<div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span>    <a class="code hl_function" href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">i2c_read_reg</a>(<a class="code hl_define" href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>, <a class="code hl_define" href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>, <a class="code hl_define" href="config_8h.html#abd49b754a6f14ddbc8b28aca0cfbd123">APP_MAX_REG_INT_STATUS</a>, &amp;status, 1);</div>
+<div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span>    ESP_RETURN_ON_ERROR(<a class="code hl_function" href="hal__sensors_8c.html#ac79d0a2116ff1f2909c67c4ba08d16db">max_get_fifo_count</a>(&amp;count), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;MAX count&quot;</span>);</div>
+<div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span> </div>
+<div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span>    <span class="keywordflow">while</span> (count-- &gt; 0) {</div>
+<div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span>        uint16_t red, ir;</div>
+<div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="hal__sensors_8c.html#aad518331bc00cedbc24dace97f7df888">max_read_sample</a>(&amp;red, &amp;ir) == ESP_OK) {</div>
+<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span>            <a class="code hl_function" href="hal__sensors_8c.html#a31d7c95e2bdd299c75976795965f56f9">ppg_push</a>(red, ir);</div>
+<div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span>        }</div>
+<div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>    }</div>
+<div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span> </div>
+<div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span>    <a class="code hl_function" href="hal__sensors_8c.html#a2692d5ff3008fe5ce00bafc8f982bf31">ppg_analyze</a>(out);</div>
+<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>}</div>
+</div>
+<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span></div>
+<div class="foldopen" id="foldopen00510" data-start="{" data-end="}">
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno"><a class="line" href="hal__sensors_8c.html#a04e0c6e41e47885f2e64cf10b3604282">  510</a></span>esp_err_t <a class="code hl_function" href="hal__sensors_8c.html#a04e0c6e41e47885f2e64cf10b3604282">hal_battery_read</a>(<a class="code hl_struct" href="structbattery__status__t.html">battery_status_t</a> *out)</div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>{</div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>    <span class="keywordtype">int</span> samples[32];</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 32; ++i) {</div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>        ESP_RETURN_ON_ERROR(adc_oneshot_read(<a class="code hl_variable" href="hal__sensors_8c.html#a869b41cc32e7c0b6f4d05e92a589568c">s_adc_handle</a>, <a class="code hl_define" href="config_8h.html#ac49e12a46922894575f1a6a2c61c57cf">APP_BAT_ADC_CHANNEL</a>, &amp;samples[i]), <a class="code hl_variable" href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;ADC read&quot;</span>);</div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>        vTaskDelay(pdMS_TO_TICKS(4));</div>
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>    }</div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span> </div>
+<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>    qsort(samples, 32, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>), <a class="code hl_function" href="hal__sensors_8c.html#a82a2e753c2e346d29922e3cdd0c4ca5c">cmp_int</a>);</div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>    <span class="keywordtype">int</span> raw = (samples[15] + samples[16]) / 2;</div>
+<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>    <span class="keywordtype">int</span> mv_gpio = <a class="code hl_function" href="hal__sensors_8c.html#ac90ddc3eac37f875128224b40d1954fb">raw_to_mv</a>(raw);</div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>    <span class="keywordtype">float</span> vbat = (mv_gpio / 1000.0f) * <a class="code hl_define" href="config_8h.html#a143fb02c12db954d82815315f3ba5a6b">APP_BAT_DIV_RATIO</a>;</div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span> </div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="hal__sensors_8c.html#a3094d759fbcc4b4be373a729664d5108">s_ema_vbat</a> &lt; 0.0f) <a class="code hl_variable" href="hal__sensors_8c.html#a3094d759fbcc4b4be373a729664d5108">s_ema_vbat</a> = vbat;</div>
+<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>    <span class="keywordflow">else</span> <a class="code hl_variable" href="hal__sensors_8c.html#a3094d759fbcc4b4be373a729664d5108">s_ema_vbat</a> = 0.15f * vbat + 0.85f * <a class="code hl_variable" href="hal__sensors_8c.html#a3094d759fbcc4b4be373a729664d5108">s_ema_vbat</a>;</div>
+<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span> </div>
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>    <span class="keywordtype">float</span> pct = <a class="code hl_function" href="hal__sensors_8c.html#a5b116562cf27fd4a0358353e4fff2dae">vbat_to_percent</a>(<a class="code hl_variable" href="hal__sensors_8c.html#a3094d759fbcc4b4be373a729664d5108">s_ema_vbat</a>);</div>
+<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="hal__sensors_8c.html#a14e2a4dca89873b146577fbd90013e61">s_last_pct</a> &lt; 0.0f || fabsf(pct - <a class="code hl_variable" href="hal__sensors_8c.html#a14e2a4dca89873b146577fbd90013e61">s_last_pct</a>) &gt;= 2.0f) <a class="code hl_variable" href="hal__sensors_8c.html#a14e2a4dca89873b146577fbd90013e61">s_last_pct</a> = pct;</div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span> </div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>    out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#ae4f0bea9a7ae2354064a0c62975cc62a">mv</a> = (uint16_t)(<a class="code hl_variable" href="hal__sensors_8c.html#a3094d759fbcc4b4be373a729664d5108">s_ema_vbat</a> * 1000.0f);</div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>    out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#a782fb109a31d2d270346590598f6cdde">pct</a> = <a class="code hl_function" href="hal__sensors_8c.html#a79e0129a0f08c54ba6e7ffa0eadc2a9e">clamp_u8</a>(<a class="code hl_variable" href="hal__sensors_8c.html#a14e2a4dca89873b146577fbd90013e61">s_last_pct</a>, 0, 100);</div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>    out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#a040cee8a5913b1749a93db706e61b472">valid</a> = (out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#ae4f0bea9a7ae2354064a0c62975cc62a">mv</a> &gt;= 2800 &amp;&amp; out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#ae4f0bea9a7ae2354064a0c62975cc62a">mv</a> &lt;= 4400);</div>
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>    out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#a70c455e67096c801cfbc547139b1b176">critical</a> = out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#a040cee8a5913b1749a93db706e61b472">valid</a> &amp;&amp; (out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#ae4f0bea9a7ae2354064a0c62975cc62a">mv</a> &lt;= <a class="code hl_define" href="config_8h.html#ab0fe99816e727b54e462763bf9106f12">APP_BAT_CRITICAL_MV</a>);</div>
+<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>    out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#ad345822798bf1e647a8c3c38d22cbd1f">low</a> = out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#a040cee8a5913b1749a93db706e61b472">valid</a> &amp;&amp; (out-&gt;<a class="code hl_variable" href="structbattery__status__t.html#ae4f0bea9a7ae2354064a0c62975cc62a">mv</a> &lt;= <a class="code hl_define" href="config_8h.html#a7e7b28fd9f994de6c4c9d156cad535ce">APP_BAT_LOW_MV</a>);</div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span> </div>
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>}</div>
+</div>
+<div class="ttc" id="aapp__radio_8c_html_a5a85b9c772bbeb480b209a3e6ea92b4c"><div class="ttname"><a href="app__radio_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a></div><div class="ttdeci">static const char * TAG</div><div class="ttdef"><b>Definition</b> <a href="app__radio_8c_source.html#l00022">app_radio.c:22</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a00aa12002d9b237257d011b4112b5ec8"><div class="ttname"><a href="config_8h.html#a00aa12002d9b237257d011b4112b5ec8">APP_MAX_REG_INT_ENABLE</a></div><div class="ttdeci">#define APP_MAX_REG_INT_ENABLE</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00048">config.h:48</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a0e6fba6f1f027154221849187caf9245"><div class="ttname"><a href="config_8h.html#a0e6fba6f1f027154221849187caf9245">APP_MAX_MODE_SPO2</a></div><div class="ttdeci">#define APP_MAX_MODE_SPO2</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00059">config.h:59</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a143fb02c12db954d82815315f3ba5a6b"><div class="ttname"><a href="config_8h.html#a143fb02c12db954d82815315f3ba5a6b">APP_BAT_DIV_RATIO</a></div><div class="ttdeci">#define APP_BAT_DIV_RATIO</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00067">config.h:67</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a1545f131fbcc97f56c49cff75dae50a3"><div class="ttname"><a href="config_8h.html#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a></div><div class="ttdeci">#define APP_PPG_WINDOW_SAMPLES</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00079">config.h:79</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a1634600c6b82ccf52b70763ee78c9ffe"><div class="ttname"><a href="config_8h.html#a1634600c6b82ccf52b70763ee78c9ffe">APP_IMU_SDA_GPIO</a></div><div class="ttdeci">#define APP_IMU_SDA_GPIO</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00027">config.h:27</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a182c2959153e47d137f84ddbaba2045c"><div class="ttname"><a href="config_8h.html#a182c2959153e47d137f84ddbaba2045c">APP_MAX_SPO2_CFG</a></div><div class="ttdeci">#define APP_MAX_SPO2_CFG</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00061">config.h:61</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a25c354943106c9efbde58c8ede0e8196"><div class="ttname"><a href="config_8h.html#a25c354943106c9efbde58c8ede0e8196">APP_PPG_INT_GPIO</a></div><div class="ttdeci">#define APP_PPG_INT_GPIO</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00043">config.h:43</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a29228865e83a0eb9a0940badef69b50c"><div class="ttname"><a href="config_8h.html#a29228865e83a0eb9a0940badef69b50c">APP_BAT_ADC_UNIT</a></div><div class="ttdeci">#define APP_BAT_ADC_UNIT</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00064">config.h:64</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a351702528fb8428d215404b5786fe8d5"><div class="ttname"><a href="config_8h.html#a351702528fb8428d215404b5786fe8d5">APP_QMI_REG_WHOAMI</a></div><div class="ttdeci">#define APP_QMI_REG_WHOAMI</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00033">config.h:33</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a4c098f964dccec472167708f6a96589b"><div class="ttname"><a href="config_8h.html#a4c098f964dccec472167708f6a96589b">APP_MAX_REG_FIFO_OVF</a></div><div class="ttdeci">#define APP_MAX_REG_FIFO_OVF</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00050">config.h:50</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a4efd1f6349c5700ccdda523af3408dd0"><div class="ttname"><a href="config_8h.html#a4efd1f6349c5700ccdda523af3408dd0">APP_PPG_SDA_GPIO</a></div><div class="ttdeci">#define APP_PPG_SDA_GPIO</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00041">config.h:41</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a5ccf820bc5390e72a2c0e14b21eb832e"><div class="ttname"><a href="config_8h.html#a5ccf820bc5390e72a2c0e14b21eb832e">APP_MAX_REG_FIFO_WR</a></div><div class="ttdeci">#define APP_MAX_REG_FIFO_WR</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00049">config.h:49</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a6f0531e66e575f5e591567afa02015d0"><div class="ttname"><a href="config_8h.html#a6f0531e66e575f5e591567afa02015d0">APP_MAX_REG_MODE_CFG</a></div><div class="ttdeci">#define APP_MAX_REG_MODE_CFG</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00053">config.h:53</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a723e5864526823cad82a99a3bf851461"><div class="ttname"><a href="config_8h.html#a723e5864526823cad82a99a3bf851461">APP_MAX_REG_LED_CFG</a></div><div class="ttdeci">#define APP_MAX_REG_LED_CFG</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00055">config.h:55</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a744aac76fca5341658932b092dcb3ea2"><div class="ttname"><a href="config_8h.html#a744aac76fca5341658932b092dcb3ea2">APP_PPG_SCL_GPIO</a></div><div class="ttdeci">#define APP_PPG_SCL_GPIO</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00042">config.h:42</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a77b8c32430383776e3e8eb61561d89e7"><div class="ttname"><a href="config_8h.html#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a></div><div class="ttdeci">#define APP_PPG_I2C_PORT</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00040">config.h:40</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a790b6fca774cbe07eeedb66ac965b756"><div class="ttname"><a href="config_8h.html#a790b6fca774cbe07eeedb66ac965b756">APP_QMI8658_ADDR2</a></div><div class="ttdeci">#define APP_QMI8658_ADDR2</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00032">config.h:32</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a7e7b28fd9f994de6c4c9d156cad535ce"><div class="ttname"><a href="config_8h.html#a7e7b28fd9f994de6c4c9d156cad535ce">APP_BAT_LOW_MV</a></div><div class="ttdeci">#define APP_BAT_LOW_MV</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00092">config.h:92</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a864208d252e8810c90253a2c5a7e7091"><div class="ttname"><a href="config_8h.html#a864208d252e8810c90253a2c5a7e7091">APP_QMI_REG_CTRL1</a></div><div class="ttdeci">#define APP_QMI_REG_CTRL1</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00034">config.h:34</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a891c92e0e0e74e286baf2d8afca6f505"><div class="ttname"><a href="config_8h.html#a891c92e0e0e74e286baf2d8afca6f505">APP_MAX_MODE_RESET</a></div><div class="ttdeci">#define APP_MAX_MODE_RESET</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00060">config.h:60</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a8c1115bccc06f079bf5685dcba9b2fb0"><div class="ttname"><a href="config_8h.html#a8c1115bccc06f079bf5685dcba9b2fb0">APP_IMU_I2C_HZ</a></div><div class="ttdeci">#define APP_IMU_I2C_HZ</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00029">config.h:29</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a8d945b4d157a2b5a9226ce19917058bb"><div class="ttname"><a href="config_8h.html#a8d945b4d157a2b5a9226ce19917058bb">APP_MAX_REG_FIFO_DATA</a></div><div class="ttdeci">#define APP_MAX_REG_FIFO_DATA</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00052">config.h:52</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a8fdf6e0b37497d8b0d882886ddafde8c"><div class="ttname"><a href="config_8h.html#a8fdf6e0b37497d8b0d882886ddafde8c">APP_QMI8658_ADDR1</a></div><div class="ttdeci">#define APP_QMI8658_ADDR1</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00031">config.h:31</a></div></div>
+<div class="ttc" id="aconfig_8h_html_a9c6f0bce984b05b4aa675966a7b5256e"><div class="ttname"><a href="config_8h.html#a9c6f0bce984b05b4aa675966a7b5256e">APP_IMU_SCL_GPIO</a></div><div class="ttdeci">#define APP_IMU_SCL_GPIO</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00028">config.h:28</a></div></div>
+<div class="ttc" id="aconfig_8h_html_aa14d56be7f79e4355394cbe6a3046968"><div class="ttname"><a href="config_8h.html#aa14d56be7f79e4355394cbe6a3046968">APP_MAX_REG_PART_ID</a></div><div class="ttdeci">#define APP_MAX_REG_PART_ID</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00057">config.h:57</a></div></div>
+<div class="ttc" id="aconfig_8h_html_aa4fc45ba534cf3730140fb5014f53d4d"><div class="ttname"><a href="config_8h.html#aa4fc45ba534cf3730140fb5014f53d4d">APP_QMI_REG_AX_L</a></div><div class="ttdeci">#define APP_QMI_REG_AX_L</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00038">config.h:38</a></div></div>
+<div class="ttc" id="aconfig_8h_html_ab0fe99816e727b54e462763bf9106f12"><div class="ttname"><a href="config_8h.html#ab0fe99816e727b54e462763bf9106f12">APP_BAT_CRITICAL_MV</a></div><div class="ttdeci">#define APP_BAT_CRITICAL_MV</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00091">config.h:91</a></div></div>
+<div class="ttc" id="aconfig_8h_html_ab7c5a943ac49da4f6752b094441aad9a"><div class="ttname"><a href="config_8h.html#ab7c5a943ac49da4f6752b094441aad9a">APP_PPG_I2C_HZ</a></div><div class="ttdeci">#define APP_PPG_I2C_HZ</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00044">config.h:44</a></div></div>
+<div class="ttc" id="aconfig_8h_html_abd49b754a6f14ddbc8b28aca0cfbd123"><div class="ttname"><a href="config_8h.html#abd49b754a6f14ddbc8b28aca0cfbd123">APP_MAX_REG_INT_STATUS</a></div><div class="ttdeci">#define APP_MAX_REG_INT_STATUS</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00047">config.h:47</a></div></div>
+<div class="ttc" id="aconfig_8h_html_ac49e12a46922894575f1a6a2c61c57cf"><div class="ttname"><a href="config_8h.html#ac49e12a46922894575f1a6a2c61c57cf">APP_BAT_ADC_CHANNEL</a></div><div class="ttdeci">#define APP_BAT_ADC_CHANNEL</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00065">config.h:65</a></div></div>
+<div class="ttc" id="aconfig_8h_html_ac8a51adcdad6c1c30ec5c55ba5504e1c"><div class="ttname"><a href="config_8h.html#ac8a51adcdad6c1c30ec5c55ba5504e1c">APP_MAX_REG_FIFO_RD</a></div><div class="ttdeci">#define APP_MAX_REG_FIFO_RD</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00051">config.h:51</a></div></div>
+<div class="ttc" id="aconfig_8h_html_aca192280d934ab0d817e02a7e4b1332c"><div class="ttname"><a href="config_8h.html#aca192280d934ab0d817e02a7e4b1332c">APP_QMI_REG_CTRL7</a></div><div class="ttdeci">#define APP_QMI_REG_CTRL7</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00037">config.h:37</a></div></div>
+<div class="ttc" id="aconfig_8h_html_acb95e0a9dfdd7a8776b20f977aa8d223"><div class="ttname"><a href="config_8h.html#acb95e0a9dfdd7a8776b20f977aa8d223">APP_QMI_REG_CTRL2</a></div><div class="ttdeci">#define APP_QMI_REG_CTRL2</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00035">config.h:35</a></div></div>
+<div class="ttc" id="aconfig_8h_html_acd75cca2a09cd451359175915299edd0"><div class="ttname"><a href="config_8h.html#acd75cca2a09cd451359175915299edd0">APP_MAX_REG_SPO2_CFG</a></div><div class="ttdeci">#define APP_MAX_REG_SPO2_CFG</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00054">config.h:54</a></div></div>
+<div class="ttc" id="aconfig_8h_html_acf1e60f4c06d17b12300b69da6dd64ac"><div class="ttname"><a href="config_8h.html#acf1e60f4c06d17b12300b69da6dd64ac">APP_PPG_SAMPLE_RATE_HZ</a></div><div class="ttdeci">#define APP_PPG_SAMPLE_RATE_HZ</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00078">config.h:78</a></div></div>
+<div class="ttc" id="aconfig_8h_html_ad2aec2b438a0ccc88a3344324f497348"><div class="ttname"><a href="config_8h.html#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a></div><div class="ttdeci">#define APP_IMU_I2C_PORT</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00026">config.h:26</a></div></div>
+<div class="ttc" id="aconfig_8h_html_ae231166bc2624968352e3efd8877dee9"><div class="ttname"><a href="config_8h.html#ae231166bc2624968352e3efd8877dee9">APP_MAX_LED_CFG</a></div><div class="ttdeci">#define APP_MAX_LED_CFG</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00062">config.h:62</a></div></div>
+<div class="ttc" id="aconfig_8h_html_ae573c4e5d07e07ad9ba63892b40bae1a"><div class="ttname"><a href="config_8h.html#ae573c4e5d07e07ad9ba63892b40bae1a">APP_QMI_REG_CTRL3</a></div><div class="ttdeci">#define APP_QMI_REG_CTRL3</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00036">config.h:36</a></div></div>
+<div class="ttc" id="aconfig_8h_html_aeb0b1b131b19e0e38085a0dd4170357f"><div class="ttname"><a href="config_8h.html#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a></div><div class="ttdeci">#define APP_MAX30100_ADDR</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00046">config.h:46</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a04e0c6e41e47885f2e64cf10b3604282"><div class="ttname"><a href="hal__sensors_8c.html#a04e0c6e41e47885f2e64cf10b3604282">hal_battery_read</a></div><div class="ttdeci">esp_err_t hal_battery_read(battery_status_t *out)</div><div class="ttdoc">Realiza una lectura robusta de bateria con mediana y EMA.</div><div class="ttdef"><b>Definition</b> <a href="#l00510">hal_sensors.c:510</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a081c172fd46a0a3e45d9203d648239c0"><div class="ttname"><a href="hal__sensors_8c.html#a081c172fd46a0a3e45d9203d648239c0">qmi_read_raw</a></div><div class="ttdeci">static esp_err_t qmi_read_raw(int16_t *ax, int16_t *ay, int16_t *az, int16_t *gx, int16_t *gy, int16_t *gz)</div><div class="ttdoc">Lee una muestra cruda completa de acelerometro y giroscopio.</div><div class="ttdef"><b>Definition</b> <a href="#l00127">hal_sensors.c:127</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a14e2a4dca89873b146577fbd90013e61"><div class="ttname"><a href="hal__sensors_8c.html#a14e2a4dca89873b146577fbd90013e61">s_last_pct</a></div><div class="ttdeci">static float s_last_pct</div><div class="ttdef"><b>Definition</b> <a href="#l00056">hal_sensors.c:56</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a15570c58ec1bb8ba9da3ff4cab7d63b5"><div class="ttname"><a href="hal__sensors_8c.html#a15570c58ec1bb8ba9da3ff4cab7d63b5">hal_ppg_start</a></div><div class="ttdeci">esp_err_t hal_ppg_start(void)</div><div class="ttdoc">Activa el modo de muestreo SpO2 del MAX30100.</div><div class="ttdef"><b>Definition</b> <a href="#l00472">hal_sensors.c:472</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a161891ea299c1e873497136fe41c7143"><div class="ttname"><a href="hal__sensors_8c.html#a161891ea299c1e873497136fe41c7143">s_ppg_count</a></div><div class="ttdeci">static int s_ppg_count</div><div class="ttdef"><b>Definition</b> <a href="#l00049">hal_sensors.c:49</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a25c06a21738b783a7c4fc74b4abb3e60"><div class="ttname"><a href="hal__sensors_8c.html#a25c06a21738b783a7c4fc74b4abb3e60">hal_imu_start</a></div><div class="ttdeci">esp_err_t hal_imu_start(void)</div><div class="ttdoc">Habilita la captura del QMI8658.</div><div class="ttdef"><b>Definition</b> <a href="#l00436">hal_sensors.c:436</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a2692d5ff3008fe5ce00bafc8f982bf31"><div class="ttname"><a href="hal__sensors_8c.html#a2692d5ff3008fe5ce00bafc8f982bf31">ppg_analyze</a></div><div class="ttdeci">static void ppg_analyze(ppg_metrics_t *out)</div><div class="ttdoc">Calcula BPM, SpO2 y presencia de dedo a partir del buffer PPG.</div><div class="ttdef"><b>Definition</b> <a href="#l00240">hal_sensors.c:240</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a277e5ceee63f06f1d7256aedc7f4c4dc"><div class="ttname"><a href="hal__sensors_8c.html#a277e5ceee63f06f1d7256aedc7f4c4dc">qmi_init_regs</a></div><div class="ttdeci">static esp_err_t qmi_init_regs(void)</div><div class="ttdoc">Aplica la configuracion inicial del QMI8658.</div><div class="ttdef"><b>Definition</b> <a href="#l00111">hal_sensors.c:111</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a28469673aeeef19202dd429fcc094e39"><div class="ttname"><a href="hal__sensors_8c.html#a28469673aeeef19202dd429fcc094e39">s_ir_buf</a></div><div class="ttdeci">static uint16_t s_ir_buf[APP_PPG_WINDOW_SAMPLES]</div><div class="ttdef"><b>Definition</b> <a href="#l00047">hal_sensors.c:47</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a288edb61345b065f5019df3b0fe6c4e0"><div class="ttname"><a href="hal__sensors_8c.html#a288edb61345b065f5019df3b0fe6c4e0">max_clear_fifo</a></div><div class="ttdeci">static esp_err_t max_clear_fifo(void)</div><div class="ttdoc">Reinicia los punteros de la FIFO interna del MAX30100.</div><div class="ttdef"><b>Definition</b> <a href="#l00162">hal_sensors.c:162</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a2a178b205eb3c7d6f70d510e7e6e0575"><div class="ttname"><a href="hal__sensors_8c.html#a2a178b205eb3c7d6f70d510e7e6e0575">hal_sensors_init</a></div><div class="ttdeci">esp_err_t hal_sensors_init(TaskHandle_t ppg_task_handle)</div><div class="ttdoc">Inicializa los tres subsistemas de sensores del Nodo 1.</div><div class="ttdef"><b>Definition</b> <a href="#l00389">hal_sensors.c:389</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a3094d759fbcc4b4be373a729664d5108"><div class="ttname"><a href="hal__sensors_8c.html#a3094d759fbcc4b4be373a729664d5108">s_ema_vbat</a></div><div class="ttdeci">static float s_ema_vbat</div><div class="ttdef"><b>Definition</b> <a href="#l00055">hal_sensors.c:55</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a31d7c95e2bdd299c75976795965f56f9"><div class="ttname"><a href="hal__sensors_8c.html#a31d7c95e2bdd299c75976795965f56f9">ppg_push</a></div><div class="ttdeci">static void ppg_push(uint16_t red, uint16_t ir)</div><div class="ttdoc">Inserta una muestra PPG en el buffer circular de analisis.</div><div class="ttdef"><b>Definition</b> <a href="#l00207">hal_sensors.c:207</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a328cbc3178bb8db4cce488ea05e16717"><div class="ttname"><a href="hal__sensors_8c.html#a328cbc3178bb8db4cce488ea05e16717">s_gz_bias</a></div><div class="ttdeci">static int32_t s_gz_bias</div><div class="ttdef"><b>Definition</b> <a href="#l00041">hal_sensors.c:41</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a3571a3e287d56c291d8778c799ce54eb"><div class="ttname"><a href="hal__sensors_8c.html#a3571a3e287d56c291d8778c799ce54eb">max30100_isr</a></div><div class="ttdeci">static void IRAM_ATTR max30100_isr(void *arg)</div><div class="ttdoc">ISR del pin de interrupcion del MAX30100.</div><div class="ttdef"><b>Definition</b> <a href="#l00065">hal_sensors.c:65</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a35debcae5dd2efa64432424465f0d732"><div class="ttname"><a href="hal__sensors_8c.html#a35debcae5dd2efa64432424465f0d732">qmi_detect</a></div><div class="ttdeci">static esp_err_t qmi_detect(void)</div><div class="ttdoc">Busca la direccion valida del QMI8658 en el bus I2C.</div><div class="ttdef"><b>Definition</b> <a href="#l00096">hal_sensors.c:96</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a42979f51d8b63eb3c0bc3e713e2eb201"><div class="ttname"><a href="hal__sensors_8c.html#a42979f51d8b63eb3c0bc3e713e2eb201">qmi_calibrate_bias</a></div><div class="ttdeci">static void qmi_calibrate_bias(void)</div><div class="ttdoc">Estima el sesgo del giroscopio promediando varias muestras.</div><div class="ttdef"><b>Definition</b> <a href="#l00141">hal_sensors.c:141</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a4aa8f517ac13f8352e38c86cdda0c97b"><div class="ttname"><a href="hal__sensors_8c.html#a4aa8f517ac13f8352e38c86cdda0c97b">s_imu_bias_ok</a></div><div class="ttdeci">static bool s_imu_bias_ok</div><div class="ttdef"><b>Definition</b> <a href="#l00040">hal_sensors.c:40</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a527ce39873f1043fefc01fd4dfaf7e39"><div class="ttname"><a href="hal__sensors_8c.html#a527ce39873f1043fefc01fd4dfaf7e39">hal_imu_stop</a></div><div class="ttdeci">esp_err_t hal_imu_stop(void)</div><div class="ttdoc">Deshabilita temporalmente la adquisicion del QMI8658.</div><div class="ttdef"><b>Definition</b> <a href="#l00442">hal_sensors.c:442</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a5acfeae081be36f48ad0fdeca73176a3"><div class="ttname"><a href="hal__sensors_8c.html#a5acfeae081be36f48ad0fdeca73176a3">hal_imu_bias_ok</a></div><div class="ttdeci">bool hal_imu_bias_ok(void)</div><div class="ttdoc">Informa si la calibracion de sesgo del giroscopio ya es valida.</div><div class="ttdef"><b>Definition</b> <a href="#l00466">hal_sensors.c:466</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a5b116562cf27fd4a0358353e4fff2dae"><div class="ttname"><a href="hal__sensors_8c.html#a5b116562cf27fd4a0358353e4fff2dae">vbat_to_percent</a></div><div class="ttdeci">static float vbat_to_percent(float v)</div><div class="ttdoc">Mapea un voltaje de bateria LiPo aproximado a porcentaje.</div><div class="ttdef"><b>Definition</b> <a href="#l00332">hal_sensors.c:332</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a6e917af8c6b395a0fdb222f6aad38495"><div class="ttname"><a href="hal__sensors_8c.html#a6e917af8c6b395a0fdb222f6aad38495">battery_init</a></div><div class="ttdeci">static esp_err_t battery_init(void)</div><div class="ttdoc">Inicializa el ADC one-shot y su calibracion para la bateria.</div><div class="ttdef"><b>Definition</b> <a href="#l00351">hal_sensors.c:351</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a79e0129a0f08c54ba6e7ffa0eadc2a9e"><div class="ttname"><a href="hal__sensors_8c.html#a79e0129a0f08c54ba6e7ffa0eadc2a9e">clamp_u8</a></div><div class="ttdeci">static uint8_t clamp_u8(float x, uint8_t lo, uint8_t hi)</div><div class="ttdoc">Limita un valor flotante al rango permitido por un uint8_t.</div><div class="ttdef"><b>Definition</b> <a href="#l00230">hal_sensors.c:230</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a7bf66594672f2ba44f24db670665dd92"><div class="ttname"><a href="hal__sensors_8c.html#a7bf66594672f2ba44f24db670665dd92">s_qmi_addr</a></div><div class="ttdeci">static uint8_t s_qmi_addr</div><div class="ttdef"><b>Definition</b> <a href="#l00039">hal_sensors.c:39</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a7dcc878d1603425e50f364427dc60dd2"><div class="ttname"><a href="hal__sensors_8c.html#a7dcc878d1603425e50f364427dc60dd2">hal_ppg_stop</a></div><div class="ttdeci">esp_err_t hal_ppg_stop(void)</div><div class="ttdoc">Detiene la adquisicion del MAX30100.</div><div class="ttdef"><b>Definition</b> <a href="#l00478">hal_sensors.c:478</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a82a2e753c2e346d29922e3cdd0c4ca5c"><div class="ttname"><a href="hal__sensors_8c.html#a82a2e753c2e346d29922e3cdd0c4ca5c">cmp_int</a></div><div class="ttdeci">static int cmp_int(const void *a, const void *b)</div><div class="ttdoc">Comparador entero utilizado para ordenar muestras ADC.</div><div class="ttdef"><b>Definition</b> <a href="#l00316">hal_sensors.c:316</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a86160ae09288af78b2152669b7aee0bd"><div class="ttname"><a href="hal__sensors_8c.html#a86160ae09288af78b2152669b7aee0bd">s_cali</a></div><div class="ttdeci">static adc_cali_handle_t s_cali</div><div class="ttdef"><b>Definition</b> <a href="#l00053">hal_sensors.c:53</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a869b41cc32e7c0b6f4d05e92a589568c"><div class="ttname"><a href="hal__sensors_8c.html#a869b41cc32e7c0b6f4d05e92a589568c">s_adc_handle</a></div><div class="ttdeci">static adc_oneshot_unit_handle_t s_adc_handle</div><div class="ttdef"><b>Definition</b> <a href="#l00052">hal_sensors.c:52</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a8e9be89c66c0c2015b922c328e11e2b3"><div class="ttname"><a href="hal__sensors_8c.html#a8e9be89c66c0c2015b922c328e11e2b3">s_cali_ok</a></div><div class="ttdeci">static bool s_cali_ok</div><div class="ttdef"><b>Definition</b> <a href="#l00054">hal_sensors.c:54</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a9d38307b3cd2c6cb7103f715106f8892"><div class="ttname"><a href="hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892">i2c_write_reg</a></div><div class="ttdeci">static esp_err_t i2c_write_reg(i2c_port_t port, uint8_t addr, uint8_t reg, uint8_t val)</div><div class="ttdoc">Escribe un byte sobre un registro de un esclavo I2C.</div><div class="ttdef"><b>Definition</b> <a href="#l00032">hal_sensors.c:32</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_a9d6415e6b04305eece3a664585cbb99a"><div class="ttname"><a href="hal__sensors_8c.html#a9d6415e6b04305eece3a664585cbb99a">ppg_copy</a></div><div class="ttdeci">static int ppg_copy(uint16_t *r, uint16_t *ir)</div><div class="ttdoc">Copia el contenido actual del buffer circular a arreglos lineales.</div><div class="ttdef"><b>Definition</b> <a href="#l00216">hal_sensors.c:216</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_aa1966c62938e7ff218bf86d9650a910d"><div class="ttname"><a href="hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d">i2c_read_reg</a></div><div class="ttdeci">static esp_err_t i2c_read_reg(i2c_port_t port, uint8_t addr, uint8_t reg, uint8_t *data, size_t len)</div><div class="ttdoc">Lee uno o varios bytes desde un registro I2C.</div><div class="ttdef"><b>Definition</b> <a href="#l00026">hal_sensors.c:26</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_aa69628644536ea9305a092d6cd831b8b"><div class="ttname"><a href="hal__sensors_8c.html#aa69628644536ea9305a092d6cd831b8b">hal_ppg_service</a></div><div class="ttdeci">esp_err_t hal_ppg_service(ppg_metrics_t *out)</div><div class="ttdoc">Atiende la FIFO del MAX30100 y recalcula las metricas PPG.</div><div class="ttdef"><b>Definition</b> <a href="#l00487">hal_sensors.c:487</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_aa7b0b68ce6fd225e048501de9c1da3a2"><div class="ttname"><a href="hal__sensors_8c.html#aa7b0b68ce6fd225e048501de9c1da3a2">s_ppg_task_handle</a></div><div class="ttdeci">static TaskHandle_t s_ppg_task_handle</div><div class="ttdef"><b>Definition</b> <a href="#l00044">hal_sensors.c:44</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_aad518331bc00cedbc24dace97f7df888"><div class="ttname"><a href="hal__sensors_8c.html#aad518331bc00cedbc24dace97f7df888">max_read_sample</a></div><div class="ttdeci">static esp_err_t max_read_sample(uint16_t *red, uint16_t *ir)</div><div class="ttdoc">Extrae una muestra roja e infrarroja desde la FIFO del MAX30100.</div><div class="ttdef"><b>Definition</b> <a href="#l00197">hal_sensors.c:197</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_ab2665cadbaff10637eebd1f52d82b827"><div class="ttname"><a href="hal__sensors_8c.html#ab2665cadbaff10637eebd1f52d82b827">i2c_init_bus</a></div><div class="ttdeci">static esp_err_t i2c_init_bus(i2c_port_t port, gpio_num_t sda, gpio_num_t scl, uint32_t hz)</div><div class="ttdoc">Configura un bus I2C maestro con los pines y frecuencia indicados.</div><div class="ttdef"><b>Definition</b> <a href="#l00080">hal_sensors.c:80</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_ac596ed1f093312c2bb794ef544a1b8cb"><div class="ttname"><a href="hal__sensors_8c.html#ac596ed1f093312c2bb794ef544a1b8cb">s_ppg_head</a></div><div class="ttdeci">static int s_ppg_head</div><div class="ttdef"><b>Definition</b> <a href="#l00048">hal_sensors.c:48</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_ac79d0a2116ff1f2909c67c4ba08d16db"><div class="ttname"><a href="hal__sensors_8c.html#ac79d0a2116ff1f2909c67c4ba08d16db">max_get_fifo_count</a></div><div class="ttdeci">static esp_err_t max_get_fifo_count(uint8_t *count)</div><div class="ttdoc">Calcula cuantas muestras pendientes hay en la FIFO del MAX30100.</div><div class="ttdef"><b>Definition</b> <a href="#l00187">hal_sensors.c:187</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_ac90ddc3eac37f875128224b40d1954fb"><div class="ttname"><a href="hal__sensors_8c.html#ac90ddc3eac37f875128224b40d1954fb">raw_to_mv</a></div><div class="ttdeci">static int raw_to_mv(int raw)</div><div class="ttdoc">Convierte una lectura cruda de ADC a milivoltios.</div><div class="ttdef"><b>Definition</b> <a href="#l00322">hal_sensors.c:322</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_ac9798a00c40946476d528de125d5e6c3"><div class="ttname"><a href="hal__sensors_8c.html#ac9798a00c40946476d528de125d5e6c3">hal_imu_read_sample</a></div><div class="ttdeci">esp_err_t hal_imu_read_sample(imu_sample_t *out)</div><div class="ttdoc">Lee una muestra IMU ya corregida por sesgo de giroscopio.</div><div class="ttdef"><b>Definition</b> <a href="#l00451">hal_sensors.c:451</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_acb1287a4061e9eb27a55ca8a1f1d9f78"><div class="ttname"><a href="hal__sensors_8c.html#acb1287a4061e9eb27a55ca8a1f1d9f78">max_init_regs</a></div><div class="ttdeci">static esp_err_t max_init_regs(void)</div><div class="ttdoc">Configura el MAX30100 para operar en modo SpO2.</div><div class="ttdef"><b>Definition</b> <a href="#l00171">hal_sensors.c:171</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_acbe81a401820a78b8e76e12b8e071fd0"><div class="ttname"><a href="hal__sensors_8c.html#acbe81a401820a78b8e76e12b8e071fd0">s_gx_bias</a></div><div class="ttdeci">static int32_t s_gx_bias</div><div class="ttdef"><b>Definition</b> <a href="#l00041">hal_sensors.c:41</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_ad9f223470f2327e36c5bdb197e8fd40f"><div class="ttname"><a href="hal__sensors_8c.html#ad9f223470f2327e36c5bdb197e8fd40f">s_gy_bias</a></div><div class="ttdeci">static int32_t s_gy_bias</div><div class="ttdef"><b>Definition</b> <a href="#l00041">hal_sensors.c:41</a></div></div>
+<div class="ttc" id="ahal__sensors_8c_html_adb77c5c4d7bbfff0988c41f328fde15a"><div class="ttname"><a href="hal__sensors_8c.html#adb77c5c4d7bbfff0988c41f328fde15a">s_red_buf</a></div><div class="ttdeci">static uint16_t s_red_buf[APP_PPG_WINDOW_SAMPLES]</div><div class="ttdef"><b>Definition</b> <a href="#l00046">hal_sensors.c:46</a></div></div>
+<div class="ttc" id="ahal__sensors_8h_html"><div class="ttname"><a href="hal__sensors_8h.html">hal_sensors.h</a></div><div class="ttdoc">API publica de acceso a sensores del Nodo 1.</div></div>
+<div class="ttc" id="astructbattery__status__t_html"><div class="ttname"><a href="structbattery__status__t.html">battery_status_t</a></div><div class="ttdoc">Estado resumido de la bateria local.</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00169">config.h:169</a></div></div>
+<div class="ttc" id="astructbattery__status__t_html_a040cee8a5913b1749a93db706e61b472"><div class="ttname"><a href="structbattery__status__t.html#a040cee8a5913b1749a93db706e61b472">battery_status_t::valid</a></div><div class="ttdeci">bool valid</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00170">config.h:170</a></div></div>
+<div class="ttc" id="astructbattery__status__t_html_a70c455e67096c801cfbc547139b1b176"><div class="ttname"><a href="structbattery__status__t.html#a70c455e67096c801cfbc547139b1b176">battery_status_t::critical</a></div><div class="ttdeci">bool critical</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00172">config.h:172</a></div></div>
+<div class="ttc" id="astructbattery__status__t_html_a782fb109a31d2d270346590598f6cdde"><div class="ttname"><a href="structbattery__status__t.html#a782fb109a31d2d270346590598f6cdde">battery_status_t::pct</a></div><div class="ttdeci">uint8_t pct</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00174">config.h:174</a></div></div>
+<div class="ttc" id="astructbattery__status__t_html_ad345822798bf1e647a8c3c38d22cbd1f"><div class="ttname"><a href="structbattery__status__t.html#ad345822798bf1e647a8c3c38d22cbd1f">battery_status_t::low</a></div><div class="ttdeci">bool low</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00171">config.h:171</a></div></div>
+<div class="ttc" id="astructbattery__status__t_html_ae4f0bea9a7ae2354064a0c62975cc62a"><div class="ttname"><a href="structbattery__status__t.html#ae4f0bea9a7ae2354064a0c62975cc62a">battery_status_t::mv</a></div><div class="ttdeci">uint16_t mv</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00173">config.h:173</a></div></div>
+<div class="ttc" id="astructimu__sample__t_html"><div class="ttname"><a href="structimu__sample__t.html">imu_sample_t</a></div><div class="ttdoc">Muestra instantanea de la IMU integrada del nodo de muneca.</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00148">config.h:148</a></div></div>
+<div class="ttc" id="astructimu__sample__t_html_a14c6ee4468b665f907da13abc5ac5258"><div class="ttname"><a href="structimu__sample__t.html#a14c6ee4468b665f907da13abc5ac5258">imu_sample_t::gx</a></div><div class="ttdeci">int16_t gx</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00150">config.h:150</a></div></div>
+<div class="ttc" id="astructimu__sample__t_html_a573475b2d6f8458fd864858b04ce9cd8"><div class="ttname"><a href="structimu__sample__t.html#a573475b2d6f8458fd864858b04ce9cd8">imu_sample_t::t_ms</a></div><div class="ttdeci">uint32_t t_ms</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00151">config.h:151</a></div></div>
+<div class="ttc" id="astructimu__sample__t_html_a61df2874e79c86f2d1315efe43c5afa2"><div class="ttname"><a href="structimu__sample__t.html#a61df2874e79c86f2d1315efe43c5afa2">imu_sample_t::gy</a></div><div class="ttdeci">int16_t gy</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00150">config.h:150</a></div></div>
+<div class="ttc" id="astructimu__sample__t_html_a9a631f640a54c64a5c1afa975557ccd2"><div class="ttname"><a href="structimu__sample__t.html#a9a631f640a54c64a5c1afa975557ccd2">imu_sample_t::gz</a></div><div class="ttdeci">int16_t gz</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00150">config.h:150</a></div></div>
+<div class="ttc" id="astructimu__sample__t_html_aa1bf2a058592ba681d0bff76985e31e0"><div class="ttname"><a href="structimu__sample__t.html#aa1bf2a058592ba681d0bff76985e31e0">imu_sample_t::az</a></div><div class="ttdeci">int16_t az</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00149">config.h:149</a></div></div>
+<div class="ttc" id="astructimu__sample__t_html_ad0310618ea4d3e51e636c3888134bb31"><div class="ttname"><a href="structimu__sample__t.html#ad0310618ea4d3e51e636c3888134bb31">imu_sample_t::ay</a></div><div class="ttdeci">int16_t ay</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00149">config.h:149</a></div></div>
+<div class="ttc" id="astructimu__sample__t_html_ad796615db1b040b15f7fbb363ce9274a"><div class="ttname"><a href="structimu__sample__t.html#ad796615db1b040b15f7fbb363ce9274a">imu_sample_t::ax</a></div><div class="ttdeci">int16_t ax</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00149">config.h:149</a></div></div>
+<div class="ttc" id="astructppg__metrics__t_html"><div class="ttname"><a href="structppg__metrics__t.html">ppg_metrics_t</a></div><div class="ttdoc">Metricas resumidas del sensor PPG.</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00157">config.h:157</a></div></div>
+<div class="ttc" id="astructppg__metrics__t_html_a03e5f4d5b235f50ff86b18c5bc5356d7"><div class="ttname"><a href="structppg__metrics__t.html#a03e5f4d5b235f50ff86b18c5bc5356d7">ppg_metrics_t::dc_ir</a></div><div class="ttdeci">uint16_t dc_ir</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00163">config.h:163</a></div></div>
+<div class="ttc" id="astructppg__metrics__t_html_a495c3eaf834c04c9b2ab989ba661d33a"><div class="ttname"><a href="structppg__metrics__t.html#a495c3eaf834c04c9b2ab989ba661d33a">ppg_metrics_t::spo2_valid</a></div><div class="ttdeci">bool spo2_valid</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00160">config.h:160</a></div></div>
+<div class="ttc" id="astructppg__metrics__t_html_a54cfb9436bbbd90c0d5fce21edf3a098"><div class="ttname"><a href="structppg__metrics__t.html#a54cfb9436bbbd90c0d5fce21edf3a098">ppg_metrics_t::spo2</a></div><div class="ttdeci">uint8_t spo2</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00162">config.h:162</a></div></div>
+<div class="ttc" id="astructppg__metrics__t_html_aa389ee7d44dff526af9fa8dbc75c24cd"><div class="ttname"><a href="structppg__metrics__t.html#aa389ee7d44dff526af9fa8dbc75c24cd">ppg_metrics_t::finger_present</a></div><div class="ttdeci">bool finger_present</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00158">config.h:158</a></div></div>
+<div class="ttc" id="astructppg__metrics__t_html_acc857109c3928de98c5fbe3568f5f33f"><div class="ttname"><a href="structppg__metrics__t.html#acc857109c3928de98c5fbe3568f5f33f">ppg_metrics_t::bpm</a></div><div class="ttdeci">uint8_t bpm</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00161">config.h:161</a></div></div>
+<div class="ttc" id="astructppg__metrics__t_html_afcddf404aa6cf52be8ca3e09064bbf69"><div class="ttname"><a href="structppg__metrics__t.html#afcddf404aa6cf52be8ca3e09064bbf69">ppg_metrics_t::bpm_valid</a></div><div class="ttdeci">bool bpm_valid</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00159">config.h:159</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="hal__sensors_8c.html">hal_sensors.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

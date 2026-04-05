@@ -1,0 +1,20 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "app_tasks.c"
+        "hal_i2c.c"
+        "hal_mpu6050.c"
+        "hal_battery.c"
+        "hal_radio.c"
+        "hal_sdcard.c"
+        "imu_features.c"
+    INCLUDE_DIRS "."
+    REQUIRES
+        driver
+        esp_wifi
+        esp_event
+        nvs_flash
+        fatfs
+        esp_adc
+        esp_timer
+)

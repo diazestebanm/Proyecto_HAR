@@ -1,0 +1,502 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo2: Referencia del archivo main/hal_sdcard.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo2
+   </div>
+   <div id="projectbrief">Nodo 2: pierna/tobillo, MPU6050, SD y receptor ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('hal__sdcard_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo hal_sdcard.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Manejo del almacenamiento en tarjeta SD del Nodo 2.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="hal__sdcard_8h_source.html">hal_sdcard.h</a>&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="app__config_8h_source.html">app_config.h</a>&quot;</code><br />
+<code>#include &quot;esp_check.h&quot;</code><br />
+<code>#include &quot;esp_log.h&quot;</code><br />
+<code>#include &quot;esp_vfs_fat.h&quot;</code><br />
+<code>#include &quot;sdmmc_cmd.h&quot;</code><br />
+<code>#include &quot;driver/spi_master.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependencias incluidas en hal_sdcard.c:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
+</div>
+<p><a href="hal__sdcard_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:ab4feeffc28c6786e3c140ad5b580a474" id="r_ab4feeffc28c6786e3c140ad5b580a474"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ab4feeffc28c6786e3c140ad5b580a474">csv_write_header</a> (FILE *f)</td></tr>
+<tr class="memdesc:ab4feeffc28c6786e3c140ad5b580a474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escribe la cabecera CSV del archivo de sesion.  <br /></td></tr>
+<tr class="memitem:addddf9a3bd1977dc65a2ec9a8fe7bc43" id="r_addddf9a3bd1977dc65a2ec9a8fe7bc43"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#addddf9a3bd1977dc65a2ec9a8fe7bc43">csv_write_imu</a> (FILE *f, const <a class="el" href="structimu__feature__summary__t.html">imu_feature_summary_t</a> *imu)</td></tr>
+<tr class="memdesc:addddf9a3bd1977dc65a2ec9a8fe7bc43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializa un resumen IMU dentro de la fila CSV actual.  <br /></td></tr>
+<tr class="memitem:ac6509ccf073bf9fa27a6a49b7f5c5cfe" id="r_ac6509ccf073bf9fa27a6a49b7f5c5cfe"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac6509ccf073bf9fa27a6a49b7f5c5cfe">n1_packet_to_imu_summary</a> (const <a class="el" href="app__types_8h.html#a2a67623d8323692f197d20ffba472760">node1_packet_t</a> *p, <a class="el" href="structimu__feature__summary__t.html">imu_feature_summary_t</a> *imu)</td></tr>
+<tr class="memdesc:ac6509ccf073bf9fa27a6a49b7f5c5cfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convierte el payload del Nodo 1 a la estructura comun de resumen IMU.  <br /></td></tr>
+<tr class="memitem:abaf46e73785b8b9aa063903de9a12a2d" id="r_abaf46e73785b8b9aa063903de9a12a2d"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#abaf46e73785b8b9aa063903de9a12a2d">hal_sdcard_init</a> (uint16_t boot_id)</td></tr>
+<tr class="memdesc:abaf46e73785b8b9aa063903de9a12a2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monta la tarjeta SD y crea el archivo CSV de sesion.  <br /></td></tr>
+<tr class="memitem:a89a7c7d88d1435f32e652273db143d1c" id="r_a89a7c7d88d1435f32e652273db143d1c"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a89a7c7d88d1435f32e652273db143d1c">hal_sdcard_is_ready</a> (void)</td></tr>
+<tr class="memdesc:a89a7c7d88d1435f32e652273db143d1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indica si la SD esta lista para escritura.  <br /></td></tr>
+<tr class="memitem:ae78273015f07ba6d02afed9d69a588e4" id="r_ae78273015f07ba6d02afed9d69a588e4"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#ae78273015f07ba6d02afed9d69a588e4">hal_sdcard_append_records</a> (const <a class="el" href="structlog__record__t.html">log_record_t</a> *records, size_t count)</td></tr>
+<tr class="memdesc:ae78273015f07ba6d02afed9d69a588e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escribe un lote de registros fusionados en la tarjeta SD.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5a85b9c772bbeb480b209a3e6ea92b4c" id="r_a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = &quot;HAL_SD&quot;</td></tr>
+<tr class="memitem:a7a62769d708dd70f47ccfab894cef95c" id="r_a7a62769d708dd70f47ccfab894cef95c"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a7a62769d708dd70f47ccfab894cef95c">s_ready</a> = false</td></tr>
+<tr class="memitem:af101694094622fa8dd485bbbc353f618" id="r_af101694094622fa8dd485bbbc353f618"><td class="memItemLeft">static char&#160;</td><td class="memItemRight"><a class="el" href="#af101694094622fa8dd485bbbc353f618">s_path</a> [<a class="el" href="app__config_8h.html#a1f3277a946179384910fdff91f4eca04">APP_SESSION_FILENAME_MAX</a>] = {0}</td></tr>
+<tr class="memitem:adb8cd1e74e4e93c01de1f69871f138a2" id="r_adb8cd1e74e4e93c01de1f69871f138a2"><td class="memItemLeft">static sdmmc_card_t *&#160;</td><td class="memItemRight"><a class="el" href="#adb8cd1e74e4e93c01de1f69871f138a2">s_card</a> = NULL</td></tr>
+<tr class="memitem:a1a52ae18e30c822e8ae2966b17a7f2e6" id="r_a1a52ae18e30c822e8ae2966b17a7f2e6"><td class="memItemLeft">static sdmmc_host_t&#160;</td><td class="memItemRight"><a class="el" href="#a1a52ae18e30c822e8ae2966b17a7f2e6">s_host</a> = {0}</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Manejo del almacenamiento en tarjeta SD del Nodo 2. </p>
+<p>Monta el sistema de archivos FAT, prepara el archivo de sesion y escribe registros sincronizados de Nodo 1 y Nodo 2 en formato CSV. </p>
+
+<p class="definition">Definición en el archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="ab4feeffc28c6786e3c140ad5b580a474" name="ab4feeffc28c6786e3c140ad5b580a474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4feeffc28c6786e3c140ad5b580a474">&#9670;&#160;</a></span>csv_write_header()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void csv_write_header </td>
+          <td>(</td>
+          <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Escribe la cabecera CSV del archivo de sesion. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00029">29</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 --></div>
+</div>
+
+</div>
+</div>
+<a id="addddf9a3bd1977dc65a2ec9a8fe7bc43" name="addddf9a3bd1977dc65a2ec9a8fe7bc43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addddf9a3bd1977dc65a2ec9a8fe7bc43">&#9670;&#160;</a></span>csv_write_imu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void csv_write_imu </td>
+          <td>(</td>
+          <td class="paramtype">FILE *</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structimu__feature__summary__t.html">imu_feature_summary_t</a> *</td>          <td class="paramname"><span class="paramname"><em>imu</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Serializa un resumen IMU dentro de la fila CSV actual. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00046">46</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 2 --></div>
+</div>
+
+</div>
+</div>
+<a id="ae78273015f07ba6d02afed9d69a588e4" name="ae78273015f07ba6d02afed9d69a588e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae78273015f07ba6d02afed9d69a588e4">&#9670;&#160;</a></span>hal_sdcard_append_records()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t hal_sdcard_append_records </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structlog__record__t.html">log_record_t</a> *</td>          <td class="paramname"><span class="paramname"><em>records</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Escribe un lote de registros fusionados en la tarjeta SD. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">records</td><td>Registros listos para persistencia. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>Numero de elementos validos dentro del lote. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00152">152</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 3 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 4 --></div>
+</div>
+
+</div>
+</div>
+<a id="abaf46e73785b8b9aa063903de9a12a2d" name="abaf46e73785b8b9aa063903de9a12a2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaf46e73785b8b9aa063903de9a12a2d">&#9670;&#160;</a></span>hal_sdcard_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t hal_sdcard_init </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>boot_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Monta la tarjeta SD y crea el archivo CSV de sesion. </p>
+<p>Monta la tarjeta SD y crea el archivo de sesion.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">boot_id</td><td>Identificador de arranque usado en el nombre del archivo. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00087">87</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 5 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 6 --></div>
+</div>
+
+</div>
+</div>
+<a id="a89a7c7d88d1435f32e652273db143d1c" name="a89a7c7d88d1435f32e652273db143d1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89a7c7d88d1435f32e652273db143d1c">&#9670;&#160;</a></span>hal_sdcard_is_ready()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hal_sdcard_is_ready </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indica si la SD esta lista para escritura. </p>
+<p>Consulta si la SD esta lista para recibir escrituras. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00142">142</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 7 --></div>
+</div>
+
+</div>
+</div>
+<a id="ac6509ccf073bf9fa27a6a49b7f5c5cfe" name="ac6509ccf073bf9fa27a6a49b7f5c5cfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6509ccf073bf9fa27a6a49b7f5c5cfe">&#9670;&#160;</a></span>n1_packet_to_imu_summary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void n1_packet_to_imu_summary </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="app__types_8h.html#a2a67623d8323692f197d20ffba472760">node1_packet_t</a> *</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimu__feature__summary__t.html">imu_feature_summary_t</a> *</td>          <td class="paramname"><span class="paramname"><em>imu</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convierte el payload del Nodo 1 a la estructura comun de resumen IMU. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00062">62</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 8 --></div>
+</div>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentación de variables</h2>
+<a id="adb8cd1e74e4e93c01de1f69871f138a2" name="adb8cd1e74e4e93c01de1f69871f138a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb8cd1e74e4e93c01de1f69871f138a2">&#9670;&#160;</a></span>s_card</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sdmmc_card_t* s_card = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00025">25</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+
+</div>
+</div>
+<a id="a1a52ae18e30c822e8ae2966b17a7f2e6" name="a1a52ae18e30c822e8ae2966b17a7f2e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a52ae18e30c822e8ae2966b17a7f2e6">&#9670;&#160;</a></span>s_host</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sdmmc_host_t s_host = {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00026">26</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+
+</div>
+</div>
+<a id="af101694094622fa8dd485bbbc353f618" name="af101694094622fa8dd485bbbc353f618"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af101694094622fa8dd485bbbc353f618">&#9670;&#160;</a></span>s_path</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char s_path[<a class="el" href="app__config_8h.html#a1f3277a946179384910fdff91f4eca04">APP_SESSION_FILENAME_MAX</a>] = {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00024">24</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+
+</div>
+</div>
+<a id="a7a62769d708dd70f47ccfab894cef95c" name="a7a62769d708dd70f47ccfab894cef95c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a62769d708dd70f47ccfab894cef95c">&#9670;&#160;</a></span>s_ready</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool s_ready = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00023">23</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+
+</div>
+</div>
+<a id="a5a85b9c772bbeb480b209a3e6ea92b4c" name="a5a85b9c772bbeb480b209a3e6ea92b4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a85b9c772bbeb480b209a3e6ea92b4c">&#9670;&#160;</a></span>TAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* TAG = &quot;HAL_SD&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00022">22</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="hal__sdcard_8c.html">hal_sdcard.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

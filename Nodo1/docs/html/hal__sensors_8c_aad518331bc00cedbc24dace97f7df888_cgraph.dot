@@ -1,0 +1,11 @@
+digraph "max_read_sample"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="max_read_sample",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Extrae una muestra roja e infrarroja desde la FIFO del MAX30100."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="i2c_read_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d",tooltip="Lee uno o varios bytes desde un registro I2C."];
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo2: Archivo de código fuente main/hal_battery.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo2
+   </div>
+   <div id="projectbrief">Nodo 2: pierna/tobillo, MPU6050, SD y receptor ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('hal__battery_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">hal_battery.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="hal__battery_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef HAL_BATTERY_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define HAL_BATTERY_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="app__types_8h.html">app_types.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>esp_err_t <a class="code hl_function" href="hal__battery_8h.html#a108edea6f6d6d3ed9024c1b6c06250dc">hal_battery_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>esp_err_t <a class="code hl_function" href="hal__battery_8h.html#a67672d3c56c67d448138d3dcd7046ff2">hal_battery_sample</a>(<a class="code hl_struct" href="structbattery__status__t.html">battery_status_t</a> *out);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif </span><span class="comment">/* HAL_BATTERY_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aapp__types_8h_html"><div class="ttname"><a href="app__types_8h.html">app_types.h</a></div><div class="ttdoc">Estructuras comunes del Nodo 2.</div></div>
+<div class="ttc" id="ahal__battery_8h_html_a108edea6f6d6d3ed9024c1b6c06250dc"><div class="ttname"><a href="hal__battery_8h.html#a108edea6f6d6d3ed9024c1b6c06250dc">hal_battery_init</a></div><div class="ttdeci">esp_err_t hal_battery_init(void)</div><div class="ttdoc">Inicializa el subsistema ADC usado para medir bateria.</div><div class="ttdef"><b>Definition</b> <a href="hal__battery_8c_source.html#l00094">hal_battery.c:94</a></div></div>
+<div class="ttc" id="ahal__battery_8h_html_a67672d3c56c67d448138d3dcd7046ff2"><div class="ttname"><a href="hal__battery_8h.html#a67672d3c56c67d448138d3dcd7046ff2">hal_battery_sample</a></div><div class="ttdeci">esp_err_t hal_battery_sample(battery_status_t *out)</div><div class="ttdoc">Toma y resume una muestra del estado de bateria.</div><div class="ttdef"><b>Definition</b> <a href="hal__battery_8c_source.html#l00117">hal_battery.c:117</a></div></div>
+<div class="ttc" id="astructbattery__status__t_html"><div class="ttname"><a href="structbattery__status__t.html">battery_status_t</a></div><div class="ttdoc">Estado resumido de bateria.</div><div class="ttdef"><b>Definition</b> <a href="app__types_8h_source.html#l00097">app_types.h:97</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="hal__battery_8h.html">hal_battery.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

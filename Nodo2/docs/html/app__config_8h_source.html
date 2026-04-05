@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo2: Archivo de código fuente main/app_config.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo2
+   </div>
+   <div id="projectbrief">Nodo 2: pierna/tobillo, MPU6050, SD y receptor ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('app__config_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">app_config.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="app__config_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef APP_CONFIG_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define APP_CONFIG_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;driver/gpio.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;esp_adc/adc_oneshot.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">/* Hardware: ESP32 DevKit V1 + MPU6050 + SD SPI + divisor de bateria          */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="app__config_8h.html#a5b5dffa7b7ce7e46c36d26a2b4916ad8">   19</a></span><span class="preprocessor">#define APP_I2C_PORT                 0 </span><span class="comment">/* I2C_NUM_0 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="app__config_8h.html#ad8c77fc896da15e645f5fd0b2fbd92c5">   20</a></span><span class="preprocessor">#define APP_I2C_SDA_GPIO             GPIO_NUM_21</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="app__config_8h.html#a1c0f8320febdcdf08699341868e63aa4">   21</a></span><span class="preprocessor">#define APP_I2C_SCL_GPIO             GPIO_NUM_22</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="app__config_8h.html#aa7ad297455b055142d85b72cb13562cb">   22</a></span><span class="preprocessor">#define APP_I2C_FREQ_HZ              400000</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="app__config_8h.html#adaaceb17e9c0c576d3ce1d13a6495735">   24</a></span><span class="preprocessor">#define APP_MPU_ADDR                 0x68</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="app__config_8h.html#a17f0a410d7f27b40b7e57d7365e13ab5">   25</a></span><span class="preprocessor">#define APP_MPU_INT_GPIO             GPIO_NUM_25</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="app__config_8h.html#a5b53f5d43c15f5b7e0927a5d2db6c3e5">   27</a></span><span class="preprocessor">#define APP_SD_MOSI_GPIO             GPIO_NUM_23</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="app__config_8h.html#a1a7359adafa0c75b1838e094c1f6618c">   28</a></span><span class="preprocessor">#define APP_SD_MISO_GPIO             GPIO_NUM_19</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="app__config_8h.html#a72cc836cbb6bc08110885636ad16d330">   29</a></span><span class="preprocessor">#define APP_SD_SCK_GPIO              GPIO_NUM_18</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="app__config_8h.html#ab2072df90821ce88373709058203624e">   30</a></span><span class="preprocessor">#define APP_SD_CS_GPIO               GPIO_NUM_27</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="app__config_8h.html#acf69e4e49ca4376cca73da2b5352c9a8">   31</a></span><span class="preprocessor">#define APP_SD_MOUNT_POINT           &quot;/sdcard&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="app__config_8h.html#a29228865e83a0eb9a0940badef69b50c">   33</a></span><span class="preprocessor">#define APP_BAT_ADC_UNIT             ADC_UNIT_1</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="app__config_8h.html#ac49e12a46922894575f1a6a2c61c57cf">   34</a></span><span class="preprocessor">#define APP_BAT_ADC_CHANNEL          ADC_CHANNEL_6   </span><span class="comment">/* GPIO34 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="app__config_8h.html#a491f89d27f19dbb4fd2ee98100bdb356">   35</a></span><span class="preprocessor">#define APP_BAT_GPIO                 GPIO_NUM_34</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="app__config_8h.html#a82b82d3c1a0eaffcc0f9ff4c60cfb746">   36</a></span><span class="preprocessor">#define APP_BAT_R1_OHMS              100000.0f</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="app__config_8h.html#abd184c9168985e87b1ec5b141003c25a">   37</a></span><span class="preprocessor">#define APP_BAT_R2_OHMS              100000.0f</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="app__config_8h.html#aacd9c9754a0c9b7eb2315f3199732ec7">   38</a></span><span class="preprocessor">#define APP_BAT_DIVIDER_RATIO        ((APP_BAT_R1_OHMS + APP_BAT_R2_OHMS) / APP_BAT_R2_OHMS)</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">/* Politica temporal y de potencia                                             */</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="app__config_8h.html#a8195ce1c3859dc975119c3762c2e7f90">   43</a></span><span class="preprocessor">#define APP_CYCLE_PERIOD_MS          10000U</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="app__config_8h.html#a49d2d057c1647c74f183fb3fae9aa94f">   44</a></span><span class="preprocessor">#define APP_CAPTURE_WINDOW_MS        3000U</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="app__config_8h.html#aace73224bacbea1a375033dd3e4c8203">   45</a></span><span class="preprocessor">#define APP_MATCH_WINDOW_MS          1500U</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="app__config_8h.html#a532654f6f9928ab730b1a58d52e0dd7c">   46</a></span><span class="preprocessor">#define APP_NODE1_WAIT_TIMEOUT_MS    20000U</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="app__config_8h.html#a8240dc228672e91403ca06e5c31cb6ad">   47</a></span><span class="preprocessor">#define APP_BATTERY_SAMPLE_PERIOD_MS 60000U</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="app__config_8h.html#ad55b8e4534df138f23358e8d25b3d228">   48</a></span><span class="preprocessor">#define APP_SD_FLUSH_PERIOD_MS       60000U</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="app__config_8h.html#a656c070a21869b8aa27a67878ba526b6">   49</a></span><span class="preprocessor">#define APP_SD_BATCH_LINES           6U</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">/* IMU: decisiones finales de Nodo 2                                           */</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="app__config_8h.html#a0ef8ee54718d6affb2c5bfdba5d188ae">   54</a></span><span class="preprocessor">#define APP_IMU_SAMPLE_RATE_HZ       25U</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="app__config_8h.html#ad253871531525cffdd29621d2ce0f9bd">   55</a></span><span class="preprocessor">#define APP_IMU_WINDOW_SAMPLES       ((APP_CAPTURE_WINDOW_MS * APP_IMU_SAMPLE_RATE_HZ) / 1000U)</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="app__config_8h.html#aa2bde73bd66325725c8bf578fc7d03eb">   56</a></span><span class="preprocessor">#define APP_GYRO_BIAS_SAMPLES        64U</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="app__config_8h.html#a319fbf4233536b866a1c5b4e303f21b4">   57</a></span><span class="preprocessor">#define APP_MPU_ACCEL_LSB_PER_G      16384.0f</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="app__config_8h.html#a37e76a6bf8ef5db72d71a88d2c73db26">   58</a></span><span class="preprocessor">#define APP_MPU_GYRO_LSB_PER_DPS     131.0f</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="app__config_8h.html#a0a4bdf3be2934031f4419a4a13ef5aa2">   59</a></span><span class="preprocessor">#define APP_MPU_PEAK_SIGMA_FACTOR    0.50f</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">/* ESP-NOW                                                                     */</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="app__config_8h.html#ab586382c47ff4a902e71743d49fcb290">   64</a></span><span class="preprocessor">#define APP_WIFI_CHANNEL             1</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="app__config_8h.html#ac5a22941e32d27fee75b2de1dd69d9b5">   65</a></span><span class="preprocessor">#define APP_USE_ESPNOW_RX_PS         0</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="app__config_8h.html#a8e2a905998b79282f6b46ed1c697f5f9">   66</a></span><span class="preprocessor">#define APP_ESPNOW_WAKE_INTERVAL_MS  APP_CYCLE_PERIOD_MS</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="app__config_8h.html#a99b571a6de9e292af8ded97cea665784">   67</a></span><span class="preprocessor">#define APP_ESPNOW_WAKE_WINDOW_MS    1500U</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"> * Si se quiere filtrar solo paquetes del nodo 1, se puede activar este macro</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"> * y editar la MAC fija. Por defecto queda desactivado para facilitar pruebas.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="app__config_8h.html#aa1c632e96df2f9f51d6322bf7de65517">   73</a></span><span class="preprocessor">#define APP_FILTER_NODE1_MAC         0</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="app__config_8h.html#a70d82b256ab40f5eb6ca0b1b334354e5">   74</a></span><span class="preprocessor">#define APP_NODE1_MAC0               0x00</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="app__config_8h.html#a10cbff82cd998658041fe139809a1cd1">   75</a></span><span class="preprocessor">#define APP_NODE1_MAC1               0x00</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="app__config_8h.html#a0485953ab9f58f1d3ee21fef0b2568d5">   76</a></span><span class="preprocessor">#define APP_NODE1_MAC2               0x00</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="app__config_8h.html#a257ea17a57e35ccec3492bf37bbc2e4c">   77</a></span><span class="preprocessor">#define APP_NODE1_MAC3               0x00</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="app__config_8h.html#acf132812f9f0c46d9b4fcd7393421b3c">   78</a></span><span class="preprocessor">#define APP_NODE1_MAC4               0x00</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="app__config_8h.html#a714a88144356ad6d8c8a2e22e339ee9e">   79</a></span><span class="preprocessor">#define APP_NODE1_MAC5               0x00</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">/* Prioridades y tamanos de tareas                                             */</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="app__config_8h.html#a7f945bf5193b17d53b39b9bde607f86b">   84</a></span><span class="preprocessor">#define APP_TASK_STACK_DEFAULT       4096</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="app__config_8h.html#ad98bce2b5d8db42fa2233cbeb3d01710">   85</a></span><span class="preprocessor">#define APP_TASK_STACK_SD            6144</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="app__config_8h.html#a549a6e81505b80a235e0aa31d646b45e">   86</a></span><span class="preprocessor">#define APP_TASK_PRIO_CONTROL        7</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="app__config_8h.html#a0d697453901c87467031df4e70904a92">   87</a></span><span class="preprocessor">#define APP_TASK_PRIO_IMU            6</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="app__config_8h.html#a86f326059ac6a75667862325a59435e5">   88</a></span><span class="preprocessor">#define APP_TASK_PRIO_RADIO          5</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="app__config_8h.html#a206bf5b4314654ea1f63112e82a96b15">   89</a></span><span class="preprocessor">#define APP_TASK_PRIO_SD             4</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">/* Bateria                                                                     */</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="app__config_8h.html#aee8f8bb3ede8b92d36d56eaa66be9fe6">   94</a></span><span class="preprocessor">#define APP_BAT_NUM_SAMPLES          16</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="app__config_8h.html#a394c5733a40fdd42e947eb43d879e215">   95</a></span><span class="preprocessor">#define APP_BAT_FLOAT_RANGE_THRESH   350</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="app__config_8h.html#a3b3d0be60740332acb1a5bbc8745d645">   96</a></span><span class="preprocessor">#define APP_BAT_EMA_ALPHA            0.15f</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="app__config_8h.html#aaf07752cc50d7ad3f562b485722b677d">   97</a></span><span class="preprocessor">#define APP_BAT_PCT_HYSTERESIS       2.0f</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="app__config_8h.html#afeec6249a3b41f844b552de117e689d4">   98</a></span><span class="preprocessor">#define APP_BAT_MIN_VALID_V          2.80f</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="app__config_8h.html#a43a1b20cedb6121930955fad3f92a55b">   99</a></span><span class="preprocessor">#define APP_BAT_MAX_VALID_V          4.40f</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="app__config_8h.html#a184e314fa5c6f9b9be6039bc621fdf0e">  100</a></span><span class="preprocessor">#define APP_BAT_LOW_V                3.50f</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="app__config_8h.html#a5ddb19859543877980e3e1e208ab3139">  101</a></span><span class="preprocessor">#define APP_BAT_CRITICAL_V           3.40f</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">/* Logging                                                                     */</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="app__config_8h.html#a8e59eb7873a6d787e40a1eb2356a0fe2">  106</a></span><span class="preprocessor">#define APP_LOG_LINE_MAX             1024</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="app__config_8h.html#a1f3277a946179384910fdff91f4eca04">  107</a></span><span class="preprocessor">#define APP_SESSION_FILENAME_MAX     64</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#endif </span><span class="comment">/* APP_CONFIG_H */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="app__config_8h.html">app_config.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

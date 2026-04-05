@@ -1,0 +1,13 @@
+digraph "ppg_analyze"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="ppg_analyze",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Calcula BPM, SpO2 y presencia de dedo a partir del buffer PPG."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="clamp_u8",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a79e0129a0f08c54ba6e7ffa0eadc2a9e",tooltip="Limita un valor flotante al rango permitido por un uint8_t."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="ppg_copy",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a9d6415e6b04305eece3a664585cbb99a",tooltip="Copia el contenido actual del buffer circular a arreglos lineales."];
+}

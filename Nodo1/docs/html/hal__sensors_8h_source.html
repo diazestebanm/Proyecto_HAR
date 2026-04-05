@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo1: Archivo de código fuente hal_sensors.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo1
+   </div>
+   <div id="projectbrief">Nodo 1: muñeca, QMI8658, PPG y ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('hal__sensors_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">hal_sensors.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="hal__sensors_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="config_8h.html">config.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>esp_err_t <a class="code hl_function" href="hal__sensors_8h.html#a2a178b205eb3c7d6f70d510e7e6e0575">hal_sensors_init</a>(TaskHandle_t ppg_task_handle);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>esp_err_t <a class="code hl_function" href="hal__sensors_8h.html#a25c06a21738b783a7c4fc74b4abb3e60">hal_imu_start</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>esp_err_t <a class="code hl_function" href="hal__sensors_8h.html#a527ce39873f1043fefc01fd4dfaf7e39">hal_imu_stop</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>esp_err_t <a class="code hl_function" href="hal__sensors_8h.html#ac9798a00c40946476d528de125d5e6c3">hal_imu_read_sample</a>(<a class="code hl_struct" href="structimu__sample__t.html">imu_sample_t</a> *out);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">bool</span>      <a class="code hl_function" href="hal__sensors_8h.html#a5acfeae081be36f48ad0fdeca73176a3">hal_imu_bias_ok</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>esp_err_t <a class="code hl_function" href="hal__sensors_8h.html#a15570c58ec1bb8ba9da3ff4cab7d63b5">hal_ppg_start</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>esp_err_t <a class="code hl_function" href="hal__sensors_8h.html#a7dcc878d1603425e50f364427dc60dd2">hal_ppg_stop</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>esp_err_t <a class="code hl_function" href="hal__sensors_8h.html#aa69628644536ea9305a092d6cd831b8b">hal_ppg_service</a>(<a class="code hl_struct" href="structppg__metrics__t.html">ppg_metrics_t</a> *out);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>esp_err_t <a class="code hl_function" href="hal__sensors_8h.html#a04e0c6e41e47885f2e64cf10b3604282">hal_battery_read</a>(<a class="code hl_struct" href="structbattery__status__t.html">battery_status_t</a> *out);</div>
+<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="config_8h.html">config.h</a></div><div class="ttdoc">Configuracion central y tipos compartidos del Nodo 1.</div></div>
+<div class="ttc" id="ahal__sensors_8h_html_a04e0c6e41e47885f2e64cf10b3604282"><div class="ttname"><a href="hal__sensors_8h.html#a04e0c6e41e47885f2e64cf10b3604282">hal_battery_read</a></div><div class="ttdeci">esp_err_t hal_battery_read(battery_status_t *out)</div><div class="ttdoc">Lee y resume el estado de la bateria.</div><div class="ttdef"><b>Definition</b> <a href="hal__sensors_8c_source.html#l00510">hal_sensors.c:510</a></div></div>
+<div class="ttc" id="ahal__sensors_8h_html_a15570c58ec1bb8ba9da3ff4cab7d63b5"><div class="ttname"><a href="hal__sensors_8h.html#a15570c58ec1bb8ba9da3ff4cab7d63b5">hal_ppg_start</a></div><div class="ttdeci">esp_err_t hal_ppg_start(void)</div><div class="ttdoc">Arranca el sensor PPG.</div><div class="ttdef"><b>Definition</b> <a href="hal__sensors_8c_source.html#l00472">hal_sensors.c:472</a></div></div>
+<div class="ttc" id="ahal__sensors_8h_html_a25c06a21738b783a7c4fc74b4abb3e60"><div class="ttname"><a href="hal__sensors_8h.html#a25c06a21738b783a7c4fc74b4abb3e60">hal_imu_start</a></div><div class="ttdeci">esp_err_t hal_imu_start(void)</div><div class="ttdoc">Activa la IMU integrada.</div><div class="ttdef"><b>Definition</b> <a href="hal__sensors_8c_source.html#l00436">hal_sensors.c:436</a></div></div>
+<div class="ttc" id="ahal__sensors_8h_html_a2a178b205eb3c7d6f70d510e7e6e0575"><div class="ttname"><a href="hal__sensors_8h.html#a2a178b205eb3c7d6f70d510e7e6e0575">hal_sensors_init</a></div><div class="ttdeci">esp_err_t hal_sensors_init(TaskHandle_t ppg_task_handle)</div><div class="ttdoc">Inicializa IMU, PPG y bateria.</div><div class="ttdef"><b>Definition</b> <a href="hal__sensors_8c_source.html#l00389">hal_sensors.c:389</a></div></div>
+<div class="ttc" id="ahal__sensors_8h_html_a527ce39873f1043fefc01fd4dfaf7e39"><div class="ttname"><a href="hal__sensors_8h.html#a527ce39873f1043fefc01fd4dfaf7e39">hal_imu_stop</a></div><div class="ttdeci">esp_err_t hal_imu_stop(void)</div><div class="ttdoc">Detiene temporalmente la IMU integrada.</div><div class="ttdef"><b>Definition</b> <a href="hal__sensors_8c_source.html#l00442">hal_sensors.c:442</a></div></div>
+<div class="ttc" id="ahal__sensors_8h_html_a5acfeae081be36f48ad0fdeca73176a3"><div class="ttname"><a href="hal__sensors_8h.html#a5acfeae081be36f48ad0fdeca73176a3">hal_imu_bias_ok</a></div><div class="ttdeci">bool hal_imu_bias_ok(void)</div><div class="ttdoc">Consulta si el sesgo del giroscopio ya fue calibrado.</div><div class="ttdef"><b>Definition</b> <a href="hal__sensors_8c_source.html#l00466">hal_sensors.c:466</a></div></div>
+<div class="ttc" id="ahal__sensors_8h_html_a7dcc878d1603425e50f364427dc60dd2"><div class="ttname"><a href="hal__sensors_8h.html#a7dcc878d1603425e50f364427dc60dd2">hal_ppg_stop</a></div><div class="ttdeci">esp_err_t hal_ppg_stop(void)</div><div class="ttdoc">Detiene el sensor PPG.</div><div class="ttdef"><b>Definition</b> <a href="hal__sensors_8c_source.html#l00478">hal_sensors.c:478</a></div></div>
+<div class="ttc" id="ahal__sensors_8h_html_aa69628644536ea9305a092d6cd831b8b"><div class="ttname"><a href="hal__sensors_8h.html#aa69628644536ea9305a092d6cd831b8b">hal_ppg_service</a></div><div class="ttdeci">esp_err_t hal_ppg_service(ppg_metrics_t *out)</div><div class="ttdoc">Atiende el sensor PPG y actualiza sus metricas.</div><div class="ttdef"><b>Definition</b> <a href="hal__sensors_8c_source.html#l00487">hal_sensors.c:487</a></div></div>
+<div class="ttc" id="ahal__sensors_8h_html_ac9798a00c40946476d528de125d5e6c3"><div class="ttname"><a href="hal__sensors_8h.html#ac9798a00c40946476d528de125d5e6c3">hal_imu_read_sample</a></div><div class="ttdeci">esp_err_t hal_imu_read_sample(imu_sample_t *out)</div><div class="ttdoc">Lee una muestra corregida de la IMU.</div><div class="ttdef"><b>Definition</b> <a href="hal__sensors_8c_source.html#l00451">hal_sensors.c:451</a></div></div>
+<div class="ttc" id="astructbattery__status__t_html"><div class="ttname"><a href="structbattery__status__t.html">battery_status_t</a></div><div class="ttdoc">Estado resumido de la bateria local.</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00169">config.h:169</a></div></div>
+<div class="ttc" id="astructimu__sample__t_html"><div class="ttname"><a href="structimu__sample__t.html">imu_sample_t</a></div><div class="ttdoc">Muestra instantanea de la IMU integrada del nodo de muneca.</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00148">config.h:148</a></div></div>
+<div class="ttc" id="astructppg__metrics__t_html"><div class="ttname"><a href="structppg__metrics__t.html">ppg_metrics_t</a></div><div class="ttdoc">Metricas resumidas del sensor PPG.</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00157">config.h:157</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="hal__sensors_8h.html">hal_sensors.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

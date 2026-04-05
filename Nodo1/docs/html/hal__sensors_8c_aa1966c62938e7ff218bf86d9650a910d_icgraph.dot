@@ -1,0 +1,43 @@
+digraph "i2c_read_reg"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="i2c_read_reg",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Lee uno o varios bytes desde un registro I2C."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="hal_ppg_service",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#aa69628644536ea9305a092d6cd831b8b",tooltip="Atiende la FIFO del MAX30100 y recalcula las metricas PPG."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="task_ppg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#ac4573c65a1b0f2d569dc1e0326b5e673",tooltip="Tarea dedicada al sensor PPG."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="app_tasks_start",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#adaf2d0d735993165acedd8f410d879d0",tooltip="Crea colas, semaforos y tareas principales del Nodo 1."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="app_main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70",tooltip="Punto de arranque de ESP-IDF."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="max_get_fifo_count",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#ac79d0a2116ff1f2909c67c4ba08d16db",tooltip="Calcula cuantas muestras pendientes hay en la FIFO del MAX30100."];
+  Node6 -> Node2 [id="edge6_Node000006_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node7 [id="edge7_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="max_init_regs",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#acb1287a4061e9eb27a55ca8a1f1d9f78",tooltip="Configura el MAX30100 para operar en modo SpO2."];
+  Node7 -> Node8 [id="edge8_Node000007_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="hal_sensors_init",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a2a178b205eb3c7d6f70d510e7e6e0575",tooltip="Inicializa los tres subsistemas de sensores del Nodo 1."];
+  Node8 -> Node4 [id="edge9_Node000008_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node9 [id="edge10_Node000001_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="max_read_sample",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#aad518331bc00cedbc24dace97f7df888",tooltip="Extrae una muestra roja e infrarroja desde la FIFO del MAX30100."];
+  Node9 -> Node2 [id="edge11_Node000009_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node10 [id="edge12_Node000001_Node000010",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="qmi_detect",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a35debcae5dd2efa64432424465f0d732",tooltip="Busca la direccion valida del QMI8658 en el bus I2C."];
+  Node10 -> Node11 [id="edge13_Node000010_Node000011",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="qmi_init_regs",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a277e5ceee63f06f1d7256aedc7f4c4dc",tooltip="Aplica la configuracion inicial del QMI8658."];
+  Node11 -> Node8 [id="edge14_Node000011_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node12 [id="edge15_Node000001_Node000012",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="qmi_read_raw",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a081c172fd46a0a3e45d9203d648239c0",tooltip="Lee una muestra cruda completa de acelerometro y giroscopio."];
+  Node12 -> Node13 [id="edge16_Node000012_Node000013",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="hal_imu_read_sample",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#ac9798a00c40946476d528de125d5e6c3",tooltip="Lee una muestra IMU ya corregida por sesgo de giroscopio."];
+  Node13 -> Node14 [id="edge17_Node000013_Node000014",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="task_imu",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#ac2321b3fc83e079e31f177db5916dd58",tooltip="Tarea que captura una ventana IMU y calcula sus rasgos."];
+  Node14 -> Node4 [id="edge18_Node000014_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node12 -> Node15 [id="edge19_Node000012_Node000015",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node15 [id="Node000015",label="qmi_calibrate_bias",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a42979f51d8b63eb3c0bc3e713e2eb201",tooltip="Estima el sesgo del giroscopio promediando varias muestras."];
+  Node15 -> Node8 [id="edge20_Node000015_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

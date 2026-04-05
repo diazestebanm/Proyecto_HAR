@@ -1,0 +1,13 @@
+digraph "hal_radio_init"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="hal_radio_init",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Inicializa el receptor ESP-NOW y asocia la cola de eventos."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="radio_rx_cb",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__radio_8c.html#ab21b94674d74790f989d8b8d175a972c",tooltip="Callback de recepcion de ESP-NOW."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="node1_mac_allowed",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__radio_8c.html#ada3856d14fb661e700a8e0a05437a545",tooltip="Aplica el filtro opcional de MAC del Nodo 1."];
+}

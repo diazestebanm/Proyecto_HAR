@@ -1,0 +1,22 @@
+digraph "qmi_read_raw"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="qmi_read_raw",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Lee una muestra cruda completa de acelerometro y giroscopio."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="hal_imu_read_sample",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#ac9798a00c40946476d528de125d5e6c3",tooltip="Lee una muestra IMU ya corregida por sesgo de giroscopio."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="task_imu",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#ac2321b3fc83e079e31f177db5916dd58",tooltip="Tarea que captura una ventana IMU y calcula sus rasgos."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="app_tasks_start",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#adaf2d0d735993165acedd8f410d879d0",tooltip="Crea colas, semaforos y tareas principales del Nodo 1."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="app_main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70",tooltip="Punto de arranque de ESP-IDF."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="qmi_calibrate_bias",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a42979f51d8b63eb3c0bc3e713e2eb201",tooltip="Estima el sesgo del giroscopio promediando varias muestras."];
+  Node6 -> Node7 [id="edge6_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="hal_sensors_init",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a2a178b205eb3c7d6f70d510e7e6e0575",tooltip="Inicializa los tres subsistemas de sensores del Nodo 1."];
+  Node7 -> Node4 [id="edge7_Node000007_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

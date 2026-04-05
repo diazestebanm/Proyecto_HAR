@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo1: Referencia del archivo app_signal.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo1
+   </div>
+   <div id="projectbrief">Nodo 1: muñeca, QMI8658, PPG y ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('app__signal_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo app_signal.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Procesamiento ligero de IMU y empaquetado del payload del Nodo 1.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="app__signal_8h_source.html">app_signal.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependencias incluidas en app_signal.c:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
+</div>
+<p><a href="app__signal_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:aeb642a78cfc271a85e2ecc8253b82226" id="r_aeb642a78cfc271a85e2ecc8253b82226"><td class="memItemLeft">static int16_t&#160;</td><td class="memItemRight"><a class="el" href="#aeb642a78cfc271a85e2ecc8253b82226">q16</a> (float x)</td></tr>
+<tr class="memdesc:aeb642a78cfc271a85e2ecc8253b82226"><td class="mdescLeft">&#160;</td><td class="mdescRight">Satura un valor flotante al rango de int16_t.  <br /></td></tr>
+<tr class="memitem:a2f1b234bb11df7818dd26387d9adb37e" id="r_a2f1b234bb11df7818dd26387d9adb37e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2f1b234bb11df7818dd26387d9adb37e">app_signal_reset</a> (<a class="el" href="structapp__signal__ctx__t.html">app_signal_ctx_t</a> *ctx)</td></tr>
+<tr class="memdesc:a2f1b234bb11df7818dd26387d9adb37e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinicia el acumulador estadistico de una ventana IMU.  <br /></td></tr>
+<tr class="memitem:a7ad355f2120fe030b9af911ddd80b6ab" id="r_a7ad355f2120fe030b9af911ddd80b6ab"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7ad355f2120fe030b9af911ddd80b6ab">app_signal_push_imu</a> (<a class="el" href="structapp__signal__ctx__t.html">app_signal_ctx_t</a> *ctx, const <a class="el" href="structimu__sample__t.html">imu_sample_t</a> *s)</td></tr>
+<tr class="memdesc:a7ad355f2120fe030b9af911ddd80b6ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incorpora una muestra IMU al contexto estadistico actual.  <br /></td></tr>
+<tr class="memitem:ac129b46c380b98d0c0b080595d7a5568" id="r_ac129b46c380b98d0c0b080595d7a5568"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#ac129b46c380b98d0c0b080595d7a5568">meanf</a> (float sum, float n)</td></tr>
+<tr class="memdesc:ac129b46c380b98d0c0b080595d7a5568"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula una media simple protegida contra division por cero.  <br /></td></tr>
+<tr class="memitem:a041a49ffd651122cf29de79b64df778b" id="r_a041a49ffd651122cf29de79b64df778b"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a041a49ffd651122cf29de79b64df778b">stdf</a> (float sum, float sum2, float n)</td></tr>
+<tr class="memdesc:a041a49ffd651122cf29de79b64df778b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estima la desviacion estandar a partir de suma y suma cuadratica.  <br /></td></tr>
+<tr class="memitem:a1c99cad95c2b4f2324e30a330ada2cb7" id="r_a1c99cad95c2b4f2324e30a330ada2cb7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1c99cad95c2b4f2324e30a330ada2cb7">app_signal_build_features</a> (const <a class="el" href="structapp__signal__ctx__t.html">app_signal_ctx_t</a> *ctx, <a class="el" href="structimu__features__t.html">imu_features_t</a> *out)</td></tr>
+<tr class="memdesc:a1c99cad95c2b4f2324e30a330ada2cb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resume una ventana de IMU en un conjunto compacto de rasgos temporales.  <br /></td></tr>
+<tr class="memitem:a84b6062ad3291094718e1aa3e6bd171d" id="r_a84b6062ad3291094718e1aa3e6bd171d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a84b6062ad3291094718e1aa3e6bd171d">app_signal_build_payload</a> (<a class="el" href="config_8h.html#a10046d9796846438b798836a5c2f0258">adl_payload_t</a> *p, <a class="el" href="config_8h.html#a55723d5ff6b7b0d7023fb83507a8df76">app_msg_type_t</a> type, uint16_t boot_id, uint16_t seq, uint32_t t_rel_ms, uint16_t flags, const <a class="el" href="structimu__features__t.html">imu_features_t</a> *imu, const <a class="el" href="structppg__metrics__t.html">ppg_metrics_t</a> *ppg, const <a class="el" href="structbattery__status__t.html">battery_status_t</a> *bat)</td></tr>
+<tr class="memdesc:a84b6062ad3291094718e1aa3e6bd171d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construye el payload binario que se enviara por radio.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Procesamiento ligero de IMU y empaquetado del payload del Nodo 1. </p>
+<p>Convierte muestras crudas a rasgos compactos por ventana y construye la trama binaria que se transmite hacia el Nodo 2. </p>
+
+<p class="definition">Definición en el archivo <a class="el" href="app__signal_8c_source.html">app_signal.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="a1c99cad95c2b4f2324e30a330ada2cb7" name="a1c99cad95c2b4f2324e30a330ada2cb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c99cad95c2b4f2324e30a330ada2cb7">&#9670;&#160;</a></span>app_signal_build_features()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_signal_build_features </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structapp__signal__ctx__t.html">app_signal_ctx_t</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimu__features__t.html">imu_features_t</a> *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resume una ventana de IMU en un conjunto compacto de rasgos temporales. </p>
+<p>Genera los rasgos finales de IMU para una ventana ya capturada.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ctx</td><td>Contexto con estadisticos acumulados de la ventana. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Estructura de salida con rasgos y banderas de validez. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="app__signal_8c_source.html#l00093">93</a> del archivo <a class="el" href="app__signal_8c_source.html">app_signal.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 2 --></div>
+</div>
+
+</div>
+</div>
+<a id="a84b6062ad3291094718e1aa3e6bd171d" name="a84b6062ad3291094718e1aa3e6bd171d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84b6062ad3291094718e1aa3e6bd171d">&#9670;&#160;</a></span>app_signal_build_payload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_signal_build_payload </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="config_8h.html#a10046d9796846438b798836a5c2f0258">adl_payload_t</a> *</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="config_8h.html#a55723d5ff6b7b0d7023fb83507a8df76">app_msg_type_t</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>boot_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>seq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>t_rel_ms</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>flags</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structimu__features__t.html">imu_features_t</a> *</td>          <td class="paramname"><span class="paramname"><em>imu</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structppg__metrics__t.html">ppg_metrics_t</a> *</td>          <td class="paramname"><span class="paramname"><em>ppg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structbattery__status__t.html">battery_status_t</a> *</td>          <td class="paramname"><span class="paramname"><em>bat</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construye el payload binario que se enviara por radio. </p>
+<p>Empaqueta rasgos y metadatos en el formato de radio del proyecto.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">p</td><td>Payload final serializado. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>Tipo de mensaje a emitir. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">boot_id</td><td>Identificador del arranque actual. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">seq</td><td>Numero de secuencia local. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t_rel_ms</td><td>Tiempo relativo del nodo al momento de construir el paquete. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">flags</td><td>Banderas de calidad y estado. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">imu</td><td>Rasgos IMU locales. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ppg</td><td>Metricas derivadas del PPG. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bat</td><td>Estado resumido de bateria. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="app__signal_8c_source.html#l00152">152</a> del archivo <a class="el" href="app__signal_8c_source.html">app_signal.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 3 --></div>
+</div>
+
+</div>
+</div>
+<a id="a7ad355f2120fe030b9af911ddd80b6ab" name="a7ad355f2120fe030b9af911ddd80b6ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ad355f2120fe030b9af911ddd80b6ab">&#9670;&#160;</a></span>app_signal_push_imu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_signal_push_imu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structapp__signal__ctx__t.html">app_signal_ctx_t</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structimu__sample__t.html">imu_sample_t</a> *</td>          <td class="paramname"><span class="paramname"><em>s</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Incorpora una muestra IMU al contexto estadistico actual. </p>
+<p>Agrega una muestra al contexto estadistico.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>Acumuladores de la ventana. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Muestra cruda ya corregida en el dominio del Nodo 1. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="app__signal_8c_source.html#l00039">39</a> del archivo <a class="el" href="app__signal_8c_source.html">app_signal.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 4 --></div>
+</div>
+
+</div>
+</div>
+<a id="a2f1b234bb11df7818dd26387d9adb37e" name="a2f1b234bb11df7818dd26387d9adb37e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f1b234bb11df7818dd26387d9adb37e">&#9670;&#160;</a></span>app_signal_reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_signal_reset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structapp__signal__ctx__t.html">app_signal_ctx_t</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reinicia el acumulador estadistico de una ventana IMU. </p>
+<p>Limpia el contexto de acumulacion para iniciar una nueva ventana.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>Contexto de procesamiento a limpiar. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="app__signal_8c_source.html#l00029">29</a> del archivo <a class="el" href="app__signal_8c_source.html">app_signal.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 5 --></div>
+</div>
+
+</div>
+</div>
+<a id="ac129b46c380b98d0c0b080595d7a5568" name="ac129b46c380b98d0c0b080595d7a5568"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac129b46c380b98d0c0b080595d7a5568">&#9670;&#160;</a></span>meanf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float meanf </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>sum</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calcula una media simple protegida contra division por cero. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="app__signal_8c_source.html#l00072">72</a> del archivo <a class="el" href="app__signal_8c_source.html">app_signal.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 6 --></div>
+</div>
+
+</div>
+</div>
+<a id="aeb642a78cfc271a85e2ecc8253b82226" name="aeb642a78cfc271a85e2ecc8253b82226"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb642a78cfc271a85e2ecc8253b82226">&#9670;&#160;</a></span>q16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t q16 </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Satura un valor flotante al rango de int16_t. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Valor a convertir. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Valor saturado y redondeado en formato entero de 16 bits. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="app__signal_8c_source.html#l00018">18</a> del archivo <a class="el" href="app__signal_8c_source.html">app_signal.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 7 --></div>
+</div>
+
+</div>
+</div>
+<a id="a041a49ffd651122cf29de79b64df778b" name="a041a49ffd651122cf29de79b64df778b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a041a49ffd651122cf29de79b64df778b">&#9670;&#160;</a></span>stdf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float stdf </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>sum</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>sum2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Estima la desviacion estandar a partir de suma y suma cuadratica. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="app__signal_8c_source.html#l00080">80</a> del archivo <a class="el" href="app__signal_8c_source.html">app_signal.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 8 --></div>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="app__signal_8c.html">app_signal.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

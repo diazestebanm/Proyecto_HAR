@@ -1,0 +1,1303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo1: Referencia del archivo config.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo1
+   </div>
+   <div id="projectbrief">Nodo 1: muñeca, QMI8658, PPG y ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('config_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo config.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Configuracion central y tipos compartidos del Nodo 1.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &quot;driver/gpio.h&quot;</code><br />
+<code>#include &quot;driver/i2c.h&quot;</code><br />
+<code>#include &quot;esp_err.h&quot;</code><br />
+<code>#include &quot;esp_adc/adc_oneshot.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependencias incluidas en config.h:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 --></div>
+</div>
+</div>
+<p><a href="config_8h_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Estructuras de datos</h2></td></tr>
+<tr class="memitem:imu_5Fsample_5Ft" id="r_imu_5Fsample_5Ft"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structimu__sample__t.html">imu_sample_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Muestra instantanea de la IMU integrada del nodo de muneca.  <a href="structimu__sample__t.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:ppg_5Fmetrics_5Ft" id="r_ppg_5Fmetrics_5Ft"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structppg__metrics__t.html">ppg_metrics_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metricas resumidas del sensor PPG.  <a href="structppg__metrics__t.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:battery_5Fstatus_5Ft" id="r_battery_5Fstatus_5Ft"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structbattery__status__t.html">battery_status_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estado resumido de la bateria local.  <a href="structbattery__status__t.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:imu_5Ffeatures_5Ft" id="r_imu_5Ffeatures_5Ft"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structimu__features__t.html">imu_features_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rasgos temporales calculados a partir de una ventana IMU.  <a href="structimu__features__t.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:radio_5Ftx_5Fitem_5Ft" id="r_radio_5Ftx_5Fitem_5Ft"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structradio__tx__item__t.html">radio_tx_item_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elemento de cola usado por la tarea de radio.  <a href="structradio__tx__item__t.html#details">Más...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:acffb27537ffa4419754e12f2a5110d67" id="r_acffb27537ffa4419754e12f2a5110d67"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#acffb27537ffa4419754e12f2a5110d67">APP_TAG</a>&#160;&#160;&#160;&quot;NODO1_ADL&quot;</td></tr>
+<tr class="memitem:ad2aec2b438a0ccc88a3344324f497348" id="r_ad2aec2b438a0ccc88a3344324f497348"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ad2aec2b438a0ccc88a3344324f497348">APP_IMU_I2C_PORT</a>&#160;&#160;&#160;I2C_NUM_0</td></tr>
+<tr class="memitem:a1634600c6b82ccf52b70763ee78c9ffe" id="r_a1634600c6b82ccf52b70763ee78c9ffe"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1634600c6b82ccf52b70763ee78c9ffe">APP_IMU_SDA_GPIO</a>&#160;&#160;&#160;GPIO_NUM_6</td></tr>
+<tr class="memitem:a9c6f0bce984b05b4aa675966a7b5256e" id="r_a9c6f0bce984b05b4aa675966a7b5256e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a9c6f0bce984b05b4aa675966a7b5256e">APP_IMU_SCL_GPIO</a>&#160;&#160;&#160;GPIO_NUM_7</td></tr>
+<tr class="memitem:a8c1115bccc06f079bf5685dcba9b2fb0" id="r_a8c1115bccc06f079bf5685dcba9b2fb0"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8c1115bccc06f079bf5685dcba9b2fb0">APP_IMU_I2C_HZ</a>&#160;&#160;&#160;400000</td></tr>
+<tr class="memitem:a8fdf6e0b37497d8b0d882886ddafde8c" id="r_a8fdf6e0b37497d8b0d882886ddafde8c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8fdf6e0b37497d8b0d882886ddafde8c">APP_QMI8658_ADDR1</a>&#160;&#160;&#160;0x6A</td></tr>
+<tr class="memitem:a790b6fca774cbe07eeedb66ac965b756" id="r_a790b6fca774cbe07eeedb66ac965b756"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a790b6fca774cbe07eeedb66ac965b756">APP_QMI8658_ADDR2</a>&#160;&#160;&#160;0x6B</td></tr>
+<tr class="memitem:a351702528fb8428d215404b5786fe8d5" id="r_a351702528fb8428d215404b5786fe8d5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a351702528fb8428d215404b5786fe8d5">APP_QMI_REG_WHOAMI</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="memitem:a864208d252e8810c90253a2c5a7e7091" id="r_a864208d252e8810c90253a2c5a7e7091"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a864208d252e8810c90253a2c5a7e7091">APP_QMI_REG_CTRL1</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="memitem:acb95e0a9dfdd7a8776b20f977aa8d223" id="r_acb95e0a9dfdd7a8776b20f977aa8d223"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#acb95e0a9dfdd7a8776b20f977aa8d223">APP_QMI_REG_CTRL2</a>&#160;&#160;&#160;0x03</td></tr>
+<tr class="memitem:ae573c4e5d07e07ad9ba63892b40bae1a" id="r_ae573c4e5d07e07ad9ba63892b40bae1a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae573c4e5d07e07ad9ba63892b40bae1a">APP_QMI_REG_CTRL3</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="memitem:aca192280d934ab0d817e02a7e4b1332c" id="r_aca192280d934ab0d817e02a7e4b1332c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aca192280d934ab0d817e02a7e4b1332c">APP_QMI_REG_CTRL7</a>&#160;&#160;&#160;0x08</td></tr>
+<tr class="memitem:aa4fc45ba534cf3730140fb5014f53d4d" id="r_aa4fc45ba534cf3730140fb5014f53d4d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa4fc45ba534cf3730140fb5014f53d4d">APP_QMI_REG_AX_L</a>&#160;&#160;&#160;0x35</td></tr>
+<tr class="memitem:a77b8c32430383776e3e8eb61561d89e7" id="r_a77b8c32430383776e3e8eb61561d89e7"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a77b8c32430383776e3e8eb61561d89e7">APP_PPG_I2C_PORT</a>&#160;&#160;&#160;I2C_NUM_1</td></tr>
+<tr class="memitem:a4efd1f6349c5700ccdda523af3408dd0" id="r_a4efd1f6349c5700ccdda523af3408dd0"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a4efd1f6349c5700ccdda523af3408dd0">APP_PPG_SDA_GPIO</a>&#160;&#160;&#160;GPIO_NUM_16</td></tr>
+<tr class="memitem:a744aac76fca5341658932b092dcb3ea2" id="r_a744aac76fca5341658932b092dcb3ea2"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a744aac76fca5341658932b092dcb3ea2">APP_PPG_SCL_GPIO</a>&#160;&#160;&#160;GPIO_NUM_18</td></tr>
+<tr class="memitem:a25c354943106c9efbde58c8ede0e8196" id="r_a25c354943106c9efbde58c8ede0e8196"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a25c354943106c9efbde58c8ede0e8196">APP_PPG_INT_GPIO</a>&#160;&#160;&#160;GPIO_NUM_15</td></tr>
+<tr class="memitem:ab7c5a943ac49da4f6752b094441aad9a" id="r_ab7c5a943ac49da4f6752b094441aad9a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ab7c5a943ac49da4f6752b094441aad9a">APP_PPG_I2C_HZ</a>&#160;&#160;&#160;100000</td></tr>
+<tr class="memitem:aeb0b1b131b19e0e38085a0dd4170357f" id="r_aeb0b1b131b19e0e38085a0dd4170357f"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aeb0b1b131b19e0e38085a0dd4170357f">APP_MAX30100_ADDR</a>&#160;&#160;&#160;0x57</td></tr>
+<tr class="memitem:abd49b754a6f14ddbc8b28aca0cfbd123" id="r_abd49b754a6f14ddbc8b28aca0cfbd123"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#abd49b754a6f14ddbc8b28aca0cfbd123">APP_MAX_REG_INT_STATUS</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="memitem:a00aa12002d9b237257d011b4112b5ec8" id="r_a00aa12002d9b237257d011b4112b5ec8"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a00aa12002d9b237257d011b4112b5ec8">APP_MAX_REG_INT_ENABLE</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memitem:a5ccf820bc5390e72a2c0e14b21eb832e" id="r_a5ccf820bc5390e72a2c0e14b21eb832e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a5ccf820bc5390e72a2c0e14b21eb832e">APP_MAX_REG_FIFO_WR</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="memitem:a4c098f964dccec472167708f6a96589b" id="r_a4c098f964dccec472167708f6a96589b"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a4c098f964dccec472167708f6a96589b">APP_MAX_REG_FIFO_OVF</a>&#160;&#160;&#160;0x03</td></tr>
+<tr class="memitem:ac8a51adcdad6c1c30ec5c55ba5504e1c" id="r_ac8a51adcdad6c1c30ec5c55ba5504e1c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ac8a51adcdad6c1c30ec5c55ba5504e1c">APP_MAX_REG_FIFO_RD</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="memitem:a8d945b4d157a2b5a9226ce19917058bb" id="r_a8d945b4d157a2b5a9226ce19917058bb"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8d945b4d157a2b5a9226ce19917058bb">APP_MAX_REG_FIFO_DATA</a>&#160;&#160;&#160;0x05</td></tr>
+<tr class="memitem:a6f0531e66e575f5e591567afa02015d0" id="r_a6f0531e66e575f5e591567afa02015d0"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a6f0531e66e575f5e591567afa02015d0">APP_MAX_REG_MODE_CFG</a>&#160;&#160;&#160;0x06</td></tr>
+<tr class="memitem:acd75cca2a09cd451359175915299edd0" id="r_acd75cca2a09cd451359175915299edd0"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#acd75cca2a09cd451359175915299edd0">APP_MAX_REG_SPO2_CFG</a>&#160;&#160;&#160;0x07</td></tr>
+<tr class="memitem:a723e5864526823cad82a99a3bf851461" id="r_a723e5864526823cad82a99a3bf851461"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a723e5864526823cad82a99a3bf851461">APP_MAX_REG_LED_CFG</a>&#160;&#160;&#160;0x09</td></tr>
+<tr class="memitem:a8e1305eb28f4081043aa017e3e284c00" id="r_a8e1305eb28f4081043aa017e3e284c00"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8e1305eb28f4081043aa017e3e284c00">APP_MAX_REG_REV_ID</a>&#160;&#160;&#160;0xFE</td></tr>
+<tr class="memitem:aa14d56be7f79e4355394cbe6a3046968" id="r_aa14d56be7f79e4355394cbe6a3046968"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa14d56be7f79e4355394cbe6a3046968">APP_MAX_REG_PART_ID</a>&#160;&#160;&#160;0xFF</td></tr>
+<tr class="memitem:a0e6fba6f1f027154221849187caf9245" id="r_a0e6fba6f1f027154221849187caf9245"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a0e6fba6f1f027154221849187caf9245">APP_MAX_MODE_SPO2</a>&#160;&#160;&#160;0x03</td></tr>
+<tr class="memitem:a891c92e0e0e74e286baf2d8afca6f505" id="r_a891c92e0e0e74e286baf2d8afca6f505"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a891c92e0e0e74e286baf2d8afca6f505">APP_MAX_MODE_RESET</a>&#160;&#160;&#160;0x40</td></tr>
+<tr class="memitem:a182c2959153e47d137f84ddbaba2045c" id="r_a182c2959153e47d137f84ddbaba2045c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a182c2959153e47d137f84ddbaba2045c">APP_MAX_SPO2_CFG</a>&#160;&#160;&#160;0x47   /* valor ya usado en tu código funcional */</td></tr>
+<tr class="memitem:ae231166bc2624968352e3efd8877dee9" id="r_ae231166bc2624968352e3efd8877dee9"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae231166bc2624968352e3efd8877dee9">APP_MAX_LED_CFG</a>&#160;&#160;&#160;0x77</td></tr>
+<tr class="memitem:a29228865e83a0eb9a0940badef69b50c" id="r_a29228865e83a0eb9a0940badef69b50c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a29228865e83a0eb9a0940badef69b50c">APP_BAT_ADC_UNIT</a>&#160;&#160;&#160;ADC_UNIT_2</td></tr>
+<tr class="memitem:ac49e12a46922894575f1a6a2c61c57cf" id="r_ac49e12a46922894575f1a6a2c61c57cf"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ac49e12a46922894575f1a6a2c61c57cf">APP_BAT_ADC_CHANNEL</a>&#160;&#160;&#160;ADC_CHANNEL_6  /* GPIO17 */</td></tr>
+<tr class="memitem:a491f89d27f19dbb4fd2ee98100bdb356" id="r_a491f89d27f19dbb4fd2ee98100bdb356"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a491f89d27f19dbb4fd2ee98100bdb356">APP_BAT_GPIO</a>&#160;&#160;&#160;GPIO_NUM_17</td></tr>
+<tr class="memitem:a143fb02c12db954d82815315f3ba5a6b" id="r_a143fb02c12db954d82815315f3ba5a6b"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a143fb02c12db954d82815315f3ba5a6b">APP_BAT_DIV_RATIO</a>&#160;&#160;&#160;2.0f</td></tr>
+<tr class="memitem:a1d4ccea5c7e2d3795bbf89609e51a20a" id="r_a1d4ccea5c7e2d3795bbf89609e51a20a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1d4ccea5c7e2d3795bbf89609e51a20a">APP_IMU_WINDOW_MS</a>&#160;&#160;&#160;3000U</td></tr>
+<tr class="memitem:a2207382a034b5a1df4627df14ff21f03" id="r_a2207382a034b5a1df4627df14ff21f03"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2207382a034b5a1df4627df14ff21f03">APP_IMU_RATE_HZ</a>&#160;&#160;&#160;11U</td></tr>
+<tr class="memitem:ac0721f5e2f87e3f1a19b869f27ce938f" id="r_ac0721f5e2f87e3f1a19b869f27ce938f"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ac0721f5e2f87e3f1a19b869f27ce938f">APP_IMU_EXPECTED_SAMPLES</a>&#160;&#160;&#160;((<a class="el" href="#a1d4ccea5c7e2d3795bbf89609e51a20a">APP_IMU_WINDOW_MS</a> * <a class="el" href="#a2207382a034b5a1df4627df14ff21f03">APP_IMU_RATE_HZ</a>) / 1000U)</td></tr>
+<tr class="memitem:a3f18dc4c5610c318a4f673becce9f2e4" id="r_a3f18dc4c5610c318a4f673becce9f2e4"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a3f18dc4c5610c318a4f673becce9f2e4">APP_IMU_SAMPLE_PERIOD_MS</a>&#160;&#160;&#160;(1000U / <a class="el" href="#a2207382a034b5a1df4627df14ff21f03">APP_IMU_RATE_HZ</a>)</td></tr>
+<tr class="memitem:a9454c33698f6a4d30dd8a499f87784de" id="r_a9454c33698f6a4d30dd8a499f87784de"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a9454c33698f6a4d30dd8a499f87784de">APP_PPG_WINDOW_SEC</a>&#160;&#160;&#160;4U</td></tr>
+<tr class="memitem:acf1e60f4c06d17b12300b69da6dd64ac" id="r_acf1e60f4c06d17b12300b69da6dd64ac"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#acf1e60f4c06d17b12300b69da6dd64ac">APP_PPG_SAMPLE_RATE_HZ</a>&#160;&#160;&#160;100U</td></tr>
+<tr class="memitem:a1545f131fbcc97f56c49cff75dae50a3" id="r_a1545f131fbcc97f56c49cff75dae50a3"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1545f131fbcc97f56c49cff75dae50a3">APP_PPG_WINDOW_SAMPLES</a>&#160;&#160;&#160;(<a class="el" href="#a9454c33698f6a4d30dd8a499f87784de">APP_PPG_WINDOW_SEC</a> * <a class="el" href="#acf1e60f4c06d17b12300b69da6dd64ac">APP_PPG_SAMPLE_RATE_HZ</a>)</td></tr>
+<tr class="memitem:a3002ae986575b706fdb2fcebad15dbe0" id="r_a3002ae986575b706fdb2fcebad15dbe0"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a3002ae986575b706fdb2fcebad15dbe0">APP_TX_PERIOD_MS</a>&#160;&#160;&#160;1000U</td></tr>
+<tr class="memitem:aba665cb61f131887a1339a1c15b4b97c" id="r_aba665cb61f131887a1339a1c15b4b97c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aba665cb61f131887a1339a1c15b4b97c">APP_BAT_ACTIVE_PERIOD_MS</a>&#160;&#160;&#160;30000U</td></tr>
+<tr class="memitem:a64e56514778b09a9744f09e80d7a14a1" id="r_a64e56514778b09a9744f09e80d7a14a1"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a64e56514778b09a9744f09e80d7a14a1">APP_BAT_IDLE_PERIOD_MS</a>&#160;&#160;&#160;120000U</td></tr>
+<tr class="memitem:a78af4129069bf7c7d509c12804410633" id="r_a78af4129069bf7c7d509c12804410633"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a78af4129069bf7c7d509c12804410633">APP_RADIO_SEND_TIMEOUT_MS</a>&#160;&#160;&#160;400U</td></tr>
+<tr class="memitem:a1589d0f9d5d583af30bf425df0c8e820" id="r_a1589d0f9d5d583af30bf425df0c8e820"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1589d0f9d5d583af30bf425df0c8e820">APP_IMU_MIN_VALID_PCT</a>&#160;&#160;&#160;80U</td></tr>
+<tr class="memitem:a299a2f6e2036bc8d861afedd4c0e71f1" id="r_a299a2f6e2036bc8d861afedd4c0e71f1"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a299a2f6e2036bc8d861afedd4c0e71f1">APP_LINK_FAIL_THRESHOLD</a>&#160;&#160;&#160;3U</td></tr>
+<tr class="memitem:ab0fe99816e727b54e462763bf9106f12" id="r_ab0fe99816e727b54e462763bf9106f12"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ab0fe99816e727b54e462763bf9106f12">APP_BAT_CRITICAL_MV</a>&#160;&#160;&#160;3300U</td></tr>
+<tr class="memitem:a7e7b28fd9f994de6c4c9d156cad535ce" id="r_a7e7b28fd9f994de6c4c9d156cad535ce"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a7e7b28fd9f994de6c4c9d156cad535ce">APP_BAT_LOW_MV</a>&#160;&#160;&#160;3400U</td></tr>
+<tr class="memitem:a601689a3a7614d66ad8d1578a83b3030" id="r_a601689a3a7614d66ad8d1578a83b3030"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a601689a3a7614d66ad8d1578a83b3030">APP_ACC_MG_PER_LSB</a>&#160;&#160;&#160;1.0f</td></tr>
+<tr class="memitem:acf00108b59f4112ea11b617b2d44617e" id="r_acf00108b59f4112ea11b617b2d44617e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#acf00108b59f4112ea11b617b2d44617e">APP_GYRO_DPS10_PER_LSB</a>&#160;&#160;&#160;1.0f</td></tr>
+<tr class="memitem:a607a56b907afebc2b9451fe8770b6d0d" id="r_a607a56b907afebc2b9451fe8770b6d0d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a607a56b907afebc2b9451fe8770b6d0d">APP_ESPNOW_CHANNEL</a>&#160;&#160;&#160;1</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumeraciones</h2></td></tr>
+<tr class="memitem:a3d1e06794cf0793da36253a9d4920769" id="r_a3d1e06794cf0793da36253a9d4920769"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a3d1e06794cf0793da36253a9d4920769">app_flags_t</a> { <br />
+&#160;&#160;<a class="el" href="#a3d1e06794cf0793da36253a9d4920769ac3dc33e8ae3127fde1af0badb8caeac1">APP_FLAG_BOOT_EVENT</a> = (1u &lt;&lt; 0)
+, <a class="el" href="#a3d1e06794cf0793da36253a9d4920769a2c54a586b73ea82407bea0cf3fd7cd9e">APP_FLAG_IMU_VALID_WINDOW</a> = (1u &lt;&lt; 1)
+, <a class="el" href="#a3d1e06794cf0793da36253a9d4920769ad5f2bb0dab167ce3fa633bef343dd063">APP_FLAG_IMU_WINDOW_COMPLETE</a> = (1u &lt;&lt; 2)
+, <a class="el" href="#a3d1e06794cf0793da36253a9d4920769a04b98617e94ceb2120858aa4e0ef03e9">APP_FLAG_IMU_SAMPLE_LOSS</a> = (1u &lt;&lt; 3)
+, <br />
+&#160;&#160;<a class="el" href="#a3d1e06794cf0793da36253a9d4920769ab60c610499077ef9869d89883f5a6cbd">APP_FLAG_GYRO_BIAS_OK</a> = (1u &lt;&lt; 4)
+, <a class="el" href="#a3d1e06794cf0793da36253a9d4920769aebc675b56f383b3d1320558cfbc7e6a3">APP_FLAG_PPG_FINGER_PRESENT</a> = (1u &lt;&lt; 5)
+, <a class="el" href="#a3d1e06794cf0793da36253a9d4920769a7d7507440c050dbb9ba0f4f98942a094">APP_FLAG_BPM_VALID</a> = (1u &lt;&lt; 6)
+, <a class="el" href="#a3d1e06794cf0793da36253a9d4920769aa0a4c57edbe04732f3c18267835b0911">APP_FLAG_SPO2_VALID</a> = (1u &lt;&lt; 7)
+, <br />
+&#160;&#160;<a class="el" href="#a3d1e06794cf0793da36253a9d4920769a960fc1aa0d6ebd06afc0a37157b0ecff">APP_FLAG_BAT_VALID</a> = (1u &lt;&lt; 8)
+, <a class="el" href="#a3d1e06794cf0793da36253a9d4920769a500ac7861f79046bf19b64395df372d4">APP_FLAG_BAT_LOW</a> = (1u &lt;&lt; 9)
+, <a class="el" href="#a3d1e06794cf0793da36253a9d4920769a937637c1f7c6c9d94fcae5cf951179d8">APP_FLAG_BAT_CRITICAL</a> = (1u &lt;&lt; 10)
+, <a class="el" href="#a3d1e06794cf0793da36253a9d4920769a8be9a6a02fd22c132cbb2789e06bae52">APP_FLAG_LINK_DEGRADED</a> = (1u &lt;&lt; 11)
+<br />
+ }</td></tr>
+<tr class="memdesc:a3d1e06794cf0793da36253a9d4920769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Banderas codificadas en el payload del Nodo 1.  <a href="#a3d1e06794cf0793da36253a9d4920769">Más...</a><br /></td></tr>
+<tr class="memitem:a5bb27460721cc90620d197fabf50d4bb" id="r_a5bb27460721cc90620d197fabf50d4bb"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a5bb27460721cc90620d197fabf50d4bb">app_state_t</a> { <br />
+&#160;&#160;<a class="el" href="#a5bb27460721cc90620d197fabf50d4bba9a3966ce5e8549e2e09c39daa493506d">APP_STATE_BOOT</a> = 0
+, <a class="el" href="#a5bb27460721cc90620d197fabf50d4bbaad0d86f27461acbcb746cad042c7a45a">APP_STATE_IDLE_LOW_POWER</a>
+, <a class="el" href="#a5bb27460721cc90620d197fabf50d4bba5ec2b4f0fb908f4bfb84293b7a65641b">APP_STATE_ACQUIRE_IMU</a>
+, <a class="el" href="#a5bb27460721cc90620d197fabf50d4bbadf8f718b7acd2880f91144e622ce046d">APP_STATE_ACQUIRE_PPG</a>
+, <br />
+&#160;&#160;<a class="el" href="#a5bb27460721cc90620d197fabf50d4bba86bc42022328d925d8951f2b01dd6771">APP_STATE_BUILD_PAYLOAD</a>
+, <a class="el" href="#a5bb27460721cc90620d197fabf50d4bba9ade99627728c92d8af05ab6ba100f0a">APP_STATE_TX_NORMAL</a>
+, <a class="el" href="#a5bb27460721cc90620d197fabf50d4bbae084808bae052af61a0ee10c1956cacf">APP_STATE_TX_ALARM</a>
+, <a class="el" href="#a5bb27460721cc90620d197fabf50d4bba7f2e3cb39735151981da7506458fa3e1">APP_STATE_RECOVERY</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a5bb27460721cc90620d197fabf50d4bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estados principales de la FSM de control del Nodo 1.  <a href="#a5bb27460721cc90620d197fabf50d4bb">Más...</a><br /></td></tr>
+<tr class="memitem:a55723d5ff6b7b0d7023fb83507a8df76" id="r_a55723d5ff6b7b0d7023fb83507a8df76"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a55723d5ff6b7b0d7023fb83507a8df76">app_msg_type_t</a> { <a class="el" href="#a55723d5ff6b7b0d7023fb83507a8df76a672f74654fdf8dd415e5b01bdbae4ed3">APP_MSG_NORMAL</a> = 1
+, <a class="el" href="#a55723d5ff6b7b0d7023fb83507a8df76a55e3c21aa607c38be1aa297b6906f45a">APP_MSG_ALARM</a> = 2
+ }</td></tr>
+<tr class="memdesc:a55723d5ff6b7b0d7023fb83507a8df76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipos de mensaje transmitidos por el Nodo 1.  <a href="#a55723d5ff6b7b0d7023fb83507a8df76">Más...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:ab898071398b359603a35c202e9c65f3b" id="r_ab898071398b359603a35c202e9c65f3b"><td class="memItemLeft">struct&#160;</td><td class="memItemRight"><a class="el" href="#ab898071398b359603a35c202e9c65f3b">__attribute__</a> ((packed))</td></tr>
+<tr class="memdesc:ab898071398b359603a35c202e9c65f3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Payload binario enviado por ESP-NOW desde el Nodo 1.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aca887690a8c6587f43639c6036ca5b40" id="r_aca887690a8c6587f43639c6036ca5b40"><td class="memItemLeft">static const uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#aca887690a8c6587f43639c6036ca5b40">APP_PEER_MAC</a> [6] = {0x24, 0x6F, 0x28, 0xAA, 0xBB, 0xCC}</td></tr>
+<tr class="memitem:a10046d9796846438b798836a5c2f0258" id="r_a10046d9796846438b798836a5c2f0258"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a10046d9796846438b798836a5c2f0258">adl_payload_t</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Configuracion central y tipos compartidos del Nodo 1. </p>
+<p>Reune pines, tiempos, umbrales, estructuras de intercambio y banderas utilizadas por los modulos de adquisicion, procesamiento y radio. </p>
+
+<p class="definition">Definición en el archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentación de «define»</h2>
+<a id="a601689a3a7614d66ad8d1578a83b3030" name="a601689a3a7614d66ad8d1578a83b3030"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a601689a3a7614d66ad8d1578a83b3030">&#9670;&#160;</a></span>APP_ACC_MG_PER_LSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_ACC_MG_PER_LSB&#160;&#160;&#160;1.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00095">95</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="aba665cb61f131887a1339a1c15b4b97c" name="aba665cb61f131887a1339a1c15b4b97c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba665cb61f131887a1339a1c15b4b97c">&#9670;&#160;</a></span>APP_BAT_ACTIVE_PERIOD_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_BAT_ACTIVE_PERIOD_MS&#160;&#160;&#160;30000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00082">82</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="ac49e12a46922894575f1a6a2c61c57cf" name="ac49e12a46922894575f1a6a2c61c57cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac49e12a46922894575f1a6a2c61c57cf">&#9670;&#160;</a></span>APP_BAT_ADC_CHANNEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_BAT_ADC_CHANNEL&#160;&#160;&#160;ADC_CHANNEL_6  /* GPIO17 */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00065">65</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a29228865e83a0eb9a0940badef69b50c" name="a29228865e83a0eb9a0940badef69b50c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29228865e83a0eb9a0940badef69b50c">&#9670;&#160;</a></span>APP_BAT_ADC_UNIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_BAT_ADC_UNIT&#160;&#160;&#160;ADC_UNIT_2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00064">64</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="ab0fe99816e727b54e462763bf9106f12" name="ab0fe99816e727b54e462763bf9106f12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0fe99816e727b54e462763bf9106f12">&#9670;&#160;</a></span>APP_BAT_CRITICAL_MV</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_BAT_CRITICAL_MV&#160;&#160;&#160;3300U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00091">91</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a143fb02c12db954d82815315f3ba5a6b" name="a143fb02c12db954d82815315f3ba5a6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a143fb02c12db954d82815315f3ba5a6b">&#9670;&#160;</a></span>APP_BAT_DIV_RATIO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_BAT_DIV_RATIO&#160;&#160;&#160;2.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00067">67</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a491f89d27f19dbb4fd2ee98100bdb356" name="a491f89d27f19dbb4fd2ee98100bdb356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a491f89d27f19dbb4fd2ee98100bdb356">&#9670;&#160;</a></span>APP_BAT_GPIO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_BAT_GPIO&#160;&#160;&#160;GPIO_NUM_17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00066">66</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a64e56514778b09a9744f09e80d7a14a1" name="a64e56514778b09a9744f09e80d7a14a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64e56514778b09a9744f09e80d7a14a1">&#9670;&#160;</a></span>APP_BAT_IDLE_PERIOD_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_BAT_IDLE_PERIOD_MS&#160;&#160;&#160;120000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00083">83</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a7e7b28fd9f994de6c4c9d156cad535ce" name="a7e7b28fd9f994de6c4c9d156cad535ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e7b28fd9f994de6c4c9d156cad535ce">&#9670;&#160;</a></span>APP_BAT_LOW_MV</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_BAT_LOW_MV&#160;&#160;&#160;3400U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00092">92</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a607a56b907afebc2b9451fe8770b6d0d" name="a607a56b907afebc2b9451fe8770b6d0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a607a56b907afebc2b9451fe8770b6d0d">&#9670;&#160;</a></span>APP_ESPNOW_CHANNEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_ESPNOW_CHANNEL&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00101">101</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="acf00108b59f4112ea11b617b2d44617e" name="acf00108b59f4112ea11b617b2d44617e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf00108b59f4112ea11b617b2d44617e">&#9670;&#160;</a></span>APP_GYRO_DPS10_PER_LSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_GYRO_DPS10_PER_LSB&#160;&#160;&#160;1.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00096">96</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="ac0721f5e2f87e3f1a19b869f27ce938f" name="ac0721f5e2f87e3f1a19b869f27ce938f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0721f5e2f87e3f1a19b869f27ce938f">&#9670;&#160;</a></span>APP_IMU_EXPECTED_SAMPLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_IMU_EXPECTED_SAMPLES&#160;&#160;&#160;((<a class="el" href="#a1d4ccea5c7e2d3795bbf89609e51a20a">APP_IMU_WINDOW_MS</a> * <a class="el" href="#a2207382a034b5a1df4627df14ff21f03">APP_IMU_RATE_HZ</a>) / 1000U)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00074">74</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a8c1115bccc06f079bf5685dcba9b2fb0" name="a8c1115bccc06f079bf5685dcba9b2fb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c1115bccc06f079bf5685dcba9b2fb0">&#9670;&#160;</a></span>APP_IMU_I2C_HZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_IMU_I2C_HZ&#160;&#160;&#160;400000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00029">29</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="ad2aec2b438a0ccc88a3344324f497348" name="ad2aec2b438a0ccc88a3344324f497348"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2aec2b438a0ccc88a3344324f497348">&#9670;&#160;</a></span>APP_IMU_I2C_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_IMU_I2C_PORT&#160;&#160;&#160;I2C_NUM_0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00026">26</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a1589d0f9d5d583af30bf425df0c8e820" name="a1589d0f9d5d583af30bf425df0c8e820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1589d0f9d5d583af30bf425df0c8e820">&#9670;&#160;</a></span>APP_IMU_MIN_VALID_PCT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_IMU_MIN_VALID_PCT&#160;&#160;&#160;80U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00089">89</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a2207382a034b5a1df4627df14ff21f03" name="a2207382a034b5a1df4627df14ff21f03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2207382a034b5a1df4627df14ff21f03">&#9670;&#160;</a></span>APP_IMU_RATE_HZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_IMU_RATE_HZ&#160;&#160;&#160;11U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00073">73</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a3f18dc4c5610c318a4f673becce9f2e4" name="a3f18dc4c5610c318a4f673becce9f2e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f18dc4c5610c318a4f673becce9f2e4">&#9670;&#160;</a></span>APP_IMU_SAMPLE_PERIOD_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_IMU_SAMPLE_PERIOD_MS&#160;&#160;&#160;(1000U / <a class="el" href="#a2207382a034b5a1df4627df14ff21f03">APP_IMU_RATE_HZ</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00075">75</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a9c6f0bce984b05b4aa675966a7b5256e" name="a9c6f0bce984b05b4aa675966a7b5256e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c6f0bce984b05b4aa675966a7b5256e">&#9670;&#160;</a></span>APP_IMU_SCL_GPIO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_IMU_SCL_GPIO&#160;&#160;&#160;GPIO_NUM_7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00028">28</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a1634600c6b82ccf52b70763ee78c9ffe" name="a1634600c6b82ccf52b70763ee78c9ffe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1634600c6b82ccf52b70763ee78c9ffe">&#9670;&#160;</a></span>APP_IMU_SDA_GPIO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_IMU_SDA_GPIO&#160;&#160;&#160;GPIO_NUM_6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00027">27</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a1d4ccea5c7e2d3795bbf89609e51a20a" name="a1d4ccea5c7e2d3795bbf89609e51a20a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4ccea5c7e2d3795bbf89609e51a20a">&#9670;&#160;</a></span>APP_IMU_WINDOW_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_IMU_WINDOW_MS&#160;&#160;&#160;3000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00072">72</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a299a2f6e2036bc8d861afedd4c0e71f1" name="a299a2f6e2036bc8d861afedd4c0e71f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a299a2f6e2036bc8d861afedd4c0e71f1">&#9670;&#160;</a></span>APP_LINK_FAIL_THRESHOLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_LINK_FAIL_THRESHOLD&#160;&#160;&#160;3U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00090">90</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="aeb0b1b131b19e0e38085a0dd4170357f" name="aeb0b1b131b19e0e38085a0dd4170357f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb0b1b131b19e0e38085a0dd4170357f">&#9670;&#160;</a></span>APP_MAX30100_ADDR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX30100_ADDR&#160;&#160;&#160;0x57</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00046">46</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="ae231166bc2624968352e3efd8877dee9" name="ae231166bc2624968352e3efd8877dee9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae231166bc2624968352e3efd8877dee9">&#9670;&#160;</a></span>APP_MAX_LED_CFG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_LED_CFG&#160;&#160;&#160;0x77</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00062">62</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a891c92e0e0e74e286baf2d8afca6f505" name="a891c92e0e0e74e286baf2d8afca6f505"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a891c92e0e0e74e286baf2d8afca6f505">&#9670;&#160;</a></span>APP_MAX_MODE_RESET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_MODE_RESET&#160;&#160;&#160;0x40</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00060">60</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a0e6fba6f1f027154221849187caf9245" name="a0e6fba6f1f027154221849187caf9245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e6fba6f1f027154221849187caf9245">&#9670;&#160;</a></span>APP_MAX_MODE_SPO2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_MODE_SPO2&#160;&#160;&#160;0x03</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00059">59</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a8d945b4d157a2b5a9226ce19917058bb" name="a8d945b4d157a2b5a9226ce19917058bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d945b4d157a2b5a9226ce19917058bb">&#9670;&#160;</a></span>APP_MAX_REG_FIFO_DATA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_FIFO_DATA&#160;&#160;&#160;0x05</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00052">52</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a4c098f964dccec472167708f6a96589b" name="a4c098f964dccec472167708f6a96589b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c098f964dccec472167708f6a96589b">&#9670;&#160;</a></span>APP_MAX_REG_FIFO_OVF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_FIFO_OVF&#160;&#160;&#160;0x03</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00050">50</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="ac8a51adcdad6c1c30ec5c55ba5504e1c" name="ac8a51adcdad6c1c30ec5c55ba5504e1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8a51adcdad6c1c30ec5c55ba5504e1c">&#9670;&#160;</a></span>APP_MAX_REG_FIFO_RD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_FIFO_RD&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00051">51</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a5ccf820bc5390e72a2c0e14b21eb832e" name="a5ccf820bc5390e72a2c0e14b21eb832e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ccf820bc5390e72a2c0e14b21eb832e">&#9670;&#160;</a></span>APP_MAX_REG_FIFO_WR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_FIFO_WR&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00049">49</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a00aa12002d9b237257d011b4112b5ec8" name="a00aa12002d9b237257d011b4112b5ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00aa12002d9b237257d011b4112b5ec8">&#9670;&#160;</a></span>APP_MAX_REG_INT_ENABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_INT_ENABLE&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00048">48</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="abd49b754a6f14ddbc8b28aca0cfbd123" name="abd49b754a6f14ddbc8b28aca0cfbd123"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd49b754a6f14ddbc8b28aca0cfbd123">&#9670;&#160;</a></span>APP_MAX_REG_INT_STATUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_INT_STATUS&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00047">47</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a723e5864526823cad82a99a3bf851461" name="a723e5864526823cad82a99a3bf851461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a723e5864526823cad82a99a3bf851461">&#9670;&#160;</a></span>APP_MAX_REG_LED_CFG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_LED_CFG&#160;&#160;&#160;0x09</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00055">55</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a6f0531e66e575f5e591567afa02015d0" name="a6f0531e66e575f5e591567afa02015d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f0531e66e575f5e591567afa02015d0">&#9670;&#160;</a></span>APP_MAX_REG_MODE_CFG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_MODE_CFG&#160;&#160;&#160;0x06</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00053">53</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="aa14d56be7f79e4355394cbe6a3046968" name="aa14d56be7f79e4355394cbe6a3046968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa14d56be7f79e4355394cbe6a3046968">&#9670;&#160;</a></span>APP_MAX_REG_PART_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_PART_ID&#160;&#160;&#160;0xFF</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00057">57</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a8e1305eb28f4081043aa017e3e284c00" name="a8e1305eb28f4081043aa017e3e284c00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e1305eb28f4081043aa017e3e284c00">&#9670;&#160;</a></span>APP_MAX_REG_REV_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_REV_ID&#160;&#160;&#160;0xFE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00056">56</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="acd75cca2a09cd451359175915299edd0" name="acd75cca2a09cd451359175915299edd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd75cca2a09cd451359175915299edd0">&#9670;&#160;</a></span>APP_MAX_REG_SPO2_CFG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_REG_SPO2_CFG&#160;&#160;&#160;0x07</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00054">54</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a182c2959153e47d137f84ddbaba2045c" name="a182c2959153e47d137f84ddbaba2045c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a182c2959153e47d137f84ddbaba2045c">&#9670;&#160;</a></span>APP_MAX_SPO2_CFG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_MAX_SPO2_CFG&#160;&#160;&#160;0x47   /* valor ya usado en tu código funcional */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00061">61</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="ab7c5a943ac49da4f6752b094441aad9a" name="ab7c5a943ac49da4f6752b094441aad9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7c5a943ac49da4f6752b094441aad9a">&#9670;&#160;</a></span>APP_PPG_I2C_HZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_PPG_I2C_HZ&#160;&#160;&#160;100000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00044">44</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a77b8c32430383776e3e8eb61561d89e7" name="a77b8c32430383776e3e8eb61561d89e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77b8c32430383776e3e8eb61561d89e7">&#9670;&#160;</a></span>APP_PPG_I2C_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_PPG_I2C_PORT&#160;&#160;&#160;I2C_NUM_1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00040">40</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a25c354943106c9efbde58c8ede0e8196" name="a25c354943106c9efbde58c8ede0e8196"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25c354943106c9efbde58c8ede0e8196">&#9670;&#160;</a></span>APP_PPG_INT_GPIO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_PPG_INT_GPIO&#160;&#160;&#160;GPIO_NUM_15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00043">43</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="acf1e60f4c06d17b12300b69da6dd64ac" name="acf1e60f4c06d17b12300b69da6dd64ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf1e60f4c06d17b12300b69da6dd64ac">&#9670;&#160;</a></span>APP_PPG_SAMPLE_RATE_HZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_PPG_SAMPLE_RATE_HZ&#160;&#160;&#160;100U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00078">78</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a744aac76fca5341658932b092dcb3ea2" name="a744aac76fca5341658932b092dcb3ea2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a744aac76fca5341658932b092dcb3ea2">&#9670;&#160;</a></span>APP_PPG_SCL_GPIO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_PPG_SCL_GPIO&#160;&#160;&#160;GPIO_NUM_18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00042">42</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a4efd1f6349c5700ccdda523af3408dd0" name="a4efd1f6349c5700ccdda523af3408dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4efd1f6349c5700ccdda523af3408dd0">&#9670;&#160;</a></span>APP_PPG_SDA_GPIO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_PPG_SDA_GPIO&#160;&#160;&#160;GPIO_NUM_16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00041">41</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a1545f131fbcc97f56c49cff75dae50a3" name="a1545f131fbcc97f56c49cff75dae50a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1545f131fbcc97f56c49cff75dae50a3">&#9670;&#160;</a></span>APP_PPG_WINDOW_SAMPLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_PPG_WINDOW_SAMPLES&#160;&#160;&#160;(<a class="el" href="#a9454c33698f6a4d30dd8a499f87784de">APP_PPG_WINDOW_SEC</a> * <a class="el" href="#acf1e60f4c06d17b12300b69da6dd64ac">APP_PPG_SAMPLE_RATE_HZ</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00079">79</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a9454c33698f6a4d30dd8a499f87784de" name="a9454c33698f6a4d30dd8a499f87784de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9454c33698f6a4d30dd8a499f87784de">&#9670;&#160;</a></span>APP_PPG_WINDOW_SEC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_PPG_WINDOW_SEC&#160;&#160;&#160;4U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00077">77</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a8fdf6e0b37497d8b0d882886ddafde8c" name="a8fdf6e0b37497d8b0d882886ddafde8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fdf6e0b37497d8b0d882886ddafde8c">&#9670;&#160;</a></span>APP_QMI8658_ADDR1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_QMI8658_ADDR1&#160;&#160;&#160;0x6A</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00031">31</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a790b6fca774cbe07eeedb66ac965b756" name="a790b6fca774cbe07eeedb66ac965b756"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a790b6fca774cbe07eeedb66ac965b756">&#9670;&#160;</a></span>APP_QMI8658_ADDR2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_QMI8658_ADDR2&#160;&#160;&#160;0x6B</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00032">32</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="aa4fc45ba534cf3730140fb5014f53d4d" name="aa4fc45ba534cf3730140fb5014f53d4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4fc45ba534cf3730140fb5014f53d4d">&#9670;&#160;</a></span>APP_QMI_REG_AX_L</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_QMI_REG_AX_L&#160;&#160;&#160;0x35</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00038">38</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a864208d252e8810c90253a2c5a7e7091" name="a864208d252e8810c90253a2c5a7e7091"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a864208d252e8810c90253a2c5a7e7091">&#9670;&#160;</a></span>APP_QMI_REG_CTRL1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_QMI_REG_CTRL1&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00034">34</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="acb95e0a9dfdd7a8776b20f977aa8d223" name="acb95e0a9dfdd7a8776b20f977aa8d223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb95e0a9dfdd7a8776b20f977aa8d223">&#9670;&#160;</a></span>APP_QMI_REG_CTRL2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_QMI_REG_CTRL2&#160;&#160;&#160;0x03</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00035">35</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="ae573c4e5d07e07ad9ba63892b40bae1a" name="ae573c4e5d07e07ad9ba63892b40bae1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae573c4e5d07e07ad9ba63892b40bae1a">&#9670;&#160;</a></span>APP_QMI_REG_CTRL3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_QMI_REG_CTRL3&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00036">36</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="aca192280d934ab0d817e02a7e4b1332c" name="aca192280d934ab0d817e02a7e4b1332c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca192280d934ab0d817e02a7e4b1332c">&#9670;&#160;</a></span>APP_QMI_REG_CTRL7</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_QMI_REG_CTRL7&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00037">37</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a351702528fb8428d215404b5786fe8d5" name="a351702528fb8428d215404b5786fe8d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a351702528fb8428d215404b5786fe8d5">&#9670;&#160;</a></span>APP_QMI_REG_WHOAMI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_QMI_REG_WHOAMI&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00033">33</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a78af4129069bf7c7d509c12804410633" name="a78af4129069bf7c7d509c12804410633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78af4129069bf7c7d509c12804410633">&#9670;&#160;</a></span>APP_RADIO_SEND_TIMEOUT_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_RADIO_SEND_TIMEOUT_MS&#160;&#160;&#160;400U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00084">84</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="acffb27537ffa4419754e12f2a5110d67" name="acffb27537ffa4419754e12f2a5110d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acffb27537ffa4419754e12f2a5110d67">&#9670;&#160;</a></span>APP_TAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_TAG&#160;&#160;&#160;&quot;NODO1_ADL&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00021">21</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a3002ae986575b706fdb2fcebad15dbe0" name="a3002ae986575b706fdb2fcebad15dbe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3002ae986575b706fdb2fcebad15dbe0">&#9670;&#160;</a></span>APP_TX_PERIOD_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_TX_PERIOD_MS&#160;&#160;&#160;1000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00081">81</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentación de enumeraciones</h2>
+<a id="a3d1e06794cf0793da36253a9d4920769" name="a3d1e06794cf0793da36253a9d4920769"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d1e06794cf0793da36253a9d4920769">&#9670;&#160;</a></span>app_flags_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a3d1e06794cf0793da36253a9d4920769">app_flags_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Banderas codificadas en el payload del Nodo 1. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valores de enumeraciones</th></tr><tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769ac3dc33e8ae3127fde1af0badb8caeac1" name="a3d1e06794cf0793da36253a9d4920769ac3dc33e8ae3127fde1af0badb8caeac1"></a>APP_FLAG_BOOT_EVENT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769a2c54a586b73ea82407bea0cf3fd7cd9e" name="a3d1e06794cf0793da36253a9d4920769a2c54a586b73ea82407bea0cf3fd7cd9e"></a>APP_FLAG_IMU_VALID_WINDOW&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769ad5f2bb0dab167ce3fa633bef343dd063" name="a3d1e06794cf0793da36253a9d4920769ad5f2bb0dab167ce3fa633bef343dd063"></a>APP_FLAG_IMU_WINDOW_COMPLETE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769a04b98617e94ceb2120858aa4e0ef03e9" name="a3d1e06794cf0793da36253a9d4920769a04b98617e94ceb2120858aa4e0ef03e9"></a>APP_FLAG_IMU_SAMPLE_LOSS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769ab60c610499077ef9869d89883f5a6cbd" name="a3d1e06794cf0793da36253a9d4920769ab60c610499077ef9869d89883f5a6cbd"></a>APP_FLAG_GYRO_BIAS_OK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769aebc675b56f383b3d1320558cfbc7e6a3" name="a3d1e06794cf0793da36253a9d4920769aebc675b56f383b3d1320558cfbc7e6a3"></a>APP_FLAG_PPG_FINGER_PRESENT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769a7d7507440c050dbb9ba0f4f98942a094" name="a3d1e06794cf0793da36253a9d4920769a7d7507440c050dbb9ba0f4f98942a094"></a>APP_FLAG_BPM_VALID&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769aa0a4c57edbe04732f3c18267835b0911" name="a3d1e06794cf0793da36253a9d4920769aa0a4c57edbe04732f3c18267835b0911"></a>APP_FLAG_SPO2_VALID&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769a960fc1aa0d6ebd06afc0a37157b0ecff" name="a3d1e06794cf0793da36253a9d4920769a960fc1aa0d6ebd06afc0a37157b0ecff"></a>APP_FLAG_BAT_VALID&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769a500ac7861f79046bf19b64395df372d4" name="a3d1e06794cf0793da36253a9d4920769a500ac7861f79046bf19b64395df372d4"></a>APP_FLAG_BAT_LOW&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769a937637c1f7c6c9d94fcae5cf951179d8" name="a3d1e06794cf0793da36253a9d4920769a937637c1f7c6c9d94fcae5cf951179d8"></a>APP_FLAG_BAT_CRITICAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d1e06794cf0793da36253a9d4920769a8be9a6a02fd22c132cbb2789e06bae52" name="a3d1e06794cf0793da36253a9d4920769a8be9a6a02fd22c132cbb2789e06bae52"></a>APP_FLAG_LINK_DEGRADED&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00110">110</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a55723d5ff6b7b0d7023fb83507a8df76" name="a55723d5ff6b7b0d7023fb83507a8df76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55723d5ff6b7b0d7023fb83507a8df76">&#9670;&#160;</a></span>app_msg_type_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a55723d5ff6b7b0d7023fb83507a8df76">app_msg_type_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tipos de mensaje transmitidos por el Nodo 1. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valores de enumeraciones</th></tr><tr><td class="fieldname"><a id="a55723d5ff6b7b0d7023fb83507a8df76a672f74654fdf8dd415e5b01bdbae4ed3" name="a55723d5ff6b7b0d7023fb83507a8df76a672f74654fdf8dd415e5b01bdbae4ed3"></a>APP_MSG_NORMAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a55723d5ff6b7b0d7023fb83507a8df76a55e3c21aa607c38be1aa297b6906f45a" name="a55723d5ff6b7b0d7023fb83507a8df76a55e3c21aa607c38be1aa297b6906f45a"></a>APP_MSG_ALARM&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00202">202</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a5bb27460721cc90620d197fabf50d4bb" name="a5bb27460721cc90620d197fabf50d4bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bb27460721cc90620d197fabf50d4bb">&#9670;&#160;</a></span>app_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a5bb27460721cc90620d197fabf50d4bb">app_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Estados principales de la FSM de control del Nodo 1. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valores de enumeraciones</th></tr><tr><td class="fieldname"><a id="a5bb27460721cc90620d197fabf50d4bba9a3966ce5e8549e2e09c39daa493506d" name="a5bb27460721cc90620d197fabf50d4bba9a3966ce5e8549e2e09c39daa493506d"></a>APP_STATE_BOOT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5bb27460721cc90620d197fabf50d4bbaad0d86f27461acbcb746cad042c7a45a" name="a5bb27460721cc90620d197fabf50d4bbaad0d86f27461acbcb746cad042c7a45a"></a>APP_STATE_IDLE_LOW_POWER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5bb27460721cc90620d197fabf50d4bba5ec2b4f0fb908f4bfb84293b7a65641b" name="a5bb27460721cc90620d197fabf50d4bba5ec2b4f0fb908f4bfb84293b7a65641b"></a>APP_STATE_ACQUIRE_IMU&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5bb27460721cc90620d197fabf50d4bbadf8f718b7acd2880f91144e622ce046d" name="a5bb27460721cc90620d197fabf50d4bbadf8f718b7acd2880f91144e622ce046d"></a>APP_STATE_ACQUIRE_PPG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5bb27460721cc90620d197fabf50d4bba86bc42022328d925d8951f2b01dd6771" name="a5bb27460721cc90620d197fabf50d4bba86bc42022328d925d8951f2b01dd6771"></a>APP_STATE_BUILD_PAYLOAD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5bb27460721cc90620d197fabf50d4bba9ade99627728c92d8af05ab6ba100f0a" name="a5bb27460721cc90620d197fabf50d4bba9ade99627728c92d8af05ab6ba100f0a"></a>APP_STATE_TX_NORMAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5bb27460721cc90620d197fabf50d4bbae084808bae052af61a0ee10c1956cacf" name="a5bb27460721cc90620d197fabf50d4bbae084808bae052af61a0ee10c1956cacf"></a>APP_STATE_TX_ALARM&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5bb27460721cc90620d197fabf50d4bba7f2e3cb39735151981da7506458fa3e1" name="a5bb27460721cc90620d197fabf50d4bba7f2e3cb39735151981da7506458fa3e1"></a>APP_STATE_RECOVERY&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00131">131</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="ab898071398b359603a35c202e9c65f3b" name="ab898071398b359603a35c202e9c65f3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab898071398b359603a35c202e9c65f3b">&#9670;&#160;</a></span>__attribute__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct __attribute__ </td>
+          <td>(</td>
+          <td class="paramtype">(packed)</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Payload binario enviado por ESP-NOW desde el Nodo 1. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00102">102</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentación de variables</h2>
+<a id="a10046d9796846438b798836a5c2f0258" name="a10046d9796846438b798836a5c2f0258"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10046d9796846438b798836a5c2f0258">&#9670;&#160;</a></span>adl_payload_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">adl_payload_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00237">237</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="aca887690a8c6587f43639c6036ca5b40" name="aca887690a8c6587f43639c6036ca5b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca887690a8c6587f43639c6036ca5b40">&#9670;&#160;</a></span>APP_PEER_MAC</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t APP_PEER_MAC[6] = {0x24, 0x6F, 0x28, 0xAA, 0xBB, 0xCC}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="config_8h_source.html#l00102">102</a> del archivo <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="config_8h.html">config.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

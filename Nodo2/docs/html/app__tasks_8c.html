@@ -1,0 +1,975 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo2: Referencia del archivo main/app_tasks.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo2
+   </div>
+   <div id="projectbrief">Nodo 2: pierna/tobillo, MPU6050, SD y receptor ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('app__tasks_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo app_tasks.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Orquestacion principal del Nodo 2.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="app__tasks_8h_source.html">app_tasks.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="app__config_8h_source.html">app_config.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="app__types_8h_source.html">app_types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hal__battery_8h_source.html">hal_battery.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hal__mpu6050_8h_source.html">hal_mpu6050.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hal__radio_8h_source.html">hal_radio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hal__sdcard_8h_source.html">hal_sdcard.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="imu__features_8h_source.html">imu_features.h</a>&quot;</code><br />
+<code>#include &quot;esp_check.h&quot;</code><br />
+<code>#include &quot;esp_log.h&quot;</code><br />
+<code>#include &quot;esp_pm.h&quot;</code><br />
+<code>#include &quot;esp_random.h&quot;</code><br />
+<code>#include &quot;esp_timer.h&quot;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/queue.h&quot;</code><br />
+<code>#include &quot;freertos/semphr.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependencias incluidas en app_tasks.c:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
+</div>
+<p><a href="app__tasks_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:aa0bb7e27bd1f75e886a58e931c83e171" id="r_aa0bb7e27bd1f75e886a58e931c83e171"><td class="memItemLeft">static uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#aa0bb7e27bd1f75e886a58e931c83e171">app_now_ms</a> (void)</td></tr>
+<tr class="memdesc:aa0bb7e27bd1f75e886a58e931c83e171"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el tiempo absoluto del sistema en milisegundos.  <br /></td></tr>
+<tr class="memitem:a637c14192da5ee544bcb1f731da1aa34" id="r_a637c14192da5ee544bcb1f731da1aa34"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a637c14192da5ee544bcb1f731da1aa34">power_management_init</a> (void)</td></tr>
+<tr class="memdesc:a637c14192da5ee544bcb1f731da1aa34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aplica la politica de gestion de potencia del Nodo 2.  <br /></td></tr>
+<tr class="memitem:a8e94dcab8c3f90d166a344fc903fba00" id="r_a8e94dcab8c3f90d166a344fc903fba00"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a8e94dcab8c3f90d166a344fc903fba00">is_n1_matchable</a> (uint32_t expected_rx_ms, <a class="el" href="structradio__rx__event__t.html">radio_rx_event_t</a> *out, uint32_t *delta_ms)</td></tr>
+<tr class="memdesc:a8e94dcab8c3f90d166a344fc903fba00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica si el ultimo paquete recibido de Nodo 1 puede emparejarse.  <br /></td></tr>
+<tr class="memitem:ac599a14a8501361de6850856483d5227" id="r_ac599a14a8501361de6850856483d5227"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac599a14a8501361de6850856483d5227">task_radio</a> (void *arg)</td></tr>
+<tr class="memdesc:ac599a14a8501361de6850856483d5227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tarea receptora de eventos de radio ya desacoplados del callback Wi-Fi.  <br /></td></tr>
+<tr class="memitem:ac2321b3fc83e079e31f177db5916dd58" id="r_ac2321b3fc83e079e31f177db5916dd58"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ac2321b3fc83e079e31f177db5916dd58">task_imu</a> (void *arg)</td></tr>
+<tr class="memdesc:ac2321b3fc83e079e31f177db5916dd58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tarea del MPU6050 encargada de calibrar y capturar ventanas locales.  <br /></td></tr>
+<tr class="memitem:affe19d1b5bae580033378e6bdd85b43b" id="r_affe19d1b5bae580033378e6bdd85b43b"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#affe19d1b5bae580033378e6bdd85b43b">task_sd</a> (void *arg)</td></tr>
+<tr class="memdesc:affe19d1b5bae580033378e6bdd85b43b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tarea de almacenamiento en SD con escritura por lotes.  <br /></td></tr>
+<tr class="memitem:adf1537505e708f1d1aceec37113e7503" id="r_adf1537505e708f1d1aceec37113e7503"><td class="memItemLeft">static esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#adf1537505e708f1d1aceec37113e7503">initial_sync_wait</a> (<a class="el" href="structradio__rx__event__t.html">radio_rx_event_t</a> *first)</td></tr>
+<tr class="memdesc:adf1537505e708f1d1aceec37113e7503"><td class="mdescLeft">&#160;</td><td class="mdescRight">Espera el primer paquete util del Nodo 1 para alinear el reloj local.  <br /></td></tr>
+<tr class="memitem:af410f49b6eeead6b493a534398b70699" id="r_af410f49b6eeead6b493a534398b70699"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#af410f49b6eeead6b493a534398b70699">task_control_fsm</a> (void *arg)</td></tr>
+<tr class="memdesc:af410f49b6eeead6b493a534398b70699"><td class="mdescLeft">&#160;</td><td class="mdescRight">FSM principal del Nodo 2.  <br /></td></tr>
+<tr class="memitem:adaf2d0d735993165acedd8f410d879d0" id="r_adaf2d0d735993165acedd8f410d879d0"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#adaf2d0d735993165acedd8f410d879d0">app_tasks_start</a> (void)</td></tr>
+<tr class="memdesc:adaf2d0d735993165acedd8f410d879d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa colas, tareas y hardware de Nodo 2.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5a85b9c772bbeb480b209a3e6ea92b4c" id="r_a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = &quot;APP_TASKS&quot;</td></tr>
+<tr class="memitem:acf1beff12ae317b896cf4e423904bdbc" id="r_acf1beff12ae317b896cf4e423904bdbc"><td class="memItemLeft">static TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#acf1beff12ae317b896cf4e423904bdbc">s_task_ctrl</a> = NULL</td></tr>
+<tr class="memitem:a85cf7fbc8412f08b094c75e179c207d4" id="r_a85cf7fbc8412f08b094c75e179c207d4"><td class="memItemLeft">static TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#a85cf7fbc8412f08b094c75e179c207d4">s_task_imu</a> = NULL</td></tr>
+<tr class="memitem:a3faccda6b7a4a41ead942f0fbba74d90" id="r_a3faccda6b7a4a41ead942f0fbba74d90"><td class="memItemLeft">static TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#a3faccda6b7a4a41ead942f0fbba74d90">s_task_radio</a> = NULL</td></tr>
+<tr class="memitem:aebdacacb5c5f45c44b7b6d8f3fb2d4e5" id="r_aebdacacb5c5f45c44b7b6d8f3fb2d4e5"><td class="memItemLeft">static TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#aebdacacb5c5f45c44b7b6d8f3fb2d4e5">s_task_sd</a> = NULL</td></tr>
+<tr class="memitem:a8acc69edc095543b8dd4357067f2afa9" id="r_a8acc69edc095543b8dd4357067f2afa9"><td class="memItemLeft">static QueueHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#a8acc69edc095543b8dd4357067f2afa9">s_radio_rx_queue</a> = NULL</td></tr>
+<tr class="memitem:ac757e5faec3fa30baa464d6ff4127903" id="r_ac757e5faec3fa30baa464d6ff4127903"><td class="memItemLeft">static QueueHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#ac757e5faec3fa30baa464d6ff4127903">s_imu_result_queue</a> = NULL</td></tr>
+<tr class="memitem:a030a055c04b223d2a94820d19ea93083" id="r_a030a055c04b223d2a94820d19ea93083"><td class="memItemLeft">static QueueHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#a030a055c04b223d2a94820d19ea93083">s_sd_queue</a> = NULL</td></tr>
+<tr class="memitem:a2d079ed50691f8b774f665aea354b397" id="r_a2d079ed50691f8b774f665aea354b397"><td class="memItemLeft">static SemaphoreHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#a2d079ed50691f8b774f665aea354b397">s_n1_mutex</a> = NULL</td></tr>
+<tr class="memitem:a0997e34a0408aa54e9a4cb1576cf58cb" id="r_a0997e34a0408aa54e9a4cb1576cf58cb"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a0997e34a0408aa54e9a4cb1576cf58cb">s_boot_id</a> = 0</td></tr>
+<tr class="memitem:a15d89be9ec6237221390b927759befdf" id="r_a15d89be9ec6237221390b927759befdf"><td class="memItemLeft">static uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a15d89be9ec6237221390b927759befdf">s_session_id</a> = 0</td></tr>
+<tr class="memitem:aca7814b28481cbdd85abeadf981d97de" id="r_aca7814b28481cbdd85abeadf981d97de"><td class="memItemLeft">static uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#aca7814b28481cbdd85abeadf981d97de">s_t0_ms</a> = 0</td></tr>
+<tr class="memitem:a550a68a1e21e55d05ea55684174f585f" id="r_a550a68a1e21e55d05ea55684174f585f"><td class="memItemLeft">static <a class="el" href="structmpu6050__calibration__t.html">mpu6050_calibration_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a550a68a1e21e55d05ea55684174f585f">s_cal</a> = {0}</td></tr>
+<tr class="memitem:ae02537588d120985b84e74d00d8079bf" id="r_ae02537588d120985b84e74d00d8079bf"><td class="memItemLeft">static <a class="el" href="structradio__rx__event__t.html">radio_rx_event_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#ae02537588d120985b84e74d00d8079bf">s_last_n1</a> = {0}</td></tr>
+<tr class="memitem:a4861cce5cb1b6bef89c144f9abbe10cb" id="r_a4861cce5cb1b6bef89c144f9abbe10cb"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a4861cce5cb1b6bef89c144f9abbe10cb">s_last_n1_valid</a> = false</td></tr>
+<tr class="memitem:a5bfe40e7b12137746def0886f23d935c" id="r_a5bfe40e7b12137746def0886f23d935c"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a5bfe40e7b12137746def0886f23d935c">s_last_consumed_seq</a> = 0</td></tr>
+<tr class="memitem:a110e0efe8dbd8ce0e55f5c3170d7589c" id="r_a110e0efe8dbd8ce0e55f5c3170d7589c"><td class="memItemLeft">static <a class="el" href="structbattery__status__t.html">battery_status_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a110e0efe8dbd8ce0e55f5c3170d7589c">s_bat</a> = {0}</td></tr>
+<tr class="memitem:a51f538f01fc313da61ea67914f6caf85" id="r_a51f538f01fc313da61ea67914f6caf85"><td class="memItemLeft">static uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a51f538f01fc313da61ea67914f6caf85">s_last_bat_ms</a> = 0</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Orquestacion principal del Nodo 2. </p>
+<p>Este modulo crea las tareas FreeRTOS, coordina la calibracion del MPU6050, sincroniza la recepcion del Nodo 1 y genera los registros fusionados para SD. </p>
+
+<p class="definition">Definición en el archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="aa0bb7e27bd1f75e886a58e931c83e171" name="aa0bb7e27bd1f75e886a58e931c83e171"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0bb7e27bd1f75e886a58e931c83e171">&#9670;&#160;</a></span>app_now_ms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t app_now_ms </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtiene el tiempo absoluto del sistema en milisegundos. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Tiempo actual derivado del temporizador de alta resolucion. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00057">57</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 --></div>
+</div>
+
+</div>
+</div>
+<a id="adaf2d0d735993165acedd8f410d879d0" name="adaf2d0d735993165acedd8f410d879d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaf2d0d735993165acedd8f410d879d0">&#9670;&#160;</a></span>app_tasks_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t app_tasks_start </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa colas, tareas y hardware de Nodo 2. </p>
+<p>Inicializa el hardware y lanza las tareas del Nodo 2.</p>
+<dl class="section return"><dt>Devuelve</dt><dd>ESP_OK si todo el subsistema queda operativo. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00323">323</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 2 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 3 --></div>
+</div>
+
+</div>
+</div>
+<a id="adf1537505e708f1d1aceec37113e7503" name="adf1537505e708f1d1aceec37113e7503"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf1537505e708f1d1aceec37113e7503">&#9670;&#160;</a></span>initial_sync_wait()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t initial_sync_wait </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structradio__rx__event__t.html">radio_rx_event_t</a> *</td>          <td class="paramname"><span class="paramname"><em>first</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Espera el primer paquete util del Nodo 1 para alinear el reloj local. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">first</td><td>Primer evento valido recibido desde radio. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00205">205</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 4 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 5 --></div>
+</div>
+
+</div>
+</div>
+<a id="a8e94dcab8c3f90d166a344fc903fba00" name="a8e94dcab8c3f90d166a344fc903fba00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e94dcab8c3f90d166a344fc903fba00">&#9670;&#160;</a></span>is_n1_matchable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool is_n1_matchable </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>expected_rx_ms</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structradio__rx__event__t.html">radio_rx_event_t</a> *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *</td>          <td class="paramname"><span class="paramname"><em>delta_ms</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verifica si el ultimo paquete recibido de Nodo 1 puede emparejarse. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">expected_rx_ms</td><td>Instante local esperado para el siguiente paquete. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Copia del evento coincidente, si existe. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">delta_ms</td><td>Diferencia absoluta entre tiempo esperado y tiempo real. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si el paquete cae dentro de la ventana de emparejamiento. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00091">91</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 6 --></div>
+</div>
+
+</div>
+</div>
+<a id="a637c14192da5ee544bcb1f731da1aa34" name="a637c14192da5ee544bcb1f731da1aa34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a637c14192da5ee544bcb1f731da1aa34">&#9670;&#160;</a></span>power_management_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void power_management_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aplica la politica de gestion de potencia del Nodo 2. </p>
+<p>Si el proyecto fue compilado con soporte PM, habilita DFS y light-sleep automatico segun las opciones configuradas en menuconfig. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00068">68</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 7 --></div>
+</div>
+
+</div>
+</div>
+<a id="af410f49b6eeead6b493a534398b70699" name="af410f49b6eeead6b493a534398b70699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af410f49b6eeead6b493a534398b70699">&#9670;&#160;</a></span>task_control_fsm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void task_control_fsm </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>FSM principal del Nodo 2. </p>
+<p>Controla el arranque del sistema, la calibracion inicial, la sincronizacion con Nodo 1, la captura local y el envio de registros a la tarea SD. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00227">227</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 8 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 9 --></div>
+</div>
+
+</div>
+</div>
+<a id="ac2321b3fc83e079e31f177db5916dd58" name="ac2321b3fc83e079e31f177db5916dd58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2321b3fc83e079e31f177db5916dd58">&#9670;&#160;</a></span>task_imu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void task_imu </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tarea del MPU6050 encargada de calibrar y capturar ventanas locales. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00132">132</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 10 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 11 --></div>
+</div>
+
+</div>
+</div>
+<a id="ac599a14a8501361de6850856483d5227" name="ac599a14a8501361de6850856483d5227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac599a14a8501361de6850856483d5227">&#9670;&#160;</a></span>task_radio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void task_radio </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tarea receptora de eventos de radio ya desacoplados del callback Wi-Fi. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00112">112</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 12 --></div>
+</div>
+
+</div>
+</div>
+<a id="affe19d1b5bae580033378e6bdd85b43b" name="affe19d1b5bae580033378e6bdd85b43b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affe19d1b5bae580033378e6bdd85b43b">&#9670;&#160;</a></span>task_sd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void task_sd </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tarea de almacenamiento en SD con escritura por lotes. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00171">171</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 13 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 14 --></div>
+</div>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentación de variables</h2>
+<a id="a110e0efe8dbd8ce0e55f5c3170d7589c" name="a110e0efe8dbd8ce0e55f5c3170d7589c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a110e0efe8dbd8ce0e55f5c3170d7589c">&#9670;&#160;</a></span>s_bat</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structbattery__status__t.html">battery_status_t</a> s_bat = {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00050">50</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a0997e34a0408aa54e9a4cb1576cf58cb" name="a0997e34a0408aa54e9a4cb1576cf58cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0997e34a0408aa54e9a4cb1576cf58cb">&#9670;&#160;</a></span>s_boot_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t s_boot_id = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00041">41</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a550a68a1e21e55d05ea55684174f585f" name="a550a68a1e21e55d05ea55684174f585f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a550a68a1e21e55d05ea55684174f585f">&#9670;&#160;</a></span>s_cal</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmpu6050__calibration__t.html">mpu6050_calibration_t</a> s_cal = {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00044">44</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="ac757e5faec3fa30baa464d6ff4127903" name="ac757e5faec3fa30baa464d6ff4127903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac757e5faec3fa30baa464d6ff4127903">&#9670;&#160;</a></span>s_imu_result_queue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QueueHandle_t s_imu_result_queue = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00037">37</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a51f538f01fc313da61ea67914f6caf85" name="a51f538f01fc313da61ea67914f6caf85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51f538f01fc313da61ea67914f6caf85">&#9670;&#160;</a></span>s_last_bat_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t s_last_bat_ms = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00051">51</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a5bfe40e7b12137746def0886f23d935c" name="a5bfe40e7b12137746def0886f23d935c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bfe40e7b12137746def0886f23d935c">&#9670;&#160;</a></span>s_last_consumed_seq</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t s_last_consumed_seq = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00048">48</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="ae02537588d120985b84e74d00d8079bf" name="ae02537588d120985b84e74d00d8079bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae02537588d120985b84e74d00d8079bf">&#9670;&#160;</a></span>s_last_n1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structradio__rx__event__t.html">radio_rx_event_t</a> s_last_n1 = {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00046">46</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a4861cce5cb1b6bef89c144f9abbe10cb" name="a4861cce5cb1b6bef89c144f9abbe10cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4861cce5cb1b6bef89c144f9abbe10cb">&#9670;&#160;</a></span>s_last_n1_valid</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool s_last_n1_valid = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00047">47</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a2d079ed50691f8b774f665aea354b397" name="a2d079ed50691f8b774f665aea354b397"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d079ed50691f8b774f665aea354b397">&#9670;&#160;</a></span>s_n1_mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SemaphoreHandle_t s_n1_mutex = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00039">39</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a8acc69edc095543b8dd4357067f2afa9" name="a8acc69edc095543b8dd4357067f2afa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8acc69edc095543b8dd4357067f2afa9">&#9670;&#160;</a></span>s_radio_rx_queue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QueueHandle_t s_radio_rx_queue = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00036">36</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a030a055c04b223d2a94820d19ea93083" name="a030a055c04b223d2a94820d19ea93083"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a030a055c04b223d2a94820d19ea93083">&#9670;&#160;</a></span>s_sd_queue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QueueHandle_t s_sd_queue = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00038">38</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a15d89be9ec6237221390b927759befdf" name="a15d89be9ec6237221390b927759befdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15d89be9ec6237221390b927759befdf">&#9670;&#160;</a></span>s_session_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t s_session_id = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00042">42</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="aca7814b28481cbdd85abeadf981d97de" name="aca7814b28481cbdd85abeadf981d97de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca7814b28481cbdd85abeadf981d97de">&#9670;&#160;</a></span>s_t0_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t s_t0_ms = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00043">43</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="acf1beff12ae317b896cf4e423904bdbc" name="acf1beff12ae317b896cf4e423904bdbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf1beff12ae317b896cf4e423904bdbc">&#9670;&#160;</a></span>s_task_ctrl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t s_task_ctrl = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00031">31</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a85cf7fbc8412f08b094c75e179c207d4" name="a85cf7fbc8412f08b094c75e179c207d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85cf7fbc8412f08b094c75e179c207d4">&#9670;&#160;</a></span>s_task_imu</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t s_task_imu = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00032">32</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a3faccda6b7a4a41ead942f0fbba74d90" name="a3faccda6b7a4a41ead942f0fbba74d90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3faccda6b7a4a41ead942f0fbba74d90">&#9670;&#160;</a></span>s_task_radio</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t s_task_radio = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00033">33</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="aebdacacb5c5f45c44b7b6d8f3fb2d4e5" name="aebdacacb5c5f45c44b7b6d8f3fb2d4e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebdacacb5c5f45c44b7b6d8f3fb2d4e5">&#9670;&#160;</a></span>s_task_sd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t s_task_sd = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00034">34</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+<a id="a5a85b9c772bbeb480b209a3e6ea92b4c" name="a5a85b9c772bbeb480b209a3e6ea92b4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a85b9c772bbeb480b209a3e6ea92b4c">&#9670;&#160;</a></span>TAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* TAG = &quot;APP_TASKS&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="app__tasks_8c_source.html#l00029">29</a> del archivo <a class="el" href="app__tasks_8c_source.html">app_tasks.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="app__tasks_8c.html">app_tasks.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

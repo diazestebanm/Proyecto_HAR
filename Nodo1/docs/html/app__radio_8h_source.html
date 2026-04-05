@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo1: Archivo de código fuente app_radio.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo1
+   </div>
+   <div id="projectbrief">Nodo 1: muñeca, QMI8658, PPG y ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('app__radio_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">app_radio.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="app__radio_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="config_8h.html">config.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>esp_err_t <a class="code hl_function" href="app__radio_8h.html#adda9479017d20caef45648f89c9bec0f">app_radio_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>esp_err_t <a class="code hl_function" href="app__radio_8h.html#ae04befa1570e4e1c21d908f402c80127">app_radio_send_blocking</a>(<span class="keyword">const</span> <a class="code hl_variable" href="config_8h.html#a10046d9796846438b798836a5c2f0258">adl_payload_t</a> *payload, <span class="keywordtype">bool</span> critical);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">bool</span>      <a class="code hl_function" href="app__radio_8h.html#a3680ee511bef98d677712359be85e97d">app_radio_link_degraded</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>uint8_t   <a class="code hl_function" href="app__radio_8h.html#a1f765f04ea1b1cad63793a4448d28ad5">app_radio_consecutive_failures</a>(<span class="keywordtype">void</span>);</div>
+<div class="ttc" id="aapp__radio_8h_html_a1f765f04ea1b1cad63793a4448d28ad5"><div class="ttname"><a href="app__radio_8h.html#a1f765f04ea1b1cad63793a4448d28ad5">app_radio_consecutive_failures</a></div><div class="ttdeci">uint8_t app_radio_consecutive_failures(void)</div><div class="ttdoc">Obtiene el contador de fallos consecutivos de radio.</div><div class="ttdef"><b>Definition</b> <a href="app__radio_8c_source.html#l00120">app_radio.c:120</a></div></div>
+<div class="ttc" id="aapp__radio_8h_html_a3680ee511bef98d677712359be85e97d"><div class="ttname"><a href="app__radio_8h.html#a3680ee511bef98d677712359be85e97d">app_radio_link_degraded</a></div><div class="ttdeci">bool app_radio_link_degraded(void)</div><div class="ttdoc">Consulta si el enlace esta degradado.</div><div class="ttdef"><b>Definition</b> <a href="app__radio_8c_source.html#l00111">app_radio.c:111</a></div></div>
+<div class="ttc" id="aapp__radio_8h_html_adda9479017d20caef45648f89c9bec0f"><div class="ttname"><a href="app__radio_8h.html#adda9479017d20caef45648f89c9bec0f">app_radio_init</a></div><div class="ttdeci">esp_err_t app_radio_init(void)</div><div class="ttdoc">Inicializa Wi-Fi + ESP-NOW y registra el peer remoto.</div><div class="ttdef"><b>Definition</b> <a href="app__radio_8c_source.html#l00056">app_radio.c:56</a></div></div>
+<div class="ttc" id="aapp__radio_8h_html_ae04befa1570e4e1c21d908f402c80127"><div class="ttname"><a href="app__radio_8h.html#ae04befa1570e4e1c21d908f402c80127">app_radio_send_blocking</a></div><div class="ttdeci">esp_err_t app_radio_send_blocking(const adl_payload_t *payload, bool critical)</div><div class="ttdoc">Envia un payload y espera la confirmacion del callback de ESP-NOW.</div><div class="ttdef"><b>Definition</b> <a href="app__radio_8c_source.html#l00092">app_radio.c:92</a></div></div>
+<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="config_8h.html">config.h</a></div><div class="ttdoc">Configuracion central y tipos compartidos del Nodo 1.</div></div>
+<div class="ttc" id="aconfig_8h_html_a10046d9796846438b798836a5c2f0258"><div class="ttname"><a href="config_8h.html#a10046d9796846438b798836a5c2f0258">adl_payload_t</a></div><div class="ttdeci">adl_payload_t</div><div class="ttdef"><b>Definition</b> <a href="config_8h_source.html#l00237">config.h:237</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="app__radio_8h.html">app_radio.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,836 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nodo2: Referencia del archivo main/hal_mpu6050.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Nodo2
+   </div>
+   <div id="projectbrief">Nodo 2: pierna/tobillo, MPU6050, SD y receptor ESP-NOW</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('hal__mpu6050_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo hal_mpu6050.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Driver de alto nivel del MPU6050 para el Nodo 2.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="hal__mpu6050_8h_source.html">hal_mpu6050.h</a>&quot;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="app__config_8h_source.html">app_config.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hal__i2c_8h_source.html">hal_i2c.h</a>&quot;</code><br />
+<code>#include &quot;driver/gpio.h&quot;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+<code>#include &quot;esp_check.h&quot;</code><br />
+<code>#include &quot;esp_log.h&quot;</code><br />
+<code>#include &quot;esp_timer.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependencias incluidas en hal_mpu6050.c:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 --></div>
+</div>
+</div>
+<p><a href="hal__mpu6050_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a9221fccfb00e441e3ac409d76e37bf20" id="r_a9221fccfb00e441e3ac409d76e37bf20"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a9221fccfb00e441e3ac409d76e37bf20">REG_SMPLRT_DIV</a>&#160;&#160;&#160;0x19</td></tr>
+<tr class="memitem:a679325263fb326462f7410d3292171be" id="r_a679325263fb326462f7410d3292171be"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a679325263fb326462f7410d3292171be">REG_CONFIG</a>&#160;&#160;&#160;0x1A</td></tr>
+<tr class="memitem:aa80ccf68f0f11e35a8ff77039922b43d" id="r_aa80ccf68f0f11e35a8ff77039922b43d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa80ccf68f0f11e35a8ff77039922b43d">REG_GYRO_CONFIG</a>&#160;&#160;&#160;0x1B</td></tr>
+<tr class="memitem:a7b8e959d8f7fc470648511d3917efee5" id="r_a7b8e959d8f7fc470648511d3917efee5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a7b8e959d8f7fc470648511d3917efee5">REG_ACCEL_CONFIG</a>&#160;&#160;&#160;0x1C</td></tr>
+<tr class="memitem:a02fddaf6d3323117fbbbc9a15a67d0f8" id="r_a02fddaf6d3323117fbbbc9a15a67d0f8"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a02fddaf6d3323117fbbbc9a15a67d0f8">REG_FIFO_EN</a>&#160;&#160;&#160;0x23</td></tr>
+<tr class="memitem:a26d31f2ecb2db6e0c183733b48f30b37" id="r_a26d31f2ecb2db6e0c183733b48f30b37"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a26d31f2ecb2db6e0c183733b48f30b37">REG_INT_PIN_CFG</a>&#160;&#160;&#160;0x37</td></tr>
+<tr class="memitem:a4c5c1b52ef4d960cba4eca99d406947a" id="r_a4c5c1b52ef4d960cba4eca99d406947a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a4c5c1b52ef4d960cba4eca99d406947a">REG_INT_ENABLE</a>&#160;&#160;&#160;0x38</td></tr>
+<tr class="memitem:aab8616dc1b72431e52f4b5370022933e" id="r_aab8616dc1b72431e52f4b5370022933e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aab8616dc1b72431e52f4b5370022933e">REG_ACCEL_XOUT_H</a>&#160;&#160;&#160;0x3B</td></tr>
+<tr class="memitem:aa22e489fc09f853f23e2586aac531ed6" id="r_aa22e489fc09f853f23e2586aac531ed6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa22e489fc09f853f23e2586aac531ed6">REG_PWR_MGMT_1</a>&#160;&#160;&#160;0x6B</td></tr>
+<tr class="memitem:a0ed2e6d84222bc33cd273eb036696bf1" id="r_a0ed2e6d84222bc33cd273eb036696bf1"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a0ed2e6d84222bc33cd273eb036696bf1">REG_PWR_MGMT_2</a>&#160;&#160;&#160;0x6C</td></tr>
+<tr class="memitem:a73f4728dfb5c82afcea7bee729af205c" id="r_a73f4728dfb5c82afcea7bee729af205c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a73f4728dfb5c82afcea7bee729af205c">REG_WHO_AM_I</a>&#160;&#160;&#160;0x75</td></tr>
+<tr class="memitem:a24499977dd38e8a90c5f1f748a490511" id="r_a24499977dd38e8a90c5f1f748a490511"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a24499977dd38e8a90c5f1f748a490511">MPU_SLEEP_BIT</a>&#160;&#160;&#160;0x40</td></tr>
+<tr class="memitem:ae2aec0818dae11437f98ddcec4797a0e" id="r_ae2aec0818dae11437f98ddcec4797a0e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae2aec0818dae11437f98ddcec4797a0e">MPU_CLKSEL_PLL_XGYRO</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memitem:abdf33bd1a4ed3c7b6e4cee5f68eceedd" id="r_abdf33bd1a4ed3c7b6e4cee5f68eceedd"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#abdf33bd1a4ed3c7b6e4cee5f68eceedd">MPU_DRDY_INT</a>&#160;&#160;&#160;0x01</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a9ae6391d002a8a1031c18660ab0bee7e" id="r_a9ae6391d002a8a1031c18660ab0bee7e"><td class="memItemLeft">static int16_t&#160;</td><td class="memItemRight"><a class="el" href="#a9ae6391d002a8a1031c18660ab0bee7e">be16</a> (const uint8_t hi, const uint8_t lo)</td></tr>
+<tr class="memdesc:a9ae6391d002a8a1031c18660ab0bee7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconstruye un entero de 16 bits big-endian a partir de dos bytes.  <br /></td></tr>
+<tr class="memitem:a88439e2bf93aaf4e4959cc0a12646b98" id="r_a88439e2bf93aaf4e4959cc0a12646b98"><td class="memItemLeft">static void IRAM_ATTR&#160;</td><td class="memItemRight"><a class="el" href="#a88439e2bf93aaf4e4959cc0a12646b98">mpu_isr_handler</a> (void *arg)</td></tr>
+<tr class="memdesc:a88439e2bf93aaf4e4959cc0a12646b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">ISR del pin de datos listos del MPU6050.  <br /></td></tr>
+<tr class="memitem:abbfd78a8e31c2027d324b278b2176b27" id="r_abbfd78a8e31c2027d324b278b2176b27"><td class="memItemLeft">static esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#abbfd78a8e31c2027d324b278b2176b27">mpu_write</a> (uint8_t reg, uint8_t value)</td></tr>
+<tr class="memdesc:abbfd78a8e31c2027d324b278b2176b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escribe un registro del MPU6050.  <br /></td></tr>
+<tr class="memitem:a89802ec59d42f521f2272764452beafa" id="r_a89802ec59d42f521f2272764452beafa"><td class="memItemLeft">static esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#a89802ec59d42f521f2272764452beafa">mpu_read</a> (uint8_t reg, uint8_t *data, size_t len)</td></tr>
+<tr class="memdesc:a89802ec59d42f521f2272764452beafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee uno o varios registros contiguos del MPU6050.  <br /></td></tr>
+<tr class="memitem:a465f99341805a31189339b64107f0bd9" id="r_a465f99341805a31189339b64107f0bd9"><td class="memItemLeft">static esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#a465f99341805a31189339b64107f0bd9">mpu_set_awake</a> (bool awake)</td></tr>
+<tr class="memdesc:a465f99341805a31189339b64107f0bd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activa o suspende el MPU6050 segun la politica de captura.  <br /></td></tr>
+<tr class="memitem:a2341c1bff3d6aac74343f61aba1d5f37" id="r_a2341c1bff3d6aac74343f61aba1d5f37"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#a2341c1bff3d6aac74343f61aba1d5f37">hal_mpu6050_init</a> (TaskHandle_t imu_task_to_notify)</td></tr>
+<tr class="memdesc:a2341c1bff3d6aac74343f61aba1d5f37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa el bus, GPIO de interrupcion y registros base del MPU6050.  <br /></td></tr>
+<tr class="memitem:a39af3ff14144145ea8be9e719a4f9fb2" id="r_a39af3ff14144145ea8be9e719a4f9fb2"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#a39af3ff14144145ea8be9e719a4f9fb2">hal_mpu6050_verify</a> (void)</td></tr>
+<tr class="memdesc:a39af3ff14144145ea8be9e719a4f9fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica la presencia del sensor mediante WHO_AM_I.  <br /></td></tr>
+<tr class="memitem:a24e25229d034522648bb99e42ba70c55" id="r_a24e25229d034522648bb99e42ba70c55"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#a24e25229d034522648bb99e42ba70c55">hal_mpu6050_calibrate_gyro</a> (<a class="el" href="structmpu6050__calibration__t.html">mpu6050_calibration_t</a> *cal)</td></tr>
+<tr class="memdesc:a24e25229d034522648bb99e42ba70c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula el sesgo del giroscopio con el sensor en reposo.  <br /></td></tr>
+<tr class="memitem:abc37473e3acbd4b411b9a21cda5054d2" id="r_abc37473e3acbd4b411b9a21cda5054d2"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#abc37473e3acbd4b411b9a21cda5054d2">hal_mpu6050_capture_window</a> (const <a class="el" href="structmpu6050__calibration__t.html">mpu6050_calibration_t</a> *cal, <a class="el" href="structimu__sample__t.html">imu_sample_t</a> *samples, uint16_t target_samples, uint16_t *captured_samples, uint16_t *flags, uint32_t t0_ms)</td></tr>
+<tr class="memdesc:abc37473e3acbd4b411b9a21cda5054d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Captura una ventana local completa del MPU6050.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5a85b9c772bbeb480b209a3e6ea92b4c" id="r_a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memItemLeft">static const char *&#160;</td><td class="memItemRight"><a class="el" href="#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = &quot;HAL_MPU&quot;</td></tr>
+<tr class="memitem:a8a1fa9eba103bfb8d9a0f71ee38de2f6" id="r_a8a1fa9eba103bfb8d9a0f71ee38de2f6"><td class="memItemLeft">static TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#a8a1fa9eba103bfb8d9a0f71ee38de2f6">s_imu_task</a> = NULL</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Driver de alto nivel del MPU6050 para el Nodo 2. </p>
+<p>Implementa la configuracion del sensor, la calibracion del sesgo del giroscopio y la captura de ventanas mediante interrupciones. </p>
+
+<p class="definition">Definición en el archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentación de «define»</h2>
+<a id="ae2aec0818dae11437f98ddcec4797a0e" name="ae2aec0818dae11437f98ddcec4797a0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2aec0818dae11437f98ddcec4797a0e">&#9670;&#160;</a></span>MPU_CLKSEL_PLL_XGYRO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MPU_CLKSEL_PLL_XGYRO&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00038">38</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="abdf33bd1a4ed3c7b6e4cee5f68eceedd" name="abdf33bd1a4ed3c7b6e4cee5f68eceedd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdf33bd1a4ed3c7b6e4cee5f68eceedd">&#9670;&#160;</a></span>MPU_DRDY_INT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MPU_DRDY_INT&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00039">39</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="a24499977dd38e8a90c5f1f748a490511" name="a24499977dd38e8a90c5f1f748a490511"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24499977dd38e8a90c5f1f748a490511">&#9670;&#160;</a></span>MPU_SLEEP_BIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MPU_SLEEP_BIT&#160;&#160;&#160;0x40</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00037">37</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="a7b8e959d8f7fc470648511d3917efee5" name="a7b8e959d8f7fc470648511d3917efee5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b8e959d8f7fc470648511d3917efee5">&#9670;&#160;</a></span>REG_ACCEL_CONFIG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_ACCEL_CONFIG&#160;&#160;&#160;0x1C</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00028">28</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="aab8616dc1b72431e52f4b5370022933e" name="aab8616dc1b72431e52f4b5370022933e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab8616dc1b72431e52f4b5370022933e">&#9670;&#160;</a></span>REG_ACCEL_XOUT_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_ACCEL_XOUT_H&#160;&#160;&#160;0x3B</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00032">32</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="a679325263fb326462f7410d3292171be" name="a679325263fb326462f7410d3292171be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a679325263fb326462f7410d3292171be">&#9670;&#160;</a></span>REG_CONFIG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_CONFIG&#160;&#160;&#160;0x1A</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00026">26</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="a02fddaf6d3323117fbbbc9a15a67d0f8" name="a02fddaf6d3323117fbbbc9a15a67d0f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02fddaf6d3323117fbbbc9a15a67d0f8">&#9670;&#160;</a></span>REG_FIFO_EN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_FIFO_EN&#160;&#160;&#160;0x23</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00029">29</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="aa80ccf68f0f11e35a8ff77039922b43d" name="aa80ccf68f0f11e35a8ff77039922b43d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa80ccf68f0f11e35a8ff77039922b43d">&#9670;&#160;</a></span>REG_GYRO_CONFIG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_GYRO_CONFIG&#160;&#160;&#160;0x1B</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00027">27</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="a4c5c1b52ef4d960cba4eca99d406947a" name="a4c5c1b52ef4d960cba4eca99d406947a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c5c1b52ef4d960cba4eca99d406947a">&#9670;&#160;</a></span>REG_INT_ENABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_INT_ENABLE&#160;&#160;&#160;0x38</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00031">31</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="a26d31f2ecb2db6e0c183733b48f30b37" name="a26d31f2ecb2db6e0c183733b48f30b37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26d31f2ecb2db6e0c183733b48f30b37">&#9670;&#160;</a></span>REG_INT_PIN_CFG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_INT_PIN_CFG&#160;&#160;&#160;0x37</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00030">30</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="aa22e489fc09f853f23e2586aac531ed6" name="aa22e489fc09f853f23e2586aac531ed6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa22e489fc09f853f23e2586aac531ed6">&#9670;&#160;</a></span>REG_PWR_MGMT_1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_PWR_MGMT_1&#160;&#160;&#160;0x6B</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00033">33</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="a0ed2e6d84222bc33cd273eb036696bf1" name="a0ed2e6d84222bc33cd273eb036696bf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ed2e6d84222bc33cd273eb036696bf1">&#9670;&#160;</a></span>REG_PWR_MGMT_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_PWR_MGMT_2&#160;&#160;&#160;0x6C</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00034">34</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="a9221fccfb00e441e3ac409d76e37bf20" name="a9221fccfb00e441e3ac409d76e37bf20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9221fccfb00e441e3ac409d76e37bf20">&#9670;&#160;</a></span>REG_SMPLRT_DIV</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_SMPLRT_DIV&#160;&#160;&#160;0x19</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00025">25</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="a73f4728dfb5c82afcea7bee729af205c" name="a73f4728dfb5c82afcea7bee729af205c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73f4728dfb5c82afcea7bee729af205c">&#9670;&#160;</a></span>REG_WHO_AM_I</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_WHO_AM_I&#160;&#160;&#160;0x75</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00035">35</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="a9ae6391d002a8a1031c18660ab0bee7e" name="a9ae6391d002a8a1031c18660ab0bee7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ae6391d002a8a1031c18660ab0bee7e">&#9670;&#160;</a></span>be16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t be16 </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>hi</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>lo</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reconstruye un entero de 16 bits big-endian a partir de dos bytes. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00044">44</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 --></div>
+</div>
+
+</div>
+</div>
+<a id="a24e25229d034522648bb99e42ba70c55" name="a24e25229d034522648bb99e42ba70c55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24e25229d034522648bb99e42ba70c55">&#9670;&#160;</a></span>hal_mpu6050_calibrate_gyro()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t hal_mpu6050_calibrate_gyro </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmpu6050__calibration__t.html">mpu6050_calibration_t</a> *</td>          <td class="paramname"><span class="paramname"><em>cal</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula el sesgo del giroscopio con el sensor en reposo. </p>
+<p>Obtiene el sesgo del giroscopio en reposo.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">cal</td><td>Resultado de la calibracion. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00149">149</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 2 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 3 --></div>
+</div>
+
+</div>
+</div>
+<a id="abc37473e3acbd4b411b9a21cda5054d2" name="abc37473e3acbd4b411b9a21cda5054d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc37473e3acbd4b411b9a21cda5054d2">&#9670;&#160;</a></span>hal_mpu6050_capture_window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t hal_mpu6050_capture_window </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structmpu6050__calibration__t.html">mpu6050_calibration_t</a> *</td>          <td class="paramname"><span class="paramname"><em>cal</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimu__sample__t.html">imu_sample_t</a> *</td>          <td class="paramname"><span class="paramname"><em>samples</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>target_samples</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>captured_samples</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>flags</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>t0_ms</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Captura una ventana local completa del MPU6050. </p>
+<p>Captura una ventana local de muestras del MPU6050.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cal</td><td>Sesgo del giroscopio previamente calculado. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">samples</td><td>Buffer donde se guardan las muestras de la ventana. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">target_samples</td><td>Numero objetivo de muestras para la ventana. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">captured_samples</td><td>Numero real de muestras validas obtenidas. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">flags</td><td>Banderas de calidad generadas durante la captura. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t0_ms</td><td>Tiempo de referencia del arranque para timestamps relativos. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00204">204</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 4 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 5 --></div>
+</div>
+
+</div>
+</div>
+<a id="a2341c1bff3d6aac74343f61aba1d5f37" name="a2341c1bff3d6aac74343f61aba1d5f37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2341c1bff3d6aac74343f61aba1d5f37">&#9670;&#160;</a></span>hal_mpu6050_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t hal_mpu6050_init </td>
+          <td>(</td>
+          <td class="paramtype">TaskHandle_t</td>          <td class="paramname"><span class="paramname"><em>imu_task_to_notify</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa el bus, GPIO de interrupcion y registros base del MPU6050. </p>
+<p>Inicializa el MPU6050 y su pin de interrupcion.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">imu_task_to_notify</td><td>Tarea que recibira notificaciones desde la ISR. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00093">93</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 6 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 7 --></div>
+</div>
+
+</div>
+</div>
+<a id="a39af3ff14144145ea8be9e719a4f9fb2" name="a39af3ff14144145ea8be9e719a4f9fb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39af3ff14144145ea8be9e719a4f9fb2">&#9670;&#160;</a></span>hal_mpu6050_verify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t hal_mpu6050_verify </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica la presencia del sensor mediante WHO_AM_I. </p>
+<p>Verifica la presencia del MPU6050. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00130">130</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 8 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 9 --></div>
+</div>
+
+</div>
+</div>
+<a id="a88439e2bf93aaf4e4959cc0a12646b98" name="a88439e2bf93aaf4e4959cc0a12646b98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88439e2bf93aaf4e4959cc0a12646b98">&#9670;&#160;</a></span>mpu_isr_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IRAM_ATTR mpu_isr_handler </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ISR del pin de datos listos del MPU6050. </p>
+<p>Solo notifica a la tarea IMU para que la lectura completa ocurra fuera del contexto de interrupcion. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00055">55</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 10 --></div>
+</div>
+
+</div>
+</div>
+<a id="a89802ec59d42f521f2272764452beafa" name="a89802ec59d42f521f2272764452beafa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89802ec59d42f521f2272764452beafa">&#9670;&#160;</a></span>mpu_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t mpu_read </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lee uno o varios registros contiguos del MPU6050. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00071">71</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 11 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 12 --></div>
+</div>
+
+</div>
+</div>
+<a id="a465f99341805a31189339b64107f0bd9" name="a465f99341805a31189339b64107f0bd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a465f99341805a31189339b64107f0bd9">&#9670;&#160;</a></span>mpu_set_awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t mpu_set_awake </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>awake</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Activa o suspende el MPU6050 segun la politica de captura. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00077">77</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 13 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 14 --></div>
+</div>
+
+</div>
+</div>
+<a id="abbfd78a8e31c2027d324b278b2176b27" name="abbfd78a8e31c2027d324b278b2176b27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbfd78a8e31c2027d324b278b2176b27">&#9670;&#160;</a></span>mpu_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t mpu_write </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Escribe un registro del MPU6050. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00065">65</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 15 --></div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 16 --></div>
+</div>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentación de variables</h2>
+<a id="a8a1fa9eba103bfb8d9a0f71ee38de2f6" name="a8a1fa9eba103bfb8d9a0f71ee38de2f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1fa9eba103bfb8d9a0f71ee38de2f6">&#9670;&#160;</a></span>s_imu_task</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t s_imu_task = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00041">41</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+<a id="a5a85b9c772bbeb480b209a3e6ea92b4c" name="a5a85b9c772bbeb480b209a3e6ea92b4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a85b9c772bbeb480b209a3e6ea92b4c">&#9670;&#160;</a></span>TAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* TAG = &quot;HAL_MPU&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8c_source.html#l00022">22</a> del archivo <a class="el" href="hal__mpu6050_8c_source.html">hal_mpu6050.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="hal__mpu6050_8c.html">hal_mpu6050.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

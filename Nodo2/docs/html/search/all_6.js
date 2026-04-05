@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['hal_5fbattery_2ec_0',['hal_battery.c',['../hal__battery_8c.html',1,'']]],
+  ['hal_5fbattery_2eh_1',['hal_battery.h',['../hal__battery_8h.html',1,'']]],
+  ['hal_5fbattery_5finit_2',['hal_battery_init',['../hal__battery_8c.html#a108edea6f6d6d3ed9024c1b6c06250dc',1,'hal_battery_init(void):&#160;hal_battery.c'],['../hal__battery_8h.html#a108edea6f6d6d3ed9024c1b6c06250dc',1,'hal_battery_init(void):&#160;hal_battery.c']]],
+  ['hal_5fbattery_5fsample_3',['hal_battery_sample',['../hal__battery_8c.html#a67672d3c56c67d448138d3dcd7046ff2',1,'hal_battery_sample(battery_status_t *out):&#160;hal_battery.c'],['../hal__battery_8h.html#a67672d3c56c67d448138d3dcd7046ff2',1,'hal_battery_sample(battery_status_t *out):&#160;hal_battery.c']]],
+  ['hal_5fi2c_2ec_4',['hal_i2c.c',['../hal__i2c_8c.html',1,'']]],
+  ['hal_5fi2c_2eh_5',['hal_i2c.h',['../hal__i2c_8h.html',1,'']]],
+  ['hal_5fi2c_5finit_6',['hal_i2c_init',['../hal__i2c_8c.html#ad85ce8411d235b43c5a3f2b663d32d49',1,'hal_i2c_init(void):&#160;hal_i2c.c'],['../hal__i2c_8h.html#ad85ce8411d235b43c5a3f2b663d32d49',1,'hal_i2c_init(void):&#160;hal_i2c.c']]],
+  ['hal_5fi2c_5fread_5freg_7',['hal_i2c_read_reg',['../hal__i2c_8c.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4',1,'hal_i2c_read_reg(uint8_t dev_addr, uint8_t reg, uint8_t *data, size_t len):&#160;hal_i2c.c'],['../hal__i2c_8h.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4',1,'hal_i2c_read_reg(uint8_t dev_addr, uint8_t reg, uint8_t *data, size_t len):&#160;hal_i2c.c']]],
+  ['hal_5fi2c_5fwrite_5freg_8',['hal_i2c_write_reg',['../hal__i2c_8c.html#ad2da5a79c6f6c47edcbba7519678b1d0',1,'hal_i2c_write_reg(uint8_t dev_addr, uint8_t reg, uint8_t value):&#160;hal_i2c.c'],['../hal__i2c_8h.html#ad2da5a79c6f6c47edcbba7519678b1d0',1,'hal_i2c_write_reg(uint8_t dev_addr, uint8_t reg, uint8_t value):&#160;hal_i2c.c']]],
+  ['hal_5fmpu6050_2ec_9',['hal_mpu6050.c',['../hal__mpu6050_8c.html',1,'']]],
+  ['hal_5fmpu6050_2eh_10',['hal_mpu6050.h',['../hal__mpu6050_8h.html',1,'']]],
+  ['hal_5fmpu6050_5fcalibrate_5fgyro_11',['hal_mpu6050_calibrate_gyro',['../hal__mpu6050_8c.html#a24e25229d034522648bb99e42ba70c55',1,'hal_mpu6050_calibrate_gyro(mpu6050_calibration_t *cal):&#160;hal_mpu6050.c'],['../hal__mpu6050_8h.html#a24e25229d034522648bb99e42ba70c55',1,'hal_mpu6050_calibrate_gyro(mpu6050_calibration_t *cal):&#160;hal_mpu6050.c']]],
+  ['hal_5fmpu6050_5fcapture_5fwindow_12',['hal_mpu6050_capture_window',['../hal__mpu6050_8c.html#abc37473e3acbd4b411b9a21cda5054d2',1,'hal_mpu6050_capture_window(const mpu6050_calibration_t *cal, imu_sample_t *samples, uint16_t target_samples, uint16_t *captured_samples, uint16_t *flags, uint32_t t0_ms):&#160;hal_mpu6050.c'],['../hal__mpu6050_8h.html#abc37473e3acbd4b411b9a21cda5054d2',1,'hal_mpu6050_capture_window(const mpu6050_calibration_t *cal, imu_sample_t *samples, uint16_t target_samples, uint16_t *captured_samples, uint16_t *flags, uint32_t t0_ms):&#160;hal_mpu6050.c']]],
+  ['hal_5fmpu6050_5finit_13',['hal_mpu6050_init',['../hal__mpu6050_8c.html#a2341c1bff3d6aac74343f61aba1d5f37',1,'hal_mpu6050_init(TaskHandle_t imu_task_to_notify):&#160;hal_mpu6050.c'],['../hal__mpu6050_8h.html#a2341c1bff3d6aac74343f61aba1d5f37',1,'hal_mpu6050_init(TaskHandle_t imu_task_to_notify):&#160;hal_mpu6050.c']]],
+  ['hal_5fmpu6050_5fverify_14',['hal_mpu6050_verify',['../hal__mpu6050_8c.html#a39af3ff14144145ea8be9e719a4f9fb2',1,'hal_mpu6050_verify(void):&#160;hal_mpu6050.c'],['../hal__mpu6050_8h.html#a39af3ff14144145ea8be9e719a4f9fb2',1,'hal_mpu6050_verify(void):&#160;hal_mpu6050.c']]],
+  ['hal_5fradio_2ec_15',['hal_radio.c',['../hal__radio_8c.html',1,'']]],
+  ['hal_5fradio_2eh_16',['hal_radio.h',['../hal__radio_8h.html',1,'']]],
+  ['hal_5fradio_5finit_17',['hal_radio_init',['../hal__radio_8c.html#a2b4dfe64b1c5d3330dbce9f77630b3e5',1,'hal_radio_init(QueueHandle_t rx_queue):&#160;hal_radio.c'],['../hal__radio_8h.html#a2b4dfe64b1c5d3330dbce9f77630b3e5',1,'hal_radio_init(QueueHandle_t rx_queue):&#160;hal_radio.c']]],
+  ['hal_5fsdcard_2ec_18',['hal_sdcard.c',['../hal__sdcard_8c.html',1,'']]],
+  ['hal_5fsdcard_2eh_19',['hal_sdcard.h',['../hal__sdcard_8h.html',1,'']]],
+  ['hal_5fsdcard_5fappend_5frecords_20',['hal_sdcard_append_records',['../hal__sdcard_8c.html#ae78273015f07ba6d02afed9d69a588e4',1,'hal_sdcard_append_records(const log_record_t *records, size_t count):&#160;hal_sdcard.c'],['../hal__sdcard_8h.html#ae78273015f07ba6d02afed9d69a588e4',1,'hal_sdcard_append_records(const log_record_t *records, size_t count):&#160;hal_sdcard.c']]],
+  ['hal_5fsdcard_5finit_21',['hal_sdcard_init',['../hal__sdcard_8c.html#abaf46e73785b8b9aa063903de9a12a2d',1,'hal_sdcard_init(uint16_t boot_id):&#160;hal_sdcard.c'],['../hal__sdcard_8h.html#abaf46e73785b8b9aa063903de9a12a2d',1,'hal_sdcard_init(uint16_t boot_id):&#160;hal_sdcard.c']]],
+  ['hal_5fsdcard_5fis_5fready_22',['hal_sdcard_is_ready',['../hal__sdcard_8c.html#a89a7c7d88d1435f32e652273db143d1c',1,'hal_sdcard_is_ready(void):&#160;hal_sdcard.c'],['../hal__sdcard_8h.html#a89a7c7d88d1435f32e652273db143d1c',1,'hal_sdcard_is_ready(void):&#160;hal_sdcard.c']]]
+];

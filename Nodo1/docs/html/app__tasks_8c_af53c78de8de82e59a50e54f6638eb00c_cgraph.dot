@@ -1,0 +1,19 @@
+digraph "enqueue_payload"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="enqueue_payload",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Toma una instantanea del estado del nodo y la encola para transmision."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="app_signal_build_payload",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__signal_8c.html#a84b6062ad3291094718e1aa3e6bd171d",tooltip="Construye el payload binario que se enviara por radio."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="build_flags",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a7fabf41a20f5fe2a5aba501b2292148a",tooltip="Compone las banderas del payload a partir del estado actual del nodo."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="app_radio_link_degraded",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__radio_8c.html#a3680ee511bef98d677712359be85e97d",tooltip="Indica si el enlace se considera degradado segun fallos consecutivos."];
+  Node3 -> Node5 [id="edge4_Node000003_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="hal_imu_bias_ok",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a5acfeae081be36f48ad0fdeca73176a3",tooltip="Informa si la calibracion de sesgo del giroscopio ya es valida."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="rel_ms",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a9f3dad8c7a15f6c2d75160d93408c162",tooltip="Obtiene el tiempo relativo del arranque en milisegundos."];
+}

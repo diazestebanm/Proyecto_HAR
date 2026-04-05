@@ -1,0 +1,36 @@
+digraph "task_imu"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="task_imu",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Tarea que captura una ventana IMU y calcula sus rasgos."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="app_signal_build_features",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__signal_8c.html#a1c99cad95c2b4f2324e30a330ada2cb7",tooltip="Resume una ventana de IMU en un conjunto compacto de rasgos temporales."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="meanf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__signal_8c.html#ac129b46c380b98d0c0b080595d7a5568",tooltip="Calcula una media simple protegida contra division por cero."];
+  Node2 -> Node4 [id="edge3_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="q16",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__signal_8c.html#aeb642a78cfc271a85e2ecc8253b82226",tooltip="Satura un valor flotante al rango de int16_t."];
+  Node2 -> Node5 [id="edge4_Node000002_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="stdf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__signal_8c.html#a041a49ffd651122cf29de79b64df778b",tooltip="Estima la desviacion estandar a partir de suma y suma cuadratica."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="app_signal_push_imu",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__signal_8c.html#a7ad355f2120fe030b9af911ddd80b6ab",tooltip="Incorpora una muestra IMU al contexto estadistico actual."];
+  Node1 -> Node7 [id="edge6_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="app_signal_reset",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__signal_8c.html#a2f1b234bb11df7818dd26387d9adb37e",tooltip="Reinicia el acumulador estadistico de una ventana IMU."];
+  Node1 -> Node8 [id="edge7_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="hal_imu_read_sample",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#ac9798a00c40946476d528de125d5e6c3",tooltip="Lee una muestra IMU ya corregida por sesgo de giroscopio."];
+  Node8 -> Node9 [id="edge8_Node000008_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="qmi_read_raw",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a081c172fd46a0a3e45d9203d648239c0",tooltip="Lee una muestra cruda completa de acelerometro y giroscopio."];
+  Node9 -> Node10 [id="edge9_Node000009_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="i2c_read_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#aa1966c62938e7ff218bf86d9650a910d",tooltip="Lee uno o varios bytes desde un registro I2C."];
+  Node1 -> Node11 [id="edge10_Node000001_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="hal_imu_start",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a25c06a21738b783a7c4fc74b4abb3e60",tooltip="Habilita la captura del QMI8658."];
+  Node11 -> Node12 [id="edge11_Node000011_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="i2c_write_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a9d38307b3cd2c6cb7103f715106f8892",tooltip="Escribe un byte sobre un registro de un esclavo I2C."];
+  Node1 -> Node13 [id="edge12_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="hal_imu_stop",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sensors_8c.html#a527ce39873f1043fefc01fd4dfaf7e39",tooltip="Deshabilita temporalmente la adquisicion del QMI8658."];
+  Node13 -> Node12 [id="edge13_Node000013_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node14 [id="edge14_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="rel_ms",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a9f3dad8c7a15f6c2d75160d93408c162",tooltip="Obtiene el tiempo relativo del arranque en milisegundos."];
+}
