@@ -155,12 +155,9 @@ $(function(){initNavTree('globals.html','',''); });
 <li>APP_NODE1_WAIT_TIMEOUT_MS&#160;:&#160;<a class="el" href="app__config_8h.html#a532654f6f9928ab730b1a58d52e0dd7c">app_config.h</a></li>
 <li>app_now_ms()&#160;:&#160;<a class="el" href="app__tasks_8c.html#aa0bb7e27bd1f75e886a58e931c83e171">app_tasks.c</a></li>
 <li>APP_SD_BATCH_LINES&#160;:&#160;<a class="el" href="app__config_8h.html#a656c070a21869b8aa27a67878ba526b6">app_config.h</a></li>
-<li>APP_SD_CS_GPIO&#160;:&#160;<a class="el" href="app__config_8h.html#ab2072df90821ce88373709058203624e">app_config.h</a></li>
 <li>APP_SD_FLUSH_PERIOD_MS&#160;:&#160;<a class="el" href="app__config_8h.html#ad55b8e4534df138f23358e8d25b3d228">app_config.h</a></li>
-<li>APP_SD_MISO_GPIO&#160;:&#160;<a class="el" href="app__config_8h.html#a1a7359adafa0c75b1838e094c1f6618c">app_config.h</a></li>
-<li>APP_SD_MOSI_GPIO&#160;:&#160;<a class="el" href="app__config_8h.html#a5b53f5d43c15f5b7e0927a5d2db6c3e5">app_config.h</a></li>
-<li>APP_SD_MOUNT_POINT&#160;:&#160;<a class="el" href="app__config_8h.html#acf69e4e49ca4376cca73da2b5352c9a8">app_config.h</a></li>
-<li>APP_SD_SCK_GPIO&#160;:&#160;<a class="el" href="app__config_8h.html#a72cc836cbb6bc08110885636ad16d330">app_config.h</a></li>
+<li>APP_SERIAL_SUMMARY_ENABLE&#160;:&#160;<a class="el" href="app__config_8h.html#a6abfc7c5b821d242822dd821fab104ac">app_config.h</a></li>
+<li>APP_SERIAL_SUMMARY_EVERY_N_WINDOWS&#160;:&#160;<a class="el" href="app__config_8h.html#a6a49808a897628d5a63f28e7a0920ccb">app_config.h</a></li>
 <li>APP_SESSION_FILENAME_MAX&#160;:&#160;<a class="el" href="app__config_8h.html#a1f3277a946179384910fdff91f4eca04">app_config.h</a></li>
 <li>APP_TASK_PRIO_CONTROL&#160;:&#160;<a class="el" href="app__config_8h.html#a549a6e81505b80a235e0aa31d646b45e">app_config.h</a></li>
 <li>APP_TASK_PRIO_IMU&#160;:&#160;<a class="el" href="app__config_8h.html#a0d697453901c87467031df4e70904a92">app_config.h</a></li>
@@ -177,30 +174,39 @@ $(function(){initNavTree('globals.html','',''); });
 <h3 class="doxsection"><a id="index_b" name="index_b"></a>- b -</h3><ul>
 <li>battery_cal_init()&#160;:&#160;<a class="el" href="hal__battery_8c.html#a20023878e052863463af0cc3cdc55352">hal_battery.c</a></li>
 <li>be16()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a9ae6391d002a8a1031c18660ab0bee7e">hal_mpu6050.c</a></li>
+<li>buf_append()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a77f3508123c8b7c0c93a9c8060c09b8c">hal_sdcard.c</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_c" name="index_c"></a>- c -</h3><ul>
 <li>cmp_int()&#160;:&#160;<a class="el" href="hal__battery_8c.html#a82a2e753c2e346d29922e3cdd0c4ca5c">hal_battery.c</a></li>
-<li>csv_write_header()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#ab4feeffc28c6786e3c140ad5b580a474">hal_sdcard.c</a></li>
-<li>csv_write_imu()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#addddf9a3bd1977dc65a2ec9a8fe7bc43">hal_sdcard.c</a></li>
+<li>csv_append_imu()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a3556e861bd0db855f27e39d7f5539a5c">hal_sdcard.c</a></li>
+<li>csv_build_header()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a02a360486679af862070a25735e64bb4">hal_sdcard.c</a></li>
+<li>csv_build_record_line()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a5f166331033d770a45b67e6bcdd5ebb1">hal_sdcard.c</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_h" name="index_h"></a>- h -</h3><ul>
 <li>hal_battery_init()&#160;:&#160;<a class="el" href="hal__battery_8c.html#a108edea6f6d6d3ed9024c1b6c06250dc">hal_battery.c</a>, <a class="el" href="hal__battery_8h.html#a108edea6f6d6d3ed9024c1b6c06250dc">hal_battery.h</a></li>
 <li>hal_battery_sample()&#160;:&#160;<a class="el" href="hal__battery_8c.html#a67672d3c56c67d448138d3dcd7046ff2">hal_battery.c</a>, <a class="el" href="hal__battery_8h.html#a67672d3c56c67d448138d3dcd7046ff2">hal_battery.h</a></li>
+<li>hal_i2c_deinit()&#160;:&#160;<a class="el" href="hal__i2c_8c.html#afb9fba738f73d8ee6143b98871cb3c70">hal_i2c.c</a>, <a class="el" href="hal__i2c_8h.html#afb9fba738f73d8ee6143b98871cb3c70">hal_i2c.h</a></li>
 <li>hal_i2c_init()&#160;:&#160;<a class="el" href="hal__i2c_8c.html#ad85ce8411d235b43c5a3f2b663d32d49">hal_i2c.c</a>, <a class="el" href="hal__i2c_8h.html#ad85ce8411d235b43c5a3f2b663d32d49">hal_i2c.h</a></li>
+<li>hal_i2c_ping()&#160;:&#160;<a class="el" href="hal__i2c_8c.html#afc5e9ce208efc6952804ab3614278423">hal_i2c.c</a>, <a class="el" href="hal__i2c_8h.html#afc5e9ce208efc6952804ab3614278423">hal_i2c.h</a></li>
 <li>hal_i2c_read_reg()&#160;:&#160;<a class="el" href="hal__i2c_8c.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4">hal_i2c.c</a>, <a class="el" href="hal__i2c_8h.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4">hal_i2c.h</a></li>
 <li>hal_i2c_write_reg()&#160;:&#160;<a class="el" href="hal__i2c_8c.html#ad2da5a79c6f6c47edcbba7519678b1d0">hal_i2c.c</a>, <a class="el" href="hal__i2c_8h.html#ad2da5a79c6f6c47edcbba7519678b1d0">hal_i2c.h</a></li>
 <li>hal_mpu6050_calibrate_gyro()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a24e25229d034522648bb99e42ba70c55">hal_mpu6050.c</a>, <a class="el" href="hal__mpu6050_8h.html#a24e25229d034522648bb99e42ba70c55">hal_mpu6050.h</a></li>
 <li>hal_mpu6050_capture_window()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#abc37473e3acbd4b411b9a21cda5054d2">hal_mpu6050.c</a>, <a class="el" href="hal__mpu6050_8h.html#abc37473e3acbd4b411b9a21cda5054d2">hal_mpu6050.h</a></li>
 <li>hal_mpu6050_init()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a2341c1bff3d6aac74343f61aba1d5f37">hal_mpu6050.c</a>, <a class="el" href="hal__mpu6050_8h.html#a2341c1bff3d6aac74343f61aba1d5f37">hal_mpu6050.h</a></li>
+<li>hal_mpu6050_recover()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a3c80792c99917eef8989a44c39a41fa7">hal_mpu6050.c</a>, <a class="el" href="hal__mpu6050_8h.html#a3c80792c99917eef8989a44c39a41fa7">hal_mpu6050.h</a></li>
 <li>hal_mpu6050_verify()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a39af3ff14144145ea8be9e719a4f9fb2">hal_mpu6050.c</a>, <a class="el" href="hal__mpu6050_8h.html#a39af3ff14144145ea8be9e719a4f9fb2">hal_mpu6050.h</a></li>
 <li>hal_radio_init()&#160;:&#160;<a class="el" href="hal__radio_8c.html#a2b4dfe64b1c5d3330dbce9f77630b3e5">hal_radio.c</a>, <a class="el" href="hal__radio_8h.html#a2b4dfe64b1c5d3330dbce9f77630b3e5">hal_radio.h</a></li>
 <li>hal_sdcard_append_records()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#ae78273015f07ba6d02afed9d69a588e4">hal_sdcard.c</a>, <a class="el" href="hal__sdcard_8h.html#ae78273015f07ba6d02afed9d69a588e4">hal_sdcard.h</a></li>
 <li>hal_sdcard_init()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#abaf46e73785b8b9aa063903de9a12a2d">hal_sdcard.c</a>, <a class="el" href="hal__sdcard_8h.html#abaf46e73785b8b9aa063903de9a12a2d">hal_sdcard.h</a></li>
 <li>hal_sdcard_is_ready()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a89a7c7d88d1435f32e652273db143d1c">hal_sdcard.c</a>, <a class="el" href="hal__sdcard_8h.html#a89a7c7d88d1435f32e652273db143d1c">hal_sdcard.h</a></li>
+<li>host_emit_line()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a58e94b63ba077c627d59065a2ef56cf3">hal_sdcard.c</a></li>
+<li>HOST_HEADER_PREFIX&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a578789721d0960bc19c6681279a8ad17">hal_sdcard.c</a></li>
+<li>HOST_META_PREFIX&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a35d5449179751f27be548e67f57ca9c9">hal_sdcard.c</a></li>
+<li>HOST_ROW_PREFIX&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a67d9b07dd1b64171c2db43847d5b9b6d">hal_sdcard.c</a></li>
 </ul>
 
 
@@ -211,13 +217,23 @@ $(function(){initNavTree('globals.html','',''); });
 </ul>
 
 
+<h3 class="doxsection"><a id="index_l" name="index_l"></a>- l -</h3><ul>
+<li>log_fused_window_summary()&#160;:&#160;<a class="el" href="app__tasks_8c.html#a2d42990d9db22e5d3ad22300a28eda8d">app_tasks.c</a></li>
+<li>log_imu_summary()&#160;:&#160;<a class="el" href="app__tasks_8c.html#a96f1404c50a6bec7d5091d01a1f65f78">app_tasks.c</a></li>
+</ul>
+
+
 <h3 class="doxsection"><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>MPU_CLKSEL_PLL_XGYRO&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#ae2aec0818dae11437f98ddcec4797a0e">hal_mpu6050.c</a></li>
 <li>MPU_DRDY_INT&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#abdf33bd1a4ed3c7b6e4cee5f68eceedd">hal_mpu6050.c</a></li>
 <li>mpu_isr_handler()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a88439e2bf93aaf4e4959cc0a12646b98">hal_mpu6050.c</a></li>
+<li>mpu_probe_and_select()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#ae5964f2c3de2afa4b21353e7a44609d2">hal_mpu6050.c</a></li>
+<li>mpu_probe_one()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a41dbe6510ce97d8085be4b1e99dd8d1e">hal_mpu6050.c</a></li>
 <li>mpu_read()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a89802ec59d42f521f2272764452beafa">hal_mpu6050.c</a></li>
 <li>mpu_set_awake()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a465f99341805a31189339b64107f0bd9">hal_mpu6050.c</a></li>
 <li>MPU_SLEEP_BIT&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a24499977dd38e8a90c5f1f748a490511">hal_mpu6050.c</a></li>
+<li>MPU_SOFT_RESET&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#ae2ddfc388b6d5e8eca4452eab86063a9">hal_mpu6050.c</a></li>
+<li>mpu_soft_reset_and_configure()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a459e3d4b3b32b26cea5ed44f91f25aac">hal_mpu6050.c</a></li>
 <li>mpu_write()&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#abbfd78a8e31c2027d324b278b2176b27">hal_mpu6050.c</a></li>
 </ul>
 
@@ -226,11 +242,6 @@ $(function(){initNavTree('globals.html','',''); });
 <li>n1_packet_to_imu_summary()&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#ac6509ccf073bf9fa27a6a49b7f5c5cfe">hal_sdcard.c</a></li>
 <li>node1_mac_allowed()&#160;:&#160;<a class="el" href="hal__radio_8c.html#ada3856d14fb661e700a8e0a05437a545">hal_radio.c</a></li>
 <li>node1_packet_t&#160;:&#160;<a class="el" href="app__types_8h.html#a2a67623d8323692f197d20ffba472760">app_types.h</a></li>
-</ul>
-
-
-<h3 class="doxsection"><a id="index_p" name="index_p"></a>- p -</h3><ul>
-<li>power_management_init()&#160;:&#160;<a class="el" href="app__tasks_8c.html#a637c14192da5ee544bcb1f731da1aa34">app_tasks.c</a></li>
 </ul>
 
 
@@ -258,19 +269,22 @@ $(function(){initNavTree('globals.html','',''); });
 <li>s_cal&#160;:&#160;<a class="el" href="app__tasks_8c.html#a550a68a1e21e55d05ea55684174f585f">app_tasks.c</a></li>
 <li>s_cali&#160;:&#160;<a class="el" href="hal__battery_8c.html#a86160ae09288af78b2152669b7aee0bd">hal_battery.c</a></li>
 <li>s_cali_ok&#160;:&#160;<a class="el" href="hal__battery_8c.html#a8e9be89c66c0c2015b922c328e11e2b3">hal_battery.c</a></li>
-<li>s_card&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#adb8cd1e74e4e93c01de1f69871f138a2">hal_sdcard.c</a></li>
+<li>s_drdy_sem&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#aca4f99e757982ef482a6aa85036c4c56">hal_mpu6050.c</a></li>
 <li>s_ema_vbat&#160;:&#160;<a class="el" href="hal__battery_8c.html#a3094d759fbcc4b4be373a729664d5108">hal_battery.c</a></li>
-<li>s_host&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a1a52ae18e30c822e8ae2966b17a7f2e6">hal_sdcard.c</a></li>
+<li>s_filename&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a9168bf84de234e3ea717c2f2356242ec">hal_sdcard.c</a></li>
 <li>s_imu_result_queue&#160;:&#160;<a class="el" href="app__tasks_8c.html#ac757e5faec3fa30baa464d6ff4127903">app_tasks.c</a></li>
 <li>s_imu_task&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a8a1fa9eba103bfb8d9a0f71ee38de2f6">hal_mpu6050.c</a></li>
 <li>s_initialized&#160;:&#160;<a class="el" href="hal__i2c_8c.html#a7fc89b5882bba49f4709da759efb40a8">hal_i2c.c</a></li>
+<li>s_isr_service_installed&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#ae5f24319c417e69c7f4f85bc76c35985">hal_mpu6050.c</a></li>
 <li>s_last_bat_ms&#160;:&#160;<a class="el" href="app__tasks_8c.html#a51f538f01fc313da61ea67914f6caf85">app_tasks.c</a></li>
 <li>s_last_consumed_seq&#160;:&#160;<a class="el" href="app__tasks_8c.html#a5bfe40e7b12137746def0886f23d935c">app_tasks.c</a></li>
 <li>s_last_n1&#160;:&#160;<a class="el" href="app__tasks_8c.html#ae02537588d120985b84e74d00d8079bf">app_tasks.c</a></li>
 <li>s_last_n1_valid&#160;:&#160;<a class="el" href="app__tasks_8c.html#a4861cce5cb1b6bef89c144f9abbe10cb">app_tasks.c</a></li>
 <li>s_last_pct&#160;:&#160;<a class="el" href="hal__battery_8c.html#a14e2a4dca89873b146577fbd90013e61">hal_battery.c</a></li>
+<li>s_last_seen_boot&#160;:&#160;<a class="el" href="app__tasks_8c.html#a15e7192fa2fecc4debbba51048f1f1ff">app_tasks.c</a></li>
+<li>s_last_seen_seq&#160;:&#160;<a class="el" href="app__tasks_8c.html#ac6034d3670a66f01968a221274767151">app_tasks.c</a></li>
+<li>s_mpu_addr&#160;:&#160;<a class="el" href="hal__mpu6050_8c.html#a0df02466d33d0ae628fe84fc00a30c9d">hal_mpu6050.c</a></li>
 <li>s_n1_mutex&#160;:&#160;<a class="el" href="app__tasks_8c.html#a2d079ed50691f8b774f665aea354b397">app_tasks.c</a></li>
-<li>s_path&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#af101694094622fa8dd485bbbc353f618">hal_sdcard.c</a></li>
 <li>s_radio_rx_queue&#160;:&#160;<a class="el" href="app__tasks_8c.html#a8acc69edc095543b8dd4357067f2afa9">app_tasks.c</a></li>
 <li>s_ready&#160;:&#160;<a class="el" href="hal__sdcard_8c.html#a7a62769d708dd70f47ccfab894cef95c">hal_sdcard.c</a></li>
 <li>s_rx_queue&#160;:&#160;<a class="el" href="hal__radio_8c.html#a70a63c58c2b6271ace1a2bb2c9a7ab1c">hal_radio.c</a></li>

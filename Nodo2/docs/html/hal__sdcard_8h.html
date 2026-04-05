@@ -93,7 +93,7 @@ $(function(){initNavTree('hal__sdcard_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>HAL de almacenamiento en SD para el Nodo 2.  
+<p>HAL de persistencia del Nodo 2 con backend serial hacia el host.  
 <a href="#details">Más...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
@@ -115,14 +115,15 @@ Gráfico de los archivos que directa o indirectamente incluyen a este archivo:</
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Funciones</h2></td></tr>
 <tr class="memitem:abaf46e73785b8b9aa063903de9a12a2d" id="r_abaf46e73785b8b9aa063903de9a12a2d"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#abaf46e73785b8b9aa063903de9a12a2d">hal_sdcard_init</a> (uint16_t boot_id)</td></tr>
-<tr class="memdesc:abaf46e73785b8b9aa063903de9a12a2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monta la tarjeta SD y crea el archivo de sesion.  <br /></td></tr>
+<tr class="memdesc:abaf46e73785b8b9aa063903de9a12a2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa el backend de salida y anuncia el archivo destino.  <br /></td></tr>
 <tr class="memitem:a89a7c7d88d1435f32e652273db143d1c" id="r_a89a7c7d88d1435f32e652273db143d1c"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a89a7c7d88d1435f32e652273db143d1c">hal_sdcard_is_ready</a> (void)</td></tr>
-<tr class="memdesc:a89a7c7d88d1435f32e652273db143d1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consulta si la SD esta lista para recibir escrituras.  <br /></td></tr>
+<tr class="memdesc:a89a7c7d88d1435f32e652273db143d1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consulta si el backend de persistencia esta listo.  <br /></td></tr>
 <tr class="memitem:ae78273015f07ba6d02afed9d69a588e4" id="r_ae78273015f07ba6d02afed9d69a588e4"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#ae78273015f07ba6d02afed9d69a588e4">hal_sdcard_append_records</a> (const <a class="el" href="structlog__record__t.html">log_record_t</a> *records, size_t count)</td></tr>
-<tr class="memdesc:ae78273015f07ba6d02afed9d69a588e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escribe un lote de registros fusionados en la tarjeta SD.  <br /></td></tr>
+<tr class="memdesc:ae78273015f07ba6d02afed9d69a588e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emite un lote de registros fusionados en formato CSV.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>HAL de almacenamiento en SD para el Nodo 2. </p>
+<div class="textblock"><p>HAL de persistencia del Nodo 2 con backend serial hacia el host. </p>
+<dl class="section note"><dt>Nota</dt><dd>El nombre del modulo se conserva para no romper la arquitectura ya existente, pero actualmente no monta una microSD. En esta version la persistencia real se hace por puerto serie y un script Python arma el CSV definitivo en el computador. </dd></dl>
 
 <p class="definition">Definición en el archivo <a class="el" href="hal__sdcard_8h_source.html">hal_sdcard.h</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
@@ -145,16 +146,10 @@ Funciones</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Escribe un lote de registros fusionados en la tarjeta SD. </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">records</td><td>Registros listos para persistencia. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>Numero de elementos validos dentro del lote. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Emite un lote de registros fusionados en formato CSV. </p>
+<p>Emite un lote de registros fusionados en formato CSV. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00152">152</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00223">223</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas de esta función:</div>
 <div class="dyncontent">
@@ -183,16 +178,10 @@ Gráfico de llamadas a esta función:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Monta la tarjeta SD y crea el archivo de sesion. </p>
-<p>Monta la tarjeta SD y crea el archivo de sesion.</p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">boot_id</td><td>Identificador de arranque usado en el nombre del archivo. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Inicializa el backend de salida y anuncia el archivo destino. </p>
+<p>Inicializa el backend de salida y anuncia el archivo destino. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00087">87</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00197">197</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas de esta función:</div>
 <div class="dyncontent">
@@ -221,10 +210,10 @@ Gráfico de llamadas a esta función:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Consulta si la SD esta lista para recibir escrituras. </p>
-<p>Consulta si la SD esta lista para recibir escrituras. </p>
+<p>Consulta si el backend de persistencia esta listo. </p>
+<p>Consulta si el backend de persistencia esta listo. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00142">142</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="hal__sdcard_8c_source.html#l00215">215</a> del archivo <a class="el" href="hal__sdcard_8c_source.html">hal_sdcard.c</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas a esta función:</div>
 <div class="dyncontent">

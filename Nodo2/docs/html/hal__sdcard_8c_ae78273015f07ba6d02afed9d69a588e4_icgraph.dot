@@ -5,9 +5,9 @@ digraph "hal_sdcard_append_records"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="RL";
-  Node1 [id="Node000001",label="hal_sdcard_append_records",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Escribe un lote de registros fusionados en la tarjeta SD."];
+  Node1 [id="Node000001",label="hal_sdcard_append_records",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Emite por serial un lote de registros CSV ya fusionados."];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="task_sd",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#affe19d1b5bae580033378e6bdd85b43b",tooltip="Tarea de almacenamiento en SD con escritura por lotes."];
+  Node2 [id="Node000002",label="task_sd",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#affe19d1b5bae580033378e6bdd85b43b",tooltip="Tarea de persistencia hacia el host con emision por lotes."];
   Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node3 [id="Node000003",label="app_tasks_start",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#adaf2d0d735993165acedd8f410d879d0",tooltip="Inicializa colas, tareas y hardware de Nodo 2."];
   Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];

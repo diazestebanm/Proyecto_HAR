@@ -1,0 +1,25 @@
+digraph "mpu_probe_one"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="mpu_probe_one",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Sonda una direccion I2C concreta y valida el WHO_AM_I."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mpu_probe_and_select",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html#ae5964f2c3de2afa4b21353e7a44609d2",tooltip="Detecta el MPU6050 probando la direccion primaria y la alternativa."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="hal_mpu6050_init",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html#a2341c1bff3d6aac74343f61aba1d5f37",tooltip="Inicializa la HAL del MPU6050 y deja el sensor en reposo controlado."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="app_tasks_start",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#adaf2d0d735993165acedd8f410d879d0",tooltip="Inicializa colas, tareas y hardware de Nodo 2."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="app_main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70",tooltip="Punto de entrada del firmware del Nodo 2."];
+  Node2 -> Node6 [id="edge5_Node000002_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="hal_mpu6050_recover",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html#a3c80792c99917eef8989a44c39a41fa7",tooltip="Recompone el bus I2C y reconfigura el MPU tras un fallo de captura."];
+  Node6 -> Node7 [id="edge6_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="hal_mpu6050_capture\l_window",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html#abc37473e3acbd4b411b9a21cda5054d2",tooltip="Captura una ventana local de muestras del MPU6050."];
+  Node7 -> Node8 [id="edge7_Node000007_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="task_imu",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#ac2321b3fc83e079e31f177db5916dd58",tooltip="Tarea del MPU6050 encargada de calibrar y capturar ventanas locales."];
+  Node8 -> Node4 [id="edge8_Node000008_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 -> Node8 [id="edge9_Node000006_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

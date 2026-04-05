@@ -5,7 +5,7 @@ digraph "mpu_write"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node1 [id="Node000001",label="mpu_write",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Escribe un registro del MPU6050."];
+  Node1 [id="Node000001",label="mpu_write",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Envia una escritura simple al registro indicado del MPU."];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="hal_i2c_write_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__i2c_8c.html#ad2da5a79c6f6c47edcbba7519678b1d0",tooltip="Escribe un byte en un registro de un esclavo I2C."];
+  Node2 [id="Node000002",label="hal_i2c_write_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__i2c_8c.html#ad2da5a79c6f6c47edcbba7519678b1d0",tooltip="Escribe un byte en un registro del dispositivo seleccionado."];
 }

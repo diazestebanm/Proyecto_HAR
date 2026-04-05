@@ -93,22 +93,30 @@ $(function(){initNavTree('hal__i2c_8h_source.html','',''); });
 </div><!--header-->
 <div class="contents">
 <a href="hal__i2c_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef HAL_I2C_H</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define HAL_I2C_H</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>esp_err_t <a class="code hl_function" href="hal__i2c_8h.html#ad85ce8411d235b43c5a3f2b663d32d49">hal_i2c_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>esp_err_t <a class="code hl_function" href="hal__i2c_8h.html#ad2da5a79c6f6c47edcbba7519678b1d0">hal_i2c_write_reg</a>(uint8_t dev_addr, uint8_t reg, uint8_t value);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>esp_err_t <a class="code hl_function" href="hal__i2c_8h.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4">hal_i2c_read_reg</a>(uint8_t dev_addr, uint8_t reg, uint8_t *data, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif </span><span class="comment">/* HAL_I2C_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="ahal__i2c_8h_html_ab5e8ee14193b2c3d6b90a7bf6952d2d4"><div class="ttname"><a href="hal__i2c_8h.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4">hal_i2c_read_reg</a></div><div class="ttdeci">esp_err_t hal_i2c_read_reg(uint8_t dev_addr, uint8_t reg, uint8_t *data, size_t len)</div><div class="ttdoc">Lee uno o varios bytes desde un esclavo I2C.</div><div class="ttdef"><b>Definition</b> <a href="hal__i2c_8c_source.html#l00068">hal_i2c.c:68</a></div></div>
-<div class="ttc" id="ahal__i2c_8h_html_ad2da5a79c6f6c47edcbba7519678b1d0"><div class="ttname"><a href="hal__i2c_8h.html#ad2da5a79c6f6c47edcbba7519678b1d0">hal_i2c_write_reg</a></div><div class="ttdeci">esp_err_t hal_i2c_write_reg(uint8_t dev_addr, uint8_t reg, uint8_t value)</div><div class="ttdoc">Escribe un registro de un esclavo I2C.</div><div class="ttdef"><b>Definition</b> <a href="hal__i2c_8c_source.html#l00050">hal_i2c.c:50</a></div></div>
-<div class="ttc" id="ahal__i2c_8h_html_ad85ce8411d235b43c5a3f2b663d32d49"><div class="ttname"><a href="hal__i2c_8h.html#ad85ce8411d235b43c5a3f2b663d32d49">hal_i2c_init</a></div><div class="ttdeci">esp_err_t hal_i2c_init(void)</div><div class="ttdoc">Inicializa el bus I2C maestro del Nodo 2.</div><div class="ttdef"><b>Definition</b> <a href="hal__i2c_8c_source.html#l00024">hal_i2c.c:24</a></div></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef HAL_I2C_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define HAL_I2C_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>esp_err_t <a class="code hl_function" href="hal__i2c_8h.html#ad85ce8411d235b43c5a3f2b663d32d49">hal_i2c_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>esp_err_t <a class="code hl_function" href="hal__i2c_8h.html#afb9fba738f73d8ee6143b98871cb3c70">hal_i2c_deinit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>esp_err_t <a class="code hl_function" href="hal__i2c_8h.html#afc5e9ce208efc6952804ab3614278423">hal_i2c_ping</a>(uint8_t dev_addr);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>esp_err_t <a class="code hl_function" href="hal__i2c_8h.html#ad2da5a79c6f6c47edcbba7519678b1d0">hal_i2c_write_reg</a>(uint8_t dev_addr, uint8_t reg, uint8_t value);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>esp_err_t <a class="code hl_function" href="hal__i2c_8h.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4">hal_i2c_read_reg</a>(uint8_t dev_addr, uint8_t reg, uint8_t *data, <span class="keywordtype">size_t</span> len);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif </span><span class="comment">/* HAL_I2C_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="ahal__i2c_8h_html_ab5e8ee14193b2c3d6b90a7bf6952d2d4"><div class="ttname"><a href="hal__i2c_8h.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4">hal_i2c_read_reg</a></div><div class="ttdeci">esp_err_t hal_i2c_read_reg(uint8_t dev_addr, uint8_t reg, uint8_t *data, size_t len)</div><div class="ttdoc">Lee uno o mas bytes a partir de un registro de un esclavo I2C.</div><div class="ttdef"><b>Definition</b> <a href="hal__i2c_8c_source.html#l00144">hal_i2c.c:144</a></div></div>
+<div class="ttc" id="ahal__i2c_8h_html_ad2da5a79c6f6c47edcbba7519678b1d0"><div class="ttname"><a href="hal__i2c_8h.html#ad2da5a79c6f6c47edcbba7519678b1d0">hal_i2c_write_reg</a></div><div class="ttdeci">esp_err_t hal_i2c_write_reg(uint8_t dev_addr, uint8_t reg, uint8_t value)</div><div class="ttdoc">Escribe un solo registro de 8 bits en un dispositivo I2C.</div><div class="ttdef"><b>Definition</b> <a href="hal__i2c_8c_source.html#l00115">hal_i2c.c:115</a></div></div>
+<div class="ttc" id="ahal__i2c_8h_html_ad85ce8411d235b43c5a3f2b663d32d49"><div class="ttname"><a href="hal__i2c_8h.html#ad85ce8411d235b43c5a3f2b663d32d49">hal_i2c_init</a></div><div class="ttdeci">esp_err_t hal_i2c_init(void)</div><div class="ttdoc">Inicializa el periférico I2C con los pines y frecuencia definidos en app_config.h.</div><div class="ttdef"><b>Definition</b> <a href="hal__i2c_8c_source.html#l00046">hal_i2c.c:46</a></div></div>
+<div class="ttc" id="ahal__i2c_8h_html_afb9fba738f73d8ee6143b98871cb3c70"><div class="ttname"><a href="hal__i2c_8h.html#afb9fba738f73d8ee6143b98871cb3c70">hal_i2c_deinit</a></div><div class="ttdeci">esp_err_t hal_i2c_deinit(void)</div><div class="ttdoc">Libera el driver I2C del Nodo 2.</div><div class="ttdef"><b>Definition</b> <a href="hal__i2c_8c_source.html#l00028">hal_i2c.c:28</a></div></div>
+<div class="ttc" id="ahal__i2c_8h_html_afc5e9ce208efc6952804ab3614278423"><div class="ttname"><a href="hal__i2c_8h.html#afc5e9ce208efc6952804ab3614278423">hal_i2c_ping</a></div><div class="ttdeci">esp_err_t hal_i2c_ping(uint8_t dev_addr)</div><div class="ttdoc">Verifica si un dispositivo responde en una direccion I2C.</div><div class="ttdef"><b>Definition</b> <a href="hal__i2c_8c_source.html#l00092">hal_i2c.c:92</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

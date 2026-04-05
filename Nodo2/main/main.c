@@ -8,7 +8,7 @@
  * Este nodo actua como:
  *  - capturador local de IMU en pierna/tobillo,
  *  - receptor ESP-NOW de los resumentes del Nodo 1,
- *  - logger sincronizado en SD de ambos nodos.
+ *  - logger sincronizado de ambos nodos hacia un archivo CSV en el host.
  */
 
 static const char *TAG = "MAIN";

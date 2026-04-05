@@ -11,10 +11,10 @@ idf_component_register(
     INCLUDE_DIRS "."
     REQUIRES
         driver
+        esp_driver_gpio
         esp_wifi
         esp_event
         nvs_flash
-        fatfs
         esp_adc
         esp_timer
 )

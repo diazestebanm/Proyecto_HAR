@@ -205,26 +205,36 @@ static void enqueue_payload(app_msg_type_t type, bool critical, bool boot_event)
  */
 static void task_control_fsm(void *arg)
 {
+    (void)arg;
+
     app_state_t state = APP_STATE_BOOT;
     TickType_t last_bat = 0;
+    TickType_t cycle_ref = xTaskGetTickCount();
     bool boot_event_pending = true;
 
-    hal_battery_read(&s_last_bat);
+    battery_status_t bat;
+    if (hal_battery_read(&bat) == ESP_OK) {
+        xSemaphoreTake(s_data_mutex, portMAX_DELAY);
+        s_last_bat = bat;
+        xSemaphoreGive(s_data_mutex);
+    }
+    last_bat = xTaskGetTickCount();
 
     while (1) {
         switch (state) {
         case APP_STATE_BOOT:
             enqueue_payload(APP_MSG_ALARM, true, true);
             boot_event_pending = false;
+            vTaskDelayUntil(&cycle_ref, pdMS_TO_TICKS(APP_CYCLE_PERIOD_MS));
             state = APP_STATE_IDLE_LOW_POWER;
             break;
 
         case APP_STATE_IDLE_LOW_POWER:
             if ((xTaskGetTickCount() - last_bat) >= pdMS_TO_TICKS(APP_BAT_ACTIVE_PERIOD_MS)) {
-                battery_status_t bat;
-                if (hal_battery_read(&bat) == ESP_OK) {
+                battery_status_t bat_now;
+                if (hal_battery_read(&bat_now) == ESP_OK) {
                     xSemaphoreTake(s_data_mutex, portMAX_DELAY);
-                    s_last_bat = bat;
+                    s_last_bat = bat_now;
                     xSemaphoreGive(s_data_mutex);
                 }
                 last_bat = xTaskGetTickCount();
@@ -234,9 +244,15 @@ static void task_control_fsm(void *arg)
 
         case APP_STATE_ACQUIRE_IMU: {
             xTaskNotifyGive(s_task_imu);
+
             uint32_t notified = 0;
-            xTaskNotifyWait(0, UINT32_MAX, &notified, pdMS_TO_TICKS(APP_IMU_WINDOW_MS + 1000));
-            state = APP_STATE_ACQUIRE_PPG;
+            if (xTaskNotifyWait(0, UINT32_MAX, &notified,
+                                pdMS_TO_TICKS(APP_IMU_WINDOW_MS + 1500)) != pdTRUE ||
+                !(notified & NTF_IMU_DONE)) {
+                ESP_LOGW(TAG, "Timeout esperando ventana IMU");
+            }
+
+            state = APP_STATE_BUILD_PAYLOAD;
             break;
         }
 
@@ -244,35 +260,41 @@ static void task_control_fsm(void *arg)
             state = APP_STATE_BUILD_PAYLOAD;
             break;
 
-        case APP_STATE_BUILD_PAYLOAD:
-            if (s_last_bat.critical || app_radio_link_degraded() || boot_event_pending) {
+        case APP_STATE_BUILD_PAYLOAD: {
+            battery_status_t bat_snapshot;
+            xSemaphoreTake(s_data_mutex, portMAX_DELAY);
+            bat_snapshot = s_last_bat;
+            xSemaphoreGive(s_data_mutex);
+
+            if (bat_snapshot.critical || app_radio_link_degraded() || boot_event_pending) {
                 state = APP_STATE_TX_ALARM;
             } else {
                 state = APP_STATE_TX_NORMAL;
             }
             break;
+        }
 
         case APP_STATE_TX_NORMAL:
             enqueue_payload(APP_MSG_NORMAL, false, false);
             boot_event_pending = false;
-            vTaskDelay(pdMS_TO_TICKS(APP_TX_PERIOD_MS));
+            vTaskDelayUntil(&cycle_ref, pdMS_TO_TICKS(APP_CYCLE_PERIOD_MS));
             state = APP_STATE_IDLE_LOW_POWER;
             break;
 
         case APP_STATE_TX_ALARM:
             enqueue_payload(APP_MSG_ALARM, true, boot_event_pending);
             boot_event_pending = false;
-            vTaskDelay(pdMS_TO_TICKS(500));
-            state = APP_STATE_RECOVERY;
+            vTaskDelayUntil(&cycle_ref, pdMS_TO_TICKS(APP_CYCLE_PERIOD_MS));
+            state = APP_STATE_IDLE_LOW_POWER;
             break;
 
         case APP_STATE_RECOVERY:
-            vTaskDelay(pdMS_TO_TICKS(1000));
+            vTaskDelayUntil(&cycle_ref, pdMS_TO_TICKS(APP_CYCLE_PERIOD_MS));
             state = APP_STATE_IDLE_LOW_POWER;
             break;
 
         default:
-            state = APP_STATE_RECOVERY;
+            state = APP_STATE_IDLE_LOW_POWER;
             break;
         }
     }

@@ -1,0 +1,27 @@
+digraph "buf_append"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="buf_append",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Agrega texto formateado a un buffer acumulativo."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="csv_append_imu",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8c.html#a3556e861bd0db855f27e39d7f5539a5c",tooltip="Serializa un resumen IMU compacto dentro de una fila CSV."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="csv_build_record_line",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8c.html#a5f166331033d770a45b67e6bcdd5ebb1",tooltip="Construye una fila CSV fusionando la ventana local y el paquete remoto."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="hal_sdcard_append_records",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8c.html#ae78273015f07ba6d02afed9d69a588e4",tooltip="Emite por serial un lote de registros CSV ya fusionados."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="task_sd",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#affe19d1b5bae580033378e6bdd85b43b",tooltip="Tarea de persistencia hacia el host con emision por lotes."];
+  Node5 -> Node6 [id="edge5_Node000005_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="app_tasks_start",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#adaf2d0d735993165acedd8f410d879d0",tooltip="Inicializa colas, tareas y hardware de Nodo 2."];
+  Node6 -> Node7 [id="edge6_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="app_main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70",tooltip="Punto de entrada del firmware del Nodo 2."];
+  Node1 -> Node8 [id="edge7_Node000001_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="csv_build_header",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8c.html#a02a360486679af862070a25735e64bb4",tooltip="Construye la cabecera CSV completa de la sesion."];
+  Node8 -> Node9 [id="edge8_Node000008_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="hal_sdcard_init",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8c.html#abaf46e73785b8b9aa063903de9a12a2d",tooltip="Inicializa el backend serial y publica el nombre del CSV de la sesion."];
+  Node9 -> Node6 [id="edge9_Node000009_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node3 [id="edge10_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

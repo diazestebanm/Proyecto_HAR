@@ -20,8 +20,10 @@ digraph "task_control_fsm"
   Node7 [id="Node000007",label="initial_sync_wait",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#adf1537505e708f1d1aceec37113e7503",tooltip="Espera el primer paquete util del Nodo 1 para alinear el reloj local."];
   Node7 -> Node2 [id="edge7_Node000007_Node000002",color="steelblue1",style="solid",tooltip=" "];
   Node7 -> Node8 [id="edge8_Node000007_Node000008",color="steelblue1",style="solid",tooltip=" "];
-  Node8 [id="Node000008",label="is_n1_matchable",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a8e94dcab8c3f90d166a344fc903fba00",tooltip="Verifica si el ultimo paquete recibido de Nodo 1 puede emparejarse."];
+  Node8 [id="Node000008",label="is_n1_matchable",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a8e94dcab8c3f90d166a344fc903fba00",tooltip="Aplica la politica de gestion de potencia del Nodo 2."];
   Node1 -> Node8 [id="edge9_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node9 [id="edge10_Node000001_Node000009",color="steelblue1",style="solid",tooltip=" "];
-  Node9 [id="Node000009",label="power_management_init",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a637c14192da5ee544bcb1f731da1aa34",tooltip="Aplica la politica de gestion de potencia del Nodo 2."];
+  Node9 [id="Node000009",label="log_fused_window_summary",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a2d42990d9db22e5d3ad22300a28eda8d",tooltip=" "];
+  Node9 -> Node10 [id="edge11_Node000009_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="log_imu_summary",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a96f1404c50a6bec7d5091d01a1f65f78",tooltip=" "];
 }

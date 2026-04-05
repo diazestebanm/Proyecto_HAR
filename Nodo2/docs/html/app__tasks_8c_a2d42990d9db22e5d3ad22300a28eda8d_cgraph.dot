@@ -1,0 +1,11 @@
+digraph "log_fused_window_summary"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="log_fused_window_summary",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="log_imu_summary",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a96f1404c50a6bec7d5091d01a1f65f78",tooltip=" "];
+}

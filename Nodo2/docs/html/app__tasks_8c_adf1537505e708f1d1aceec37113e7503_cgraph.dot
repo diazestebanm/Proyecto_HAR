@@ -9,5 +9,5 @@ digraph "initial_sync_wait"
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="app_now_ms",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#aa0bb7e27bd1f75e886a58e931c83e171",tooltip="Obtiene el tiempo absoluto del sistema en milisegundos."];
   Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
-  Node3 [id="Node000003",label="is_n1_matchable",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a8e94dcab8c3f90d166a344fc903fba00",tooltip="Verifica si el ultimo paquete recibido de Nodo 1 puede emparejarse."];
+  Node3 [id="Node000003",label="is_n1_matchable",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html#a8e94dcab8c3f90d166a344fc903fba00",tooltip="Aplica la politica de gestion de potencia del Nodo 2."];
 }

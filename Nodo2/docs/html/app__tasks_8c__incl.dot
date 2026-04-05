@@ -44,7 +44,7 @@ digraph "main/app_tasks.c"
   Node15 -> Node16 [id="edge23_Node000015_Node000016",color="steelblue1",style="solid",tooltip=" "];
   Node16 [id="Node000016",label="freertos/queue.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node17 [id="edge24_Node000001_Node000017",color="steelblue1",style="solid",tooltip=" "];
-  Node17 [id="Node000017",label="hal_sdcard.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8h.html",tooltip="HAL de almacenamiento en SD para el Nodo 2."];
+  Node17 [id="Node000017",label="hal_sdcard.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8h.html",tooltip="HAL de persistencia del Nodo 2 con backend serial hacia el host."];
   Node17 -> Node9 [id="edge25_Node000017_Node000009",color="steelblue1",style="solid",tooltip=" "];
   Node17 -> Node18 [id="edge26_Node000017_Node000018",color="steelblue1",style="solid",tooltip=" "];
   Node18 [id="Node000018",label="stddef.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
@@ -60,14 +60,14 @@ digraph "main/app_tasks.c"
   Node1 -> Node21 [id="edge34_Node000001_Node000021",color="steelblue1",style="solid",tooltip=" "];
   Node21 [id="Node000021",label="esp_log.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node22 [id="edge35_Node000001_Node000022",color="steelblue1",style="solid",tooltip=" "];
-  Node22 [id="Node000022",label="esp_pm.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node22 [id="Node000022",label="esp_random.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node23 [id="edge36_Node000001_Node000023",color="steelblue1",style="solid",tooltip=" "];
-  Node23 [id="Node000023",label="esp_random.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node1 -> Node24 [id="edge37_Node000001_Node000024",color="steelblue1",style="solid",tooltip=" "];
-  Node24 [id="Node000024",label="esp_timer.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node1 -> Node13 [id="edge38_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node16 [id="edge39_Node000001_Node000016",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node25 [id="edge40_Node000001_Node000025",color="steelblue1",style="solid",tooltip=" "];
-  Node25 [id="Node000025",label="freertos/semphr.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node1 -> Node14 [id="edge41_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node23 [id="Node000023",label="esp_timer.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node13 [id="edge37_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node16 [id="edge38_Node000001_Node000016",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node24 [id="edge39_Node000001_Node000024",color="steelblue1",style="solid",tooltip=" "];
+  Node24 [id="Node000024",label="freertos/semphr.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node14 [id="edge40_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node25 [id="edge41_Node000001_Node000025",color="steelblue1",style="solid",tooltip=" "];
+  Node25 [id="Node000025",label="inttypes.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
 }

@@ -78,7 +78,7 @@
 #define APP_PPG_SAMPLE_RATE_HZ          100U
 #define APP_PPG_WINDOW_SAMPLES          (APP_PPG_WINDOW_SEC * APP_PPG_SAMPLE_RATE_HZ)
 
-#define APP_TX_PERIOD_MS                1000U
+#define APP_CYCLE_PERIOD_MS             10000U
 #define APP_BAT_ACTIVE_PERIOD_MS        30000U
 #define APP_BAT_IDLE_PERIOD_MS          120000U
 #define APP_RADIO_SEND_TIMEOUT_MS       400U
@@ -99,7 +99,7 @@
  * Peer ESP-NOW
  * ========================= */
 #define APP_ESPNOW_CHANNEL              1
-static const uint8_t APP_PEER_MAC[6] = {0x24, 0x6F, 0x28, 0xAA, 0xBB, 0xCC};
+static const uint8_t APP_PEER_MAC[6] = {0xB8, 0xD6, 0x1A, 0x42, 0x47, 0xB4};
 
 /* =========================
  * Flags payload

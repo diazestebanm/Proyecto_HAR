@@ -5,15 +5,15 @@ digraph "hal_mpu6050_verify"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node1 [id="Node000001",label="hal_mpu6050_verify",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Verifica la presencia del sensor mediante WHO_AM_I."];
+  Node1 [id="Node000001",label="hal_mpu6050_verify",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Lee el registro WHO_AM_I para validar que el MPU siga accesible."];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="mpu_read",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html#a89802ec59d42f521f2272764452beafa",tooltip="Lee uno o varios registros contiguos del MPU6050."];
+  Node2 [id="Node000002",label="mpu_read",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html#a89802ec59d42f521f2272764452beafa",tooltip="Lee uno o mas bytes consecutivos desde el MPU actualmente activo."];
   Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
-  Node3 [id="Node000003",label="hal_i2c_read_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__i2c_8c.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4",tooltip="Lee uno o varios bytes consecutivos desde un esclavo I2C."];
+  Node3 [id="Node000003",label="hal_i2c_read_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__i2c_8c.html#ab5e8ee14193b2c3d6b90a7bf6952d2d4",tooltip="Lee uno o mas bytes consecutivos desde un registro del esclavo."];
   Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
-  Node4 [id="Node000004",label="mpu_set_awake",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html#a465f99341805a31189339b64107f0bd9",tooltip="Activa o suspende el MPU6050 segun la politica de captura."];
+  Node4 [id="Node000004",label="mpu_set_awake",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html#a465f99341805a31189339b64107f0bd9",tooltip="Cambia el estado de energia del MPU6050."];
   Node4 -> Node5 [id="edge4_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
-  Node5 [id="Node000005",label="mpu_write",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html#abbfd78a8e31c2027d324b278b2176b27",tooltip="Escribe un registro del MPU6050."];
+  Node5 [id="Node000005",label="mpu_write",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html#abbfd78a8e31c2027d324b278b2176b27",tooltip="Envia una escritura simple al registro indicado del MPU."];
   Node5 -> Node6 [id="edge5_Node000005_Node000006",color="steelblue1",style="solid",tooltip=" "];
-  Node6 [id="Node000006",label="hal_i2c_write_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__i2c_8c.html#ad2da5a79c6f6c47edcbba7519678b1d0",tooltip="Escribe un byte en un registro de un esclavo I2C."];
+  Node6 [id="Node000006",label="hal_i2c_write_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__i2c_8c.html#ad2da5a79c6f6c47edcbba7519678b1d0",tooltip="Escribe un byte en un registro del dispositivo seleccionado."];
 }

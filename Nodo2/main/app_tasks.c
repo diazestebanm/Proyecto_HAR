@@ -3,7 +3,7 @@
  * @brief Orquestacion principal del Nodo 2.
  *
  * Este modulo crea las tareas FreeRTOS, coordina la calibracion del MPU6050,
- * sincroniza la recepcion del Nodo 1 y genera los registros fusionados para SD.
+ * sincroniza la recepcion del Nodo 1 y genera los registros fusionados para el host.
  */
 
 #include "app_tasks.h"
@@ -18,13 +18,14 @@
 #include "imu_features.h"
 #include "esp_check.h"
 #include "esp_log.h"
-#include "esp_pm.h"
+
 #include "esp_random.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/queue.h"
 #include "freertos/semphr.h"
 #include "freertos/task.h"
+#include <inttypes.h>
 
 static const char *TAG = "APP_TASKS";
 
@@ -46,6 +47,8 @@ static mpu6050_calibration_t s_cal = {0};
 static radio_rx_event_t s_last_n1 = {0};
 static bool s_last_n1_valid = false;
 static uint16_t s_last_consumed_seq = 0;
+static uint16_t s_last_seen_boot = 0;
+static uint16_t s_last_seen_seq = 0;
 
 static battery_status_t s_bat = {0};
 static uint32_t s_last_bat_ms = 0;
@@ -65,21 +68,7 @@ static uint32_t app_now_ms(void)
  * Si el proyecto fue compilado con soporte PM, habilita DFS y light-sleep
  * automatico segun las opciones configuradas en menuconfig.
  */
-static void power_management_init(void)
-{
-#ifdef CONFIG_PM_ENABLE
-    esp_pm_config_t pm_cfg = {
-        .max_freq_mhz = 80,
-        .min_freq_mhz = 10,
-#if CONFIG_FREERTOS_USE_TICKLESS_IDLE
-        .light_sleep_enable = true,
-#else
-        .light_sleep_enable = false,
-#endif
-    };
-    esp_pm_configure(&pm_cfg);
-#endif
-}
+
 
 /**
  * @brief Verifica si el ultimo paquete recibido de Nodo 1 puede emparejarse.
@@ -113,8 +102,17 @@ static void task_radio(void *arg)
 {
     (void)arg;
     radio_rx_event_t ev;
+
     while (1) {
         if (xQueueReceive(s_radio_rx_queue, &ev, portMAX_DELAY) == pdTRUE) {
+            if (ev.packet.boot_id == s_last_seen_boot &&
+                ev.packet.seq == s_last_seen_seq) {
+                continue;
+            }
+
+            s_last_seen_boot = ev.packet.boot_id;
+            s_last_seen_seq = ev.packet.seq;
+
             xSemaphoreTake(s_n1_mutex, portMAX_DELAY);
             s_last_n1 = ev;
             s_last_n1_valid = true;
@@ -140,6 +138,9 @@ static void task_imu(void *arg)
 
         if (cmd == APP_IMU_CMD_CALIBRATE) {
             esp_err_t err = hal_mpu6050_calibrate_gyro(&s_cal);
+            if (err != ESP_OK) {
+                memset(&s_cal, 0, sizeof(s_cal));
+            }
             ESP_LOGI("IMU", "Calibracion gyro: %s", esp_err_to_name(err));
             continue;
         }
@@ -153,7 +154,19 @@ static void task_imu(void *arg)
 
             uint16_t captured = 0;
             uint16_t flags = 0;
-            hal_mpu6050_capture_window(&s_cal, samples, APP_IMU_WINDOW_SAMPLES, &captured, &flags, s_t0_ms);
+            esp_err_t err = hal_mpu6050_capture_window(&s_cal, samples, APP_IMU_WINDOW_SAMPLES, &captured, &flags, s_t0_ms);
+            if (err != ESP_OK) {
+                ESP_LOGE("IMU", "Captura IMU fallo: %s", esp_err_to_name(err));
+
+                if (hal_mpu6050_recover() == ESP_OK) {
+                    memset(&s_cal, 0, sizeof(s_cal));
+                    if (hal_mpu6050_calibrate_gyro(&s_cal) == ESP_OK) {
+                        ESP_LOGW("IMU", "MPU recuperado y recalibrado");
+                    }
+                }
+
+                continue;
+            }
 
             result.win_end_ms = app_now_ms() - s_t0_ms;
             result.sample_count = captured;
@@ -166,7 +179,7 @@ static void task_imu(void *arg)
 }
 
 /**
- * @brief Tarea de almacenamiento en SD con escritura por lotes.
+ * @brief Tarea de persistencia hacia el host con emision por lotes.
  */
 static void task_sd(void *arg)
 {
@@ -190,7 +203,10 @@ static void task_sd(void *arg)
         if (count >= APP_SD_BATCH_LINES ||
             (app_now_ms() - last_flush_ms) >= APP_SD_FLUSH_PERIOD_MS) {
             if (hal_sdcard_is_ready()) {
-                hal_sdcard_append_records(batch, count);
+                esp_err_t err = hal_sdcard_append_records(batch, count);
+                if (err != ESP_OK) {
+                    ESP_LOGE(TAG, "Persistencia host fallo: %s", esp_err_to_name(err));
+                }
             }
             count = 0;
             last_flush_ms = app_now_ms();
@@ -218,6 +234,86 @@ static esp_err_t initial_sync_wait(radio_rx_event_t *first)
     return ESP_ERR_TIMEOUT;
 }
 
+static void log_imu_summary(const char *tag_prefix, const imu_feature_summary_t *imu)
+{
+    if (!tag_prefix || !imu) {
+        return;
+    }
+
+    ESP_LOGI("SUMMARY",
+             "%s acc_mean=[%d,%d,%d] acc_std=[%d,%d,%d] acc_rms=[%d,%d,%d] acc_mag_mean=%d acc_mag_std=%d acc_sma=%d",
+             tag_prefix,
+             imu->acc_mean_xyz[0], imu->acc_mean_xyz[1], imu->acc_mean_xyz[2],
+             imu->acc_std_xyz[0],  imu->acc_std_xyz[1],  imu->acc_std_xyz[2],
+             imu->acc_rms_xyz[0],  imu->acc_rms_xyz[1],  imu->acc_rms_xyz[2],
+             imu->acc_mag_mean, imu->acc_mag_std, imu->acc_sma);
+
+    ESP_LOGI("SUMMARY",
+             "%s gyro_mean=[%d,%d,%d] gyro_std=[%d,%d,%d] gyro_rms=[%d,%d,%d] gyro_mag_mean=%d gyro_mag_std=%d peak_count=%u",
+             tag_prefix,
+             imu->gyro_mean_xyz[0], imu->gyro_mean_xyz[1], imu->gyro_mean_xyz[2],
+             imu->gyro_std_xyz[0],  imu->gyro_std_xyz[1],  imu->gyro_std_xyz[2],
+             imu->gyro_rms_xyz[0],  imu->gyro_rms_xyz[1],  imu->gyro_rms_xyz[2],
+             imu->gyro_mag_mean, imu->gyro_mag_std, imu->peak_count);
+}
+
+static void log_fused_window_summary(const log_record_t *r)
+{
+    if (!r) {
+        return;
+    }
+
+    imu_feature_summary_t n1_imu = {0};
+
+    for (int i = 0; i < 3; ++i) {
+        n1_imu.acc_mean_xyz[i]  = r->n1.packet.acc_mean[i];
+        n1_imu.acc_std_xyz[i]   = r->n1.packet.acc_std[i];
+        n1_imu.acc_rms_xyz[i]   = r->n1.packet.acc_rms[i];
+        n1_imu.gyro_mean_xyz[i] = r->n1.packet.gyro_mean[i];
+        n1_imu.gyro_std_xyz[i]  = r->n1.packet.gyro_std[i];
+        n1_imu.gyro_rms_xyz[i]  = r->n1.packet.gyro_rms[i];
+    }
+
+    n1_imu.acc_mag_mean  = r->n1.packet.acc_mag_mean;
+    n1_imu.acc_mag_std   = r->n1.packet.acc_mag_std;
+    n1_imu.acc_sma       = r->n1.packet.acc_sma;
+    n1_imu.gyro_mag_mean = r->n1.packet.gyro_mag_mean;
+    n1_imu.gyro_mag_std  = r->n1.packet.gyro_mag_std;
+    n1_imu.peak_count    = r->n1.packet.peak_count;
+
+    ESP_LOGI("SUMMARY",
+             "win=%u seq_n1=%u delta_ms=%" PRIu32 " rx_local_ms=%" PRIu32 " offset_est_ms=%" PRId32 " bat=%u%% v=%.3f",
+             r->n2.window_index,
+             r->n1.packet.seq,
+             r->match_delta_ms,
+             r->rx_local_ms,
+             r->offset_est_ms,
+             r->bat.percent,
+             (double)r->bat.voltage_v);
+
+    ESP_LOGI("SUMMARY",
+             "N1 boot=%u t_rel_ms=%" PRIu32 " window_ms=%u samples=%u flags=%u bpm=%u spo2=%u bat_pct=%u",
+             r->n1.packet.boot_id,
+             r->n1.packet.t_rel_ms,
+             r->n1.packet.window_ms,
+             r->n1.packet.sample_count,
+             r->n1.packet.flags,
+             r->n1.packet.bpm,
+             r->n1.packet.spo2,
+             r->n1.packet.battery_pct);
+
+    ESP_LOGI("SUMMARY",
+             "N2 boot=%u win_start=%" PRIu32 " win_end=%" PRIu32 " samples=%u flags=%u",
+             r->n2.boot_id,
+             r->n2.win_start_ms,
+             r->n2.win_end_ms,
+             r->n2.sample_count,
+             r->n2.flags);
+
+    log_imu_summary("N1", &n1_imu);
+    log_imu_summary("N2", &r->n2.imu);
+}
+
 /**
  * @brief FSM principal del Nodo 2.
  *
@@ -227,11 +323,12 @@ static esp_err_t initial_sync_wait(radio_rx_event_t *first)
 static void task_control_fsm(void *arg)
 {
     (void)arg;
-    power_management_init();
+    
 
     battery_status_t bat;
-    hal_battery_sample(&bat);
-    s_bat = bat;
+    if (hal_battery_sample(&bat) == ESP_OK && bat.valid) {
+        s_bat = bat;
+    }
     s_last_bat_ms = app_now_ms();
 
     xTaskNotify(s_task_imu, APP_IMU_CMD_CALIBRATE, eSetValueWithOverwrite);
@@ -259,7 +356,10 @@ static void task_control_fsm(void *arg)
         }
 
         if ((app_now_ms() - s_last_bat_ms) >= APP_BATTERY_SAMPLE_PERIOD_MS) {
-            hal_battery_sample(&s_bat);
+            battery_status_t bat_now;
+            if (hal_battery_sample(&bat_now) == ESP_OK && bat_now.valid) {
+                s_bat = bat_now;
+            }
             s_last_bat_ms = app_now_ms();
         }
 
@@ -304,10 +404,14 @@ static void task_control_fsm(void *arg)
             .n1 = n1,
         };
 
-        xQueueSend(s_sd_queue, &record, portMAX_DELAY);
-        ESP_LOGI(TAG, "MATCH OK win=%u seq_n1=%u delta=%lu ms bat=%u%%",
-                 n2.window_index, n1.packet.seq, (unsigned long)delta_ms, s_bat.percent);
+        #if APP_SERIAL_SUMMARY_ENABLE
+                if ((record.n2.window_index % APP_SERIAL_SUMMARY_EVERY_N_WINDOWS) == 0U) {
+                    log_fused_window_summary(&record);
+                }
+        #endif
 
+        xQueueSend(s_sd_queue, &record, portMAX_DELAY);
+        
         /*
          * Se reajusta el siguiente instante esperado usando el tiempo real del
          * paquete recibido. Esto corrige deriva entre nodos sin requerir ACK.
@@ -337,10 +441,22 @@ esp_err_t app_tasks_start(void)
 
     xTaskCreatePinnedToCore(task_imu, "TaskIMU", APP_TASK_STACK_DEFAULT, NULL, APP_TASK_PRIO_IMU, &s_task_imu, 1);
 
-    ESP_RETURN_ON_ERROR(hal_mpu6050_init(s_task_imu), TAG, "mpu init fallo");
-    ESP_RETURN_ON_ERROR(hal_mpu6050_verify(), TAG, "mpu verify fallo");
+    esp_err_t mpu_err = ESP_FAIL;
+    for (int i = 0; i < 5; ++i) {
+        mpu_err = hal_mpu6050_init(s_task_imu);
+        if (mpu_err == ESP_OK) {
+            mpu_err = hal_mpu6050_verify();
+            if (mpu_err == ESP_OK) {
+                break;
+            }
+        }
+
+        ESP_LOGW(TAG, "Reintentando init MPU (%d/5): %s", i + 1, esp_err_to_name(mpu_err));
+        vTaskDelay(pdMS_TO_TICKS(300));
+    }
+    ESP_RETURN_ON_ERROR(mpu_err, TAG, "mpu init fallo");
     ESP_RETURN_ON_ERROR(hal_battery_init(), TAG, "battery init fallo");
-    (void)hal_sdcard_init(s_boot_id);
+    ESP_RETURN_ON_ERROR(hal_sdcard_init(s_boot_id), TAG, "host logger init fallo");
     ESP_RETURN_ON_ERROR(hal_radio_init(s_radio_rx_queue), TAG, "radio init fallo");
 
     xTaskCreatePinnedToCore(task_radio, "TaskRadioRx", APP_TASK_STACK_DEFAULT, NULL, APP_TASK_PRIO_RADIO, &s_task_radio, 0);

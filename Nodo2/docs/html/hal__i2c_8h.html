@@ -93,7 +93,7 @@ $(function(){initNavTree('hal__i2c_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>API del bus I2C del Nodo 2.  
+<p>API de acceso I2C del Nodo 2.  
 <a href="#details">Más...</a></p>
 <div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
@@ -114,17 +114,51 @@ Gráfico de los archivos que directa o indirectamente incluyen a este archivo:</
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Funciones</h2></td></tr>
 <tr class="memitem:ad85ce8411d235b43c5a3f2b663d32d49" id="r_ad85ce8411d235b43c5a3f2b663d32d49"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#ad85ce8411d235b43c5a3f2b663d32d49">hal_i2c_init</a> (void)</td></tr>
-<tr class="memdesc:ad85ce8411d235b43c5a3f2b663d32d49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa el bus I2C maestro del Nodo 2.  <br /></td></tr>
+<tr class="memdesc:ad85ce8411d235b43c5a3f2b663d32d49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa el periférico I2C con los pines y frecuencia definidos en <a class="el" href="app__config_8h.html" title="app_config.h">app_config.h</a>.  <br /></td></tr>
+<tr class="memitem:afb9fba738f73d8ee6143b98871cb3c70" id="r_afb9fba738f73d8ee6143b98871cb3c70"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#afb9fba738f73d8ee6143b98871cb3c70">hal_i2c_deinit</a> (void)</td></tr>
+<tr class="memdesc:afb9fba738f73d8ee6143b98871cb3c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera el driver I2C del Nodo 2.  <br /></td></tr>
+<tr class="memitem:afc5e9ce208efc6952804ab3614278423" id="r_afc5e9ce208efc6952804ab3614278423"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#afc5e9ce208efc6952804ab3614278423">hal_i2c_ping</a> (uint8_t dev_addr)</td></tr>
+<tr class="memdesc:afc5e9ce208efc6952804ab3614278423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica si un dispositivo responde en una direccion I2C.  <br /></td></tr>
 <tr class="memitem:ad2da5a79c6f6c47edcbba7519678b1d0" id="r_ad2da5a79c6f6c47edcbba7519678b1d0"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#ad2da5a79c6f6c47edcbba7519678b1d0">hal_i2c_write_reg</a> (uint8_t dev_addr, uint8_t reg, uint8_t value)</td></tr>
-<tr class="memdesc:ad2da5a79c6f6c47edcbba7519678b1d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escribe un registro de un esclavo I2C.  <br /></td></tr>
+<tr class="memdesc:ad2da5a79c6f6c47edcbba7519678b1d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escribe un solo registro de 8 bits en un dispositivo I2C.  <br /></td></tr>
 <tr class="memitem:ab5e8ee14193b2c3d6b90a7bf6952d2d4" id="r_ab5e8ee14193b2c3d6b90a7bf6952d2d4"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#ab5e8ee14193b2c3d6b90a7bf6952d2d4">hal_i2c_read_reg</a> (uint8_t dev_addr, uint8_t reg, uint8_t *data, size_t len)</td></tr>
-<tr class="memdesc:ab5e8ee14193b2c3d6b90a7bf6952d2d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee uno o varios bytes desde un esclavo I2C.  <br /></td></tr>
+<tr class="memdesc:ab5e8ee14193b2c3d6b90a7bf6952d2d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee uno o mas bytes a partir de un registro de un esclavo I2C.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>API del bus I2C del Nodo 2. </p>
+<div class="textblock"><p>API de acceso I2C del Nodo 2. </p>
+<p>Este modulo encapsula la configuracion del bus I2C maestro usado por el MPU6050. Se separa en una HAL propia para que la logica del sensor quede desacoplada de los detalles del driver de ESP-IDF. </p>
 
 <p class="definition">Definición en el archivo <a class="el" href="hal__i2c_8h_source.html">hal_i2c.h</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="afb9fba738f73d8ee6143b98871cb3c70" name="afb9fba738f73d8ee6143b98871cb3c70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb9fba738f73d8ee6143b98871cb3c70">&#9670;&#160;</a></span>hal_i2c_deinit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t hal_i2c_deinit </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libera el driver I2C del Nodo 2. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>ESP_OK incluso si el bus ya estaba desmontado.</dd></dl>
+<p>Libera el driver I2C del Nodo 2.</p>
+<p>Se usa como parte del flujo de recuperacion cuando el MPU deja el bus en un estado inconsistente o cuando se requiere reconfigurar el periférico. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__i2c_8c_source.html#l00028">28</a> del archivo <a class="el" href="hal__i2c_8c_source.html">hal_i2c.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 2 --></div>
+</div>
+
+</div>
+</div>
 <a id="ad85ce8411d235b43c5a3f2b663d32d49" name="ad85ce8411d235b43c5a3f2b663d32d49"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad85ce8411d235b43c5a3f2b663d32d49">&#9670;&#160;</a></span>hal_i2c_init()</h2>
 
@@ -140,14 +174,66 @@ Funciones</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Inicializa el bus I2C maestro del Nodo 2. </p>
-<p>Inicializa el bus I2C maestro del Nodo 2. </p>
+<p>Inicializa el periférico I2C con los pines y frecuencia definidos en <a class="el" href="app__config_8h.html" title="app_config.h">app_config.h</a>. </p>
+<dl class="section return"><dt>Devuelve</dt><dd><ul>
+<li>ESP_OK si el bus queda listo.</li>
+<li>Codigo de error de ESP-IDF si la configuracion o la instalacion del driver falla.</li>
+</ul>
+</dd></dl>
+<p>Inicializa el periférico I2C con los pines y frecuencia definidos en <a class="el" href="app__config_8h.html" title="app_config.h">app_config.h</a>.</p>
+<p>Si el driver ya habia quedado instalado en un estado invalido, el modulo intenta desmontarlo y volverlo a crear antes de propagar el error. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="hal__i2c_8c_source.html#l00024">24</a> del archivo <a class="el" href="hal__i2c_8c_source.html">hal_i2c.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="hal__i2c_8c_source.html#l00046">46</a> del archivo <a class="el" href="hal__i2c_8c_source.html">hal_i2c.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 3 --></div>
+</div>
 <div class="dynheader">
 Gráfico de llamadas a esta función:</div>
 <div class="dyncontent">
-<div class="center"><!-- SVG 2 --></div>
+<div class="center"><!-- SVG 4 --></div>
+</div>
+
+</div>
+</div>
+<a id="afc5e9ce208efc6952804ab3614278423" name="afc5e9ce208efc6952804ab3614278423"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc5e9ce208efc6952804ab3614278423">&#9670;&#160;</a></span>hal_i2c_ping()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t hal_i2c_ping </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>dev_addr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica si un dispositivo responde en una direccion I2C. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_addr</td><td>Direccion de 7 bits del dispositivo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>ESP_OK si el esclavo responde con ACK.</dd></dl>
+<p>Verifica si un dispositivo responde en una direccion I2C.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_addr</td><td>Direccion de 7 bits del dispositivo que se desea sondear. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>ESP_OK si el esclavo responde con ACK. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="hal__i2c_8c_source.html#l00092">92</a> del archivo <a class="el" href="hal__i2c_8c_source.html">hal_i2c.c</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 5 --></div>
 </div>
 
 </div>
@@ -181,14 +267,34 @@ Gráfico de llamadas a esta función:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Lee uno o varios bytes desde un esclavo I2C. </p>
-<p>Lee uno o varios bytes desde un esclavo I2C. </p>
+<p>Lee uno o mas bytes a partir de un registro de un esclavo I2C. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_addr</td><td>Direccion de 7 bits del esclavo. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reg</td><td>Registro inicial desde el que se leerá. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Buffer de salida. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Numero de bytes a recibir. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Resultado de la operacion de lectura.</dd></dl>
+<p>Lee uno o mas bytes a partir de un registro de un esclavo I2C.</p>
+<p>La transaccion se hace con una fase de escritura del registro seguida de un repeated-start para la lectura, que es el patron esperado por el MPU6050.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_addr</td><td>Direccion del esclavo. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reg</td><td>Registro inicial. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Buffer destino. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Cantidad de bytes a leer. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definición en la línea <a class="el" href="hal__i2c_8c_source.html#l00068">68</a> del archivo <a class="el" href="hal__i2c_8c_source.html">hal_i2c.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="hal__i2c_8c_source.html#l00144">144</a> del archivo <a class="el" href="hal__i2c_8c_source.html">hal_i2c.c</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas a esta función:</div>
 <div class="dyncontent">
-<div class="center"><!-- SVG 3 --></div>
+<div class="center"><!-- SVG 6 --></div>
 </div>
 
 </div>
@@ -217,14 +323,31 @@ Gráfico de llamadas a esta función:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Escribe un registro de un esclavo I2C. </p>
-<p>Escribe un registro de un esclavo I2C. </p>
+<p>Escribe un solo registro de 8 bits en un dispositivo I2C. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_addr</td><td>Direccion de 7 bits del esclavo. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reg</td><td>Registro a modificar. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Valor a escribir. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Resultado de la transaccion sobre el bus.</dd></dl>
+<p>Escribe un solo registro de 8 bits en un dispositivo I2C.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev_addr</td><td>Direccion del esclavo. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reg</td><td>Registro a modificar. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Dato de 8 bits a escribir. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definición en la línea <a class="el" href="hal__i2c_8c_source.html#l00050">50</a> del archivo <a class="el" href="hal__i2c_8c_source.html">hal_i2c.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="hal__i2c_8c_source.html#l00115">115</a> del archivo <a class="el" href="hal__i2c_8c_source.html">hal_i2c.c</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas a esta función:</div>
 <div class="dyncontent">
-<div class="center"><!-- SVG 4 --></div>
+<div class="center"><!-- SVG 7 --></div>
 </div>
 
 </div>

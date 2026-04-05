@@ -5,7 +5,11 @@ digraph "hal_sdcard_init"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node1 [id="Node000001",label="hal_sdcard_init",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Monta la tarjeta SD y crea el archivo de sesion."];
+  Node1 [id="Node000001",label="hal_sdcard_init",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Inicializa el backend de salida y anuncia el archivo destino."];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="csv_write_header",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8c.html#ab4feeffc28c6786e3c140ad5b580a474",tooltip="Escribe la cabecera CSV del archivo de sesion."];
+  Node2 [id="Node000002",label="csv_build_header",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8c.html#a02a360486679af862070a25735e64bb4",tooltip="Construye la cabecera CSV completa de la sesion."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="buf_append",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8c.html#a77f3508123c8b7c0c93a9c8060c09b8c",tooltip="Agrega texto formateado a un buffer acumulativo."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="host_emit_line",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__sdcard_8c.html#a58e94b63ba077c627d59065a2ef56cf3",tooltip="Emite una linea del protocolo serial consumido por logger.py."];
 }

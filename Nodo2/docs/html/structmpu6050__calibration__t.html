@@ -105,8 +105,9 @@ Campos de datos</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Parametros de calibracion del giroscopio del MPU6050. </p>
+<p>El sesgo se estima al inicio con el sensor quieto y luego se resta durante la captura de cada ventana para reducir el offset DC en los ejes del gyro. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8h_source.html#l00019">19</a> del archivo <a class="el" href="hal__mpu6050_8h_source.html">hal_mpu6050.h</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8h_source.html#l00022">22</a> del archivo <a class="el" href="hal__mpu6050_8h_source.html">hal_mpu6050.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentación de campos</h2>
 <a id="a71643e391a7238d617e6322ef99cdf41" name="a71643e391a7238d617e6322ef99cdf41"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a71643e391a7238d617e6322ef99cdf41">&#9670;&#160;</a></span>bias_valid</h2>
@@ -119,8 +120,9 @@ Campos de datos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Indica si la calibracion puede aplicarse. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8h_source.html#l00021">21</a> del archivo <a class="el" href="hal__mpu6050_8h_source.html">hal_mpu6050.h</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8h_source.html#l00024">24</a> del archivo <a class="el" href="hal__mpu6050_8h_source.html">hal_mpu6050.h</a>.</p>
 
 </div>
 </div>
@@ -135,8 +137,9 @@ Campos de datos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sesgo medio crudo por eje en LSB del gyro. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8h_source.html#l00020">20</a> del archivo <a class="el" href="hal__mpu6050_8h_source.html">hal_mpu6050.h</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="hal__mpu6050_8h_source.html#l00023">23</a> del archivo <a class="el" href="hal__mpu6050_8h_source.html">hal_mpu6050.h</a>.</p>
 
 </div>
 </div>

@@ -14,21 +14,15 @@
  */
 
 /* -------------------------------------------------------------------------- */
-/* Hardware: ESP32 DevKit V1 + MPU6050 + SD SPI + divisor de bateria          */
+/* Hardware: ESP32 DevKit V1 + MPU6050 + divisor de bateria                    */
 /* -------------------------------------------------------------------------- */
 #define APP_I2C_PORT                 0 /* I2C_NUM_0 */
 #define APP_I2C_SDA_GPIO             GPIO_NUM_21
 #define APP_I2C_SCL_GPIO             GPIO_NUM_22
-#define APP_I2C_FREQ_HZ              400000
+#define APP_I2C_FREQ_HZ              100000
 
 #define APP_MPU_ADDR                 0x68
 #define APP_MPU_INT_GPIO             GPIO_NUM_25
-
-#define APP_SD_MOSI_GPIO             GPIO_NUM_23
-#define APP_SD_MISO_GPIO             GPIO_NUM_19
-#define APP_SD_SCK_GPIO              GPIO_NUM_18
-#define APP_SD_CS_GPIO               GPIO_NUM_27
-#define APP_SD_MOUNT_POINT           "/sdcard"
 
 #define APP_BAT_ADC_UNIT             ADC_UNIT_1
 #define APP_BAT_ADC_CHANNEL          ADC_CHANNEL_6   /* GPIO34 */
@@ -105,5 +99,8 @@
 /* -------------------------------------------------------------------------- */
 #define APP_LOG_LINE_MAX             1024
 #define APP_SESSION_FILENAME_MAX     64
+
+#define APP_SERIAL_SUMMARY_ENABLE          1
+#define APP_SERIAL_SUMMARY_EVERY_N_WINDOWS 1U
 
 #endif /* APP_CONFIG_H */

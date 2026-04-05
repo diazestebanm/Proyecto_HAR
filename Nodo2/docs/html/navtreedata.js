@@ -50,7 +50,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"structmpu6050__calibration__t.html#a71643e391a7238d617e6322ef99cdf41"
+"structimu__feature__summary__t.html#ab685c6d493abec12a387e7e4f9411ccc"
 ];
 
 var SYNCONMSG = 'pulsar para deshabilitar sincronización';

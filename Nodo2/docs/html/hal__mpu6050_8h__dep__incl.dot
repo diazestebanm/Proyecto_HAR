@@ -8,5 +8,5 @@ digraph "main/hal_mpu6050.h"
   Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="main/app_tasks.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app__tasks_8c.html",tooltip="Orquestacion principal del Nodo 2."];
   Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node3 [id="Node000003",label="main/hal_mpu6050.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html",tooltip="Driver de alto nivel del MPU6050 para el Nodo 2."];
+  Node3 [id="Node000003",label="main/hal_mpu6050.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hal__mpu6050_8c.html",tooltip="Implementacion de la HAL del MPU6050 para el Nodo 2."];
 }
